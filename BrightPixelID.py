@@ -2,42 +2,43 @@ from picamera2 import Picamera2, Preview
 import time
 import numpy as np
 from PIL import Image
-import cython
+import ctypes
+import numpy.ctypeslib
+
+loopLib = ctypes.CDLL('../Running/loopLib.so')
 
 BRIGHTNESS_THRESHOLD = 240
 
 STARTX = 29
 ENDX = 54
 
+MP_count = 0
+
 timer = 0
 
 RESOLUTION_WIDTH = 83
 RESOLUTION_HEIGHT = 64
 
-old_image_array0 = []
-old_image_array1 = []
-
+#old_image_array0 = np.full((83,64, 3), 0)
+#old_image_array1 = np.full((83,64, 3), 0)
+#print(old_image_array0)
 picam0 = Picamera2(0)
 picam1 = Picamera2(1)
-
 
 #picam0.set_controls({"AeMode": 0, "AwbMode": 0, "AfMode": 0})
 #picam1.set_controls({"AeMode": 0, "AwbMode": 0, "AfMode": 0})
 
-
-
-
 camera_config0 = picam0.create_still_configuration(
     main={"size": (RESOLUTION_WIDTH, RESOLUTION_HEIGHT)}, 
     lores={"size": (RESOLUTION_WIDTH, RESOLUTION_HEIGHT)}, 
-    raw={"size": (26, 20)}, 
+    raw={"size": (26,20)}, #26,20
     display="lores",
     buffer_count=25
     )
 camera_config1 = picam1.create_still_configuration(
     main={"size": (RESOLUTION_WIDTH, RESOLUTION_HEIGHT)}, 
     lores={"size": (RESOLUTION_WIDTH, RESOLUTION_HEIGHT)}, 
-    raw={"size": (26, 20)}, 
+    raw={"size": (26,20)}, 
     display="lores",
     buffer_count=25
     )
@@ -61,20 +62,34 @@ time.sleep(4)
 
 #def averageSquare(x, y, radius, array):
     #valueSum = 0
-    #for x in range(0,radius):
-        
+    #for x in range(0,radius):'
+    
+image_array0 = np.array(picam0.capture_array(), dtype=np.int32)
+image_array1 = np.array(picam1.capture_array(), dtype=np.int32)
+
+old_image_array0 = image_array0
+old_image_array1 = image_array1
+
+first_frame = True
 
 def run_recognition():
-    
-    image_array0 = picam0.capture_array()
-    image_array1 = picam1.capture_array()
+    global first_frame, old_image_array0, old_image_array1, image_array0, image_array1, timer, MP_count
+    #print(first_frame)
 
+    if first_frame == True:
+        image_array0 = np.array(picam0.capture_array(), dtype=np.int16)
+        image_array1 = np.array(picam1.capture_array(), dtype=np.int16)
+        first_frame = False
+    else:
+        image_array0 = np.array(picam0.capture_array(), dtype=np.int16)
+        image_array1 = np.array(picam1.capture_array(), dtype=np.int16)
+    """
     if timer < 1:
         pass
     else:
         img_change0 = image_array0 - old_image_array0
         img_change1 = image_array1 - old_image_array1
-
+    
     #Make an image from the array
     #image0 = Image.fromarray(image_array0)
     #image1 = Image.fromarray(image_array1)
@@ -87,9 +102,16 @@ def run_recognition():
     #print(image_array0[0][0][0] + image_array0[0][0][1] + image_array0[0][0][2])
     #print(len(image_array0[0]))
     
-    brightpixels0 = []
-    brightpixels1 = []
-    """
+    #brightpixels = np.full((1600,2), 0)
+    
+    brightpixels = [cam0, cam1]
+    cam0 = [(#,#), (#,#), (#,#), (#,#), (#,#), (#,#), (#,#), (#,#)]
+    cam1 = [(#,#), (#,#), (#,#), (#,#), (#,#), (#,#), (#,#), (#,#)]
+    
+    
+    #nextValue = 0
+    #brightpixels1 = np.em
+    
     for i in range(STARTX, ENDX):
         #print("testing")
         for j in range(0, len(image_array0[i])):
@@ -106,6 +128,19 @@ def run_recognition():
             if pixelvalue > BRIGHTNESS_THRESHOLD:
                 brightpixels1.append([i,j])
     """
+    #print (old_image_array0)
+    #PARAMETERS: (img_arr, old_img_arr, brightness_change_required for id, MP count required for ID, rows#, cols#)
+    cam0MP = loopLib.find_bright_pixels(numpy.ctypeslib.as_ctypes(image_array0), numpy.ctypeslib.as_ctypes(old_image_array0), 230, 10, 64, 83)
+    cam1MP = loopLib.find_bright_pixels(numpy.ctypeslib.as_ctypes(image_array1), numpy.ctypeslib.as_ctypes(old_image_array1), 230, 10, 64, 83)
+    #print(cam0MP)
+    if cam0MP == 1 or cam1MP == 1:
+        MP_count += 1
+    
+    #print(timer)
+    #print(image_array0[40][40])
+    #print(old_image_array0[40][40])
+
+    """
     for i in range(STARTX, ENDX):
     #print("testing")
         for j in range(0, RESOLUTION_HEIGHT):
@@ -118,30 +153,36 @@ def run_recognition():
             
             #if a+b > BRIGHTNESS_THRESHOLD*(2/3):
                 #pass
+
             
+
+
             if image_array0[i][j][0] + image_array0[i][j][1] + image_array0[i][j][2] > BRIGHTNESS_THRESHOLD:
-                brightpixels0.append([i,j])
+                pass
+                brightpixels[nextValue, 0] = np.array([i,j])
+                #brightpixels0.append([i,j])
             if image_array1[i][j][0] + image_array1[i][j][1] + image_array1[i][j][2] > BRIGHTNESS_THRESHOLD:
-                brightpixels1.append([i,j])
-            
+                pass
+                brightpixels[nextValue, 1] = np.array([i,j])
+                #brightpixels1.append([i,j])
+            """
     #print(brightpixels0)
     #print(" - GAP - ")
     #print(brightpixels1)
     
     #print(image_array)
-    
-    
+    #timer += 1
     old_image_array0 = image_array0
     old_image_array1 = image_array1
     
     #time.sleep(2)
-    #picam0.capture_file("test0.jpg")
-    #picam1.capture_file("test1.jpg")
+    #picam0.capture_file(str(timer) + "-0.jpg")
+    #picam1.capture_file(str(timer) + "-1.jpg")
 
 
 times = []
 timesSum = 0
-testNumber = 49
+testNumber = 500
 
 if __name__ == "__main__":
     for i in range(0, testNumber):
@@ -153,6 +194,7 @@ if __name__ == "__main__":
     times.sort()
     for i in range(0,testNumber):
         timesSum += times[i]
+    print(MP_count)
     print("MEAN - ")
     print(timesSum/(testNumber+1))
     print("MIN - ")
