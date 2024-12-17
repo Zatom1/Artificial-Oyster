@@ -81,7 +81,7 @@ int find_bright_pixels(int img_arr[rows][cols][rgb], int old_img_arr[rows][cols]
 				count_bright_pixels++;
                 
 				}*/
-            printf("%d - ", (int16_t)img_arr[i][j][0]);
+            //printf("%d - ", (int16_t)img_arr[i][j][0]);
 			if(((int16_t)img_arr[i][j][0] - (int16_t)old_img_arr[i][j][0]) + ((int16_t)img_arr[i][j][1] - (int16_t)old_img_arr[i][j][1]) + ((int16_t)img_arr[i][j][2] - (int16_t)old_img_arr[i][j][2]) > brightness_change_required){
 				count_bright_pixels++;
                 
