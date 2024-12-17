@@ -1,116 +1,215 @@
-#include <stdio.h>
-#include <stdint.h>
-int rows = 64;
-const int cols = 83;
-const int rgb = 3;
+from picamera2 import Picamera2, Preview
+import time
+import numpy as np
+from PIL import Image
+import ctypes
+import numpy.ctypeslib
 
-const int STARTX = 29;
-const int ENDX = 54;
+loopLib = ctypes.CDLL('../Running/loopLib.so')
 
-int find_bright_pixels(int img_arr[rows][cols][rgb], int old_img_arr[rows][cols][rgb], int brightness_change_required, int counted_MPs_required, int res_rows, int res_cols);
+BRIGHTNESS_THRESHOLD = 700
 
-/*
-int reduce_resolution(int arr[rows][cols][rgb]) {
-    int rows = 64;
-    int cols = 83;
+STARTX = 29
+ENDX = 54
 
-    int array[rows][cols];
+MP_count = 0
 
-    // Calculate the new dimensions for the reduced resolution array
-    int newRows = rows / 2;
-    int newCols = cols / 2;
+timer = 0
 
-    // If rows or cols is odd, make sure to round down the new dimensions.
-    if (rows % 2 != 0) newRows++;
-    if (cols % 2 != 0) newCols++;
+RESOLUTION_WIDTH = 83
+RESOLUTION_HEIGHT = 64
 
-    // Create the reduced resolution array
-    int reducedArray[newRows][newCols];
+#old_image_array0 = np.full((83,64, 3), 0)
+#old_image_array1 = np.full((83,64, 3), 0)
+#print(old_image_array0)
+picam0 = Picamera2(0)
+picam1 = Picamera2(1)
 
-    // Merge neighboring cells (average 2x2 blocks)
-    for (int i = 0; i < newRows; i++) {
-        for (int j = 0; j < newCols; j++) {
-            int sum = 0, count = 0;
+#picam0.set_controls({"AeMode": 0, "AwbMode": 0, "AfMode": 0})
+#picam1.set_controls({"AeMode": 0, "AwbMode": 0, "AfMode": 0})
 
-            // Consider the 2x2 block, making sure not to go out of bounds
-            for (int m = i * 2; m < (i * 2 + 2) && m < rows; m++) {
-                for (int n = j * 2; n < (j * 2 + 2) && n < cols; n++) {
-                    //sum += array[m][n];
-                    count++;
-                }
-            }
+camera_config0 = picam0.create_still_configuration(
+    main={"size": (RESOLUTION_WIDTH, RESOLUTION_HEIGHT)}, 
+    lores={"size": (RESOLUTION_WIDTH, RESOLUTION_HEIGHT)}, 
+    raw={"size": (26,20)}, #26,20
+    display="lores",
+    buffer_count=25
+    )
+camera_config1 = picam1.create_still_configuration(
+    main={"size": (RESOLUTION_WIDTH, RESOLUTION_HEIGHT)}, 
+    lores={"size": (RESOLUTION_WIDTH, RESOLUTION_HEIGHT)}, 
+    raw={"size": (26,20)}, 
+    display="lores",
+    buffer_count=25
+    )
 
-            // Store the average in the reduced resolution array
-            reducedArray[i][j] = sum / count;
-        }
-    }
+#camera_config0 = picam0.create_still_configuration(main={"size": (83, 64)}, lores={"size": (26, 20)}, display="lores", output = "raw")
+#camera_config1 = picam1.create_still_configuration(main={"size": (83, 64)}, lores={"size": (26, 20)}, display="lores", output = "raw")
 
-    // Print the reduced resolution array
-    printf("The reduced resolution array is:\n");
-    for (int i = 0; i < newRows; i++) {
-        for (int j = 0; j < newCols; j++) {
-            printf("%d ", reducedArray[i][j]);
-        }
-        printf("\n");
-    }
+picam0.configure(camera_config0)
+picam1.configure(camera_config1)
 
-    return 0;
-}
-*/
-int find_bright_pixels(int img_arr[rows][cols][rgb], int old_img_arr[rows][cols][rgb], int brightness_change_required, int counted_MPs_required, int res_rows, int res_cols){
-	
-    rows = res_rows;
-    //cols = res_cols;
+#picam0.start_preview(Preview.QTGL)
+picam0.start()
+picam1.start()
 
-	/*
-    // Input the number of rows and columns
-    printf("Enter the number of rows: ");
-    scanf("%d", &rows);
-    printf("Enter the number of columns: ");
-    scanf("%d", &cols);
-	*/
-    //int array[64][83][3] = img_arr;
-    //int old_array[64][83][3] = old_img_arr;
+picam0.set_controls({'ExposureTime': 3000})#need 4000
+picam1.set_controls({'ExposureTime': 3000})
+picam0.set_controls({"AeEnable": 0, "AwbEnable": 0, "FrameRate": 250})
+picam1.set_controls({"AeEnable": 0, "AwbEnable": 0, "FrameRate": 250})
+
+time.sleep(4)
+
+#def averageSquare(x, y, radius, array):
+    #valueSum = 0
+    #for x in range(0,radius):'
     
-    //int compare[64][83][3] = img_arr - old_img_arr;
-    uint16_t count_bright_pixels = 0;
-    for (int i = 0; i < rows; i++) {
-        for (int j = STARTX; j < ENDX; j++) {
-            
-			/*if(((int)img_arr[i][j][0] - (int)old_img_arr[i][j][0]) + ((int)img_arr[i][j][1] - (int)old_img_arr[i][j][1]) + ((int)img_arr[i][j][2] - (int)old_img_arr[i][j][2]) > brightness_change_required){
-				count_bright_pixels++;
+image_array0 = np.array(picam0.capture_array(), dtype=np.int16)
+image_array1 = np.array(picam1.capture_array(), dtype=np.int16)
+
+old_image_array0 = image_array0
+old_image_array1 = image_array1
+
+first_frame = True
+
+def run_recognition():
+    global first_frame, old_image_array0, old_image_array1, image_array0, image_array1, timer, MP_count
+    #print(first_frame)
+
+    if first_frame == True:
+        image_array0 = np.array(picam0.capture_array(), dtype=np.int16)
+        image_array1 = np.array(picam1.capture_array(), dtype=np.int16)
+        first_frame = False
+    else:
+        image_array0 = np.array(picam0.capture_array(), dtype=np.int16)
+        image_array1 = np.array(picam1.capture_array(), dtype=np.int16)
+    """
+    if timer < 1:
+        pass
+    else:
+        img_change0 = image_array0 - old_image_array0
+        img_change1 = image_array1 - old_image_array1
+    
+    #Make an image from the array
+    #image0 = Image.fromarray(image_array0)
+    #image1 = Image.fromarray(image_array1)
+    
+    # Display the image using PIL
+    #image0.show()
+    #image1.show()
+    
+    #print(image_array0[0][0])
+    #print(image_array0[0][0][0] + image_array0[0][0][1] + image_array0[0][0][2])
+    #print(len(image_array0[0]))
+    
+    #brightpixels = np.full((1600,2), 0)
+    
+    brightpixels = [cam0, cam1]
+    cam0 = [(#,#), (#,#), (#,#), (#,#), (#,#), (#,#), (#,#), (#,#)]
+    cam1 = [(#,#), (#,#), (#,#), (#,#), (#,#), (#,#), (#,#), (#,#)]
+    
+    
+    #nextValue = 0
+    #brightpixels1 = np.em
+    
+    for i in range(STARTX, ENDX):
+    
+        #print("testing")
+        for j in range(0, len(image_array0[i])):
+            pixelvalue = 0
+            pixelvalue += ((image_array0[i][j][0] + image_array0[i][j][1] + image_array0[i][j][2]))
+            if pixelvalue > BRIGHTNESS_THRESHOLD:
+                brightpixels0.append([i,j])
                 
-				}*/
+    for i in range(STARTX, ENDX):
+        #print("testing")
+        for j in range(0, len(image_array1[i])):
+            pixelvalue = 0
+            pixelvalue += ((image_array1[i][j][0] + image_array1[i][j][1] + image_array1[i][j][2]))
+            if pixelvalue > BRIGHTNESS_THRESHOLD:
+                brightpixels1.append([i,j])
+    """
+    #print (old_image_array0)
+    #PARAMETERS: (img_arr, old_img_arr, brightness_change_required for id, MP count required for ID, rows#, cols#)
+    cam0MP = loopLib.find_bright_pixels(numpy.ctypeslib.as_ctypes(image_array0), numpy.ctypeslib.as_ctypes(old_image_array0), 230, 10)
+    cam1MP = loopLib.find_bright_pixels(numpy.ctypeslib.as_ctypes(image_array1), numpy.ctypeslib.as_ctypes(old_image_array1), 230, 10)
+    #print(cam0MP)
+    if cam0MP == 1 or cam1MP == 1:
+        MP_count += 1
+    
+    print(timer)
+    #print(image_array0[40][40])
+    #print(old_image_array0[40][40])
+
+    """
+    for i in range(STARTX, ENDX):
+    #print("testing")
+        for j in range(0, RESOLUTION_HEIGHT):
+            #pixelvalue = 0
+            #pixelvalue += ((image_array0[i][j][0] + image_array0[i][j][1] + image_array0[i][j][2]))
+            #if pixelvalue > BRIGHTNESS_THRESHOLD:
+                #brightpixels0.append([i,j])
+            # a = image_array0[i][j][2]
+            #b = image_array1[i][j][2]
             
-			if((img_arr[i][j][0] - old_img_arr[i][j][0]) + (img_arr[i][j][1] - old_img_arr[i][j][1]) + (img_arr[i][j][2] - old_img_arr[i][j][2]) > brightness_change_required){
-				count_bright_pixels++;
-                
-				}
-		}
-	}
-	/*
-    // Input elements into the 2D array
-    printf("Enter the elements of the 2D array:\n");
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            printf("Enter element at [%d][%d]: ", i, j);
-            scanf("%d", &array[i][j]);
-        }
-    }
+            #if a+b > BRIGHTNESS_THRESHOLD*(2/3):
+                #pass
 
-    // Loop through and print the 2D array
-    printf("The elements of the 2D array are:\n");
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            printf("%d ", array[i][j]);
-        }
-        printf("\n");
-    }
-    * */
-	if (count_bright_pixels > counted_MPs_required){
-		return 1;
-		}
-    return 0;
-}
+            
 
 
+            if image_array0[i][j][0] + image_array0[i][j][1] + image_array0[i][j][2] > BRIGHTNESS_THRESHOLD:
+                pass
+                brightpixels[nextValue, 0] = np.array([i,j])
+                #brightpixels0.append([i,j])
+            if image_array1[i][j][0] + image_array1[i][j][1] + image_array1[i][j][2] > BRIGHTNESS_THRESHOLD:
+                pass
+                brightpixels[nextValue, 1] = np.array([i,j])
+                #brightpixels1.append([i,j])
+            """
+    #print(brightpixels0)
+    #print(" - GAP - ")
+    #print(brightpixels1)
+    
+    #print(image_array)
+    #timer += 1
+    old_image_array0 = image_array0
+    old_image_array1 = image_array1
+ 
+    #time.sleep(2)
+    #picam0.capture_file(str(timer) + "-0.jpg")
+    #picam1.capture_file(str(timer) + "-1.jpg")
+
+
+times = []
+timesSum = 0
+testNumber = 1500
+
+if __name__ == "__main__":
+    for i in range(0, testNumber):
+        time1 = time.time_ns()
+        run_recognition()
+        time2 = time.time_ns()
+        print((time2-time1)/1000000000)
+        times.append((time2-time1)/1000000000)
+    times.sort()
+    for i in range(0,testNumber):
+        timesSum += times[i]
+    print(MP_count)
+    print("MEAN - ")
+    print(timesSum/(testNumber+1))
+    print("MIN - ")
+    print(times[0])
+    print("MAX - ")
+    print(times[testNumber-1])
+    print("MEDIAN - ")
+    print(times[testNumber//2])
+    print("FPS - ")
+    print(1/(timesSum/(testNumber+1)))
+    print(" ---------------------- ")
+    print(timesSum/(testNumber+1))
+    print(times[0])
+    print(times[testNumber-1])
+    print(times[testNumber//2])
+    
+    
