@@ -7,7 +7,7 @@ import numpy.ctypeslib
 
 loopLib = ctypes.CDLL('../Running/loopLib.so')
 
-BRIGHTNESS_THRESHOLD = 240
+BRIGHTNESS_THRESHOLD = 700
 
 STARTX = 29
 ENDX = 54
@@ -53,10 +53,10 @@ picam1.configure(camera_config1)
 picam0.start()
 picam1.start()
 
-picam0.set_controls({'ExposureTime': 3500})#need 4000
-picam1.set_controls({'ExposureTime': 3500})
-picam0.set_controls({"AeEnable": 0, "AwbEnable": 0, "FrameRate": 200})
-picam1.set_controls({"AeEnable": 0, "AwbEnable": 0, "FrameRate": 200})
+picam0.set_controls({'ExposureTime': 3000})#need 4000
+picam1.set_controls({'ExposureTime': 3000})
+picam0.set_controls({"AeEnable": 0, "AwbEnable": 0, "FrameRate": 250})
+picam1.set_controls({"AeEnable": 0, "AwbEnable": 0, "FrameRate": 250})
 
 time.sleep(4)
 
@@ -113,6 +113,7 @@ def run_recognition():
     #brightpixels1 = np.em
     
     for i in range(STARTX, ENDX):
+    
         #print("testing")
         for j in range(0, len(image_array0[i])):
             pixelvalue = 0
@@ -136,7 +137,7 @@ def run_recognition():
     if cam0MP == 1 or cam1MP == 1:
         MP_count += 1
     
-    #print(timer)
+    print(timer)
     #print(image_array0[40][40])
     #print(old_image_array0[40][40])
 
@@ -174,7 +175,7 @@ def run_recognition():
     #timer += 1
     old_image_array0 = image_array0
     old_image_array1 = image_array1
-    
+ 
     #time.sleep(2)
     #picam0.capture_file(str(timer) + "-0.jpg")
     #picam1.capture_file(str(timer) + "-1.jpg")
@@ -182,7 +183,7 @@ def run_recognition():
 
 times = []
 timesSum = 0
-testNumber = 500
+testNumber = 150
 
 if __name__ == "__main__":
     for i in range(0, testNumber):
@@ -210,5 +211,5 @@ if __name__ == "__main__":
     print(times[0])
     print(times[testNumber-1])
     print(times[testNumber//2])
-    pass
+    
     
