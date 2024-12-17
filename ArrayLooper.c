@@ -70,7 +70,7 @@ int find_bright_pixels(int img_arr[rows][cols][rgb], int old_img_arr[rows][cols]
     scanf("%d", &cols);
 	*/
     //int array[64][83][3] = img_arr;
-    //int old_array[64][83][3] = old_img_arr;
+    //int old_array[64][83][3] = old_img_arr; 
     
     //int compare[64][83][3] = img_arr - old_img_arr;
     uint16_t count_bright_pixels = 0;
@@ -81,8 +81,8 @@ int find_bright_pixels(int img_arr[rows][cols][rgb], int old_img_arr[rows][cols]
 				count_bright_pixels++;
                 
 				}*/
-            
-			if((img_arr[i][j][0] - old_img_arr[i][j][0]) + (img_arr[i][j][1] - old_img_arr[i][j][1]) + (img_arr[i][j][2] - old_img_arr[i][j][2]) > brightness_change_required){
+            printf("%d - ", (int16_t)img_arr[i][j][0]);
+			if(((int16_t)img_arr[i][j][0] - (int16_t)old_img_arr[i][j][0]) + ((int16_t)img_arr[i][j][1] - (int16_t)old_img_arr[i][j][1]) + ((int16_t)img_arr[i][j][2] - (int16_t)old_img_arr[i][j][2]) > brightness_change_required){
 				count_bright_pixels++;
                 
 				}
@@ -112,5 +112,4 @@ int find_bright_pixels(int img_arr[rows][cols][rgb], int old_img_arr[rows][cols]
 		}
     return 0;
 }
-
 
