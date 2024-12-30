@@ -8,7 +8,7 @@ import RPi.GPIO as GPIO
 
 start_time = time.time_ns()
 
-#time.sleep(10)
+time.sleep(10)
 
 loopLib = ctypes.CDLL('../Running/loopLib.so')
 
@@ -82,16 +82,22 @@ MP_now_detected = False
 
 
 # Define the GPIO pin to which the servo is connected
-SERVO_PIN = 18  # Change this to the GPIO pin you are using
+SERVO_PIN = 12  # Change this to the GPIO pin you are using
 
 # Set up GPIO mode and PWM frequency
 GPIO.setmode(GPIO.BCM)  # Use Broadcom pin-numbering scheme
 GPIO.setup(SERVO_PIN, GPIO.OUT)  # Set the servo pin as an output
+#GPIO.setWarnings(False)
 
 # Set up PWM on the servo pin with a frequency of 50Hz (standard for most servos)
 pwm = GPIO.PWM(SERVO_PIN, 50)
 pwm.start(0)  # Start PWM with a duty cycle of 0 (initially off)
 
+def is_close_to_time(targetTime):#check if within 1/1000 of a second
+    time_now = time.time_ns()
+    if abs(time_now - targetTime) < 10000000:
+        return True
+    return False
 
 def turn_servo(angle):
     """
@@ -99,13 +105,11 @@ def turn_servo(angle):
     
     :param angle: Desired angle in degrees (0 to 180)
     """
-    if 0 <= angle <= 180:
-        # Calculate duty cycle for the angle
-        duty_cycle = (angle / 18) + 2  # Conversion formula for servo control
-        pwm.ChangeDutyCycle(duty_cycle)  # Set the PWM duty cycle
-        time.sleep(1)  # Wait for the servo to move
-    else:
-        print("Invalid angle. Must be between 0 and 180.")
+    # Calculate duty cycle for the angle
+    duty_cycle = (angle / 18) + 2  # Conversion formula for servo control
+    pwm.ChangeDutyCycle(duty_cycle)  # Set the PWM duty cycle
+    #time.sleep(1)  # Wait for the servo to move
+    
 
 def run_recognition():
     global first_frame, old_image_array0, old_image_array1, image_array0, image_array1, timer, MP_count, MP_now_detected, time_to_let_water_through
@@ -166,24 +170,28 @@ def run_recognition():
     """
     #print (old_image_array0)
     #PARAMETERS: (img_arr, old_img_arr, brightness_change_required for id, MP count required for ID, rows#, cols#)
-    cam0MP = loopLib.find_bright_pixels(numpy.ctypeslib.as_ctypes(image_array0), numpy.ctypeslib.as_ctypes(old_image_array0), 230, 10, 64, 83)
-    cam1MP = loopLib.find_bright_pixels(numpy.ctypeslib.as_ctypes(image_array1), numpy.ctypeslib.as_ctypes(old_image_array1), 230, 10, 64, 83)
+    cam0MP = loopLib.find_bright_pixels(numpy.ctypeslib.as_ctypes(image_array0), numpy.ctypeslib.as_ctypes(old_image_array0), 600, 100, 64, 83)
+    cam1MP = loopLib.find_bright_pixels(numpy.ctypeslib.as_ctypes(image_array1), numpy.ctypeslib.as_ctypes(old_image_array1), 600, 100, 64, 83)
     #print(cam0MP)
     if cam0MP == 1 or cam1MP == 1:
         MP_count += 1
         MP_now_detected = True
     
-    print(timer)
+    #print(timer)
     #print(image_array0[40][40])
     #print(old_image_array0[40][40])
     
     if MP_now_detected == True:
-        turn_servo(20)
+        turn_servo(65)
+        print("start filtering")
+        time_to_let_water_through = time.time_ns() + 1000000000
+
     MP_now_detected = False
-    time_to_let_water_through = time.time_ns() + 1000000000
     
-    if time.time_ns() > time_to_let_water_through:
-        turn_servo(160)
+    if is_close_to_time(time_to_let_water_through):
+        turn_servo(115)
+        print("stop filtering")
+
     
 
     """
@@ -234,7 +242,7 @@ if __name__ == "__main__":
     
     while time.time_ns() < start_time + 599000000000:
         run_recognition()
-        print('recognition ran')
+        #print('recognition ran')
     """for i in range(0, testNumber):
         time1 = time.time_ns()
         run_recognition()
