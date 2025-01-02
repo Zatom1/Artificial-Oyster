@@ -8,7 +8,7 @@ import RPi.GPIO as GPIO
 
 start_time = time.time_ns()
 
-time.sleep(10)
+#time.sleep(10)
 
 loopLib = ctypes.CDLL('../Running/loopLib.so')
 
@@ -82,7 +82,7 @@ MP_now_detected = False
 
 
 # Define the GPIO pin to which the servo is connected
-SERVO_PIN = 12  # Change this to the GPIO pin you are using
+SERVO_PIN = 21  # Change this to the GPIO pin you are using
 
 # Set up GPIO mode and PWM frequency
 GPIO.setmode(GPIO.BCM)  # Use Broadcom pin-numbering scheme
@@ -90,9 +90,9 @@ GPIO.setup(SERVO_PIN, GPIO.OUT)  # Set the servo pin as an output
 #GPIO.setWarnings(False)
 
 # Set up PWM on the servo pin with a frequency of 50Hz (standard for most servos)
-pwm = GPIO.PWM(SERVO_PIN, 50)
-pwm.start(0)  # Start PWM with a duty cycle of 0 (initially off)
-
+#pwm = GPIO.PWM(SERVO_PIN, 50)
+#pwm.start(0)  # Start PWM with a duty cycle of 0 (initially off)
+"""
 def is_close_to_time(targetTime):#check if within 1/1000 of a second
     time_now = time.time_ns()
     if abs(time_now - targetTime) < 10000000:
@@ -100,16 +100,16 @@ def is_close_to_time(targetTime):#check if within 1/1000 of a second
     return False
 
 def turn_servo(angle):
-    """
-    Move the servo to a specific angle.
     
-    :param angle: Desired angle in degrees (0 to 180)
-    """
+    #Move the servo to a specific angle.
+    
+    #:param angle: Desired angle in degrees (0 to 180)
+    
     # Calculate duty cycle for the angle
     duty_cycle = (angle / 18) + 2  # Conversion formula for servo control
     pwm.ChangeDutyCycle(duty_cycle)  # Set the PWM duty cycle
     #time.sleep(1)  # Wait for the servo to move
-    
+   """ 
 
 def run_recognition():
     global first_frame, old_image_array0, old_image_array1, image_array0, image_array1, timer, MP_count, MP_now_detected, time_to_let_water_through
@@ -182,15 +182,17 @@ def run_recognition():
     #print(old_image_array0[40][40])
     
     if MP_now_detected == True:
-        turn_servo(65)
-        print("start filtering")
-        time_to_let_water_through = time.time_ns() + 1000000000
+        GPIO.output(SERVO_PIN, True)
+        time_to_let_water_through = time.time_ns()
+        print("filtering")
 
     MP_now_detected = False
     
-    if is_close_to_time(time_to_let_water_through):
-        turn_servo(115)
+    if time.time_ns() > time_to_let_water_through + 1000000000:
+        #turn_servo(115)
         print("stop filtering")
+        GPIO.output(SERVO_PIN, False)
+
 
     
 
@@ -268,7 +270,7 @@ if __name__ == "__main__":
     print(times[0])
     print(times[testNumber-1])
     print(times[testNumber//2])"""
-    pwm.stop()  # Stop PWM
+    #pwm.stop()  # Stop PWM
     GPIO.cleanup()  # Clean up GPIO settings
     
     
