@@ -187,18 +187,17 @@
 	
 	
 	\subsection{Engineering Goal}
+	\label{sec:goals}
 	The central goal of this project is to create a device capable of autonomously and selectively filtering microplastics from the benthic region of the riverine water column for long periods of time without human intervention. Three primary conditions will be considered: the device must be almost totally self-sufficient, must have a collection efficiency of $\geq$75\% (collected microplastics/total microplastics), and must have a separation efficiency $\geq$75\% (collected non-microplastics/total processed non-plastic particles). Put in other terms, the project will only be totally successful if:
 	\begin{enumerate}
 		\item The device needs no external power supply and requires no human intervention to operate.
 		\item More than 75\% of the microplastics which pass through the device are captured.
-		\item Fewer than 25\% of non-microplastic particles which pass through are captured.
-		Depending upon the satisfaction of these conditions, the project will be evaluated in the conclusion as an absolute, partial, or minimal success, or as a failure if no condition is met.
-		
+		\item Fewer than 25\% of organic particles which pass through are captured.	
 	\end{enumerate}
+	Depending upon the satisfaction of these conditions, the project will be evaluated in the conclusion as an absolute, partial, or minimal success, or as a failure if no condition is met.
 	\section{Review of the Literature}
 	\subsection{Impacts of Microplastics}
-	\subsubsection*{Uniform Size Classification and Concentration Unit Terminology for Broad Application in the Chesapeake Bay Watershed
-	}
+	\subsubsection*{Uniform Size Classification and Concentration Unit Terminology for Broad Application in the Chesapeake Bay Watershed}
 	This paper establishes a common definition of what size of plastic debris constitutes microplastics, macroplastics, and nanoplastic. It was determined through investigation of several studies  that anything less than 5 centimeters constitutes a microplastic, and anything less than 1 micron was considered a nanoplastic. This paper synthesized the classifications of several previous studies in order to clarify the definitions of each aforementioned term \cite{TetraTech}.
 	\begin{figure}[h]
 		\centering
@@ -669,23 +668,12 @@
 	\end{enumerate}
 	\subsubsection{Results}
 	\paragraph*{Details}
-	Though initially planned for January 19th, testing was conducted on January 20th. Experimentation began at 12:13 PM, and after approximately 4 hours the device was removed at 4:17 PM. On the day of testing, air temperature was approximately -16$\deg$ C, water speed rested at roughly 1.7 m/s, and total suspended solids at \textbf{INSERT TOTAL SUSPENDED SOLIDS HERE A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A  A A A A A A A A A A A A A A A A A}.
-	\paragraph{Microplastic Identification}
+	Though initially planned for January 19th, testing was conducted on January 20th. Experimentation began at 12:13 PM, and after approximately 4 hours the device was removed at 4:17 PM. On the day of testing, air temperature was approximately -16$^{\circ}$ C, water speed rested at roughly 1.7 m/s, and total suspended solids at \textbf{INSERT TOTAL SUSPENDED SOLIDS HERE A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A  A A A A A A A A A A A A A A A A A}.
+	%\paragraph{Microplastic Identification}
 	
 	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[angle=270,origin=c,width=1\linewidth]{Figures/RawSeparated}
-		\caption[Raw Separated Plastics]{Raw, unprocessed particles extracted from the device's collection chamber directly after experimentation. Note that nearly all particles here are either beige colored sediment or white/clear plastic.}
-		\label{fig:rawseparated}
-	\end{figure}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[angle=270,origin=c,width=1\linewidth]{Figures/RawReleased}
-		\caption[Raw Released Particles]{Raw, unprocessed particles collected by a net on the "release" end of the device. Outside of an experimental scenario, these particles would be released back into the water column. Note the algae and green-ish particles which pervade this sample, and the comparatively very low number of easily visible plastic or sedimentary particles.}
-		\label{fig:rawreleased}
-	\end{figure}
-	\iffalse
+
+	\iffalse{
 	Due to the near impossibility of accurately quantifying and classifying every single particle collected by the device, plastics and other sestons were agitated by mixing in a glass bowl, then placed on 1cm x 1cm grid paper for classification. After placement on grid paper, boxes were randomly selected for counting, and visually matched with other, similar boxes to extrapolate the total number of particles present in the collected output. This "visual matching" classified the boxes into dense, standard, and sparse categories based on how the sestons in each box were distributed after mixing. Figure
 	\begin{figure}[h]
 		\centering
@@ -706,8 +694,33 @@
 		\caption[Annotated Collected Organics]{Annotated image showing the output from the "release" end of the device. The classification criteria for this image is the same as in figure \ref{fig:MPClassification}, with the addition of bubbles. Many more bubble were present in the organic sample simply due to the mode of filtration being a simple filter as opposed to a rigid collection box.}
 		\label{fig:OrganicsOutput}
 	\end{figure}
+}
 	\fi
 	\subsubsection{Collection Efficiency}
+	\paragraph{Quantity and Numerical Proportions}
+	To evaluate the efficiency of collection, samples were visually evaluated under a microscope to identify and count them. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed into the sample to minimize sample loss. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. Identification was carried out according to the guidelines in \ref{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain sestons such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting}
+		\caption[Collected Particle Classification]{Bar chart with data of all particles collected in both the MP and organic samples.}
+		\label{fig:mpcounting}
+	\end{figure}
+	
+	As seen, the device collected just over 90\% of the microplastics which passed through it during the 4 hours of testing, strongly supporting goal \#2 of the Engineering Goals from section \ref{sec:goals}. Despite this success, goal \#3 of section \ref{sec:goals} was not met, with nearly 33\% of organic sestons being collected by the device. Given the importance of these organic particles to benthic ecosystems, this is unfortunate and may prevent the specific device used in this study from being used in more sensitive areas\textemdash though organic matter pass through efficiency could likely be improved by using higher quality, more expensive parts such as a 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/RawSeparated}
+		\caption[Raw Separated Plastics]{Raw, unprocessed particles extracted from the device's collection chamber directly after experimentation. Note that nearly all particles here are either beige colored sediment or white/clear plastic.}
+		\label{fig:rawseparated}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[angle=90,origin=c,width=1\linewidth]{Figures/RawReleased}
+		\caption[Raw Released Particles]{Raw, unprocessed particles collected by a net on the "release" end of the device. Outside of an experimental scenario, these particles would be released back into the water column. Note the algae and green-ish particles which pervade this sample, and the comparatively very low number of easily visible plastic or sedimentary particles.}
+		\label{fig:rawreleased}
+	\end{figure}
 	
 	\subsubsection{Further Predictions}	
 	If it is assumed that the Milwaukee River is relatively typical in its proportion of wash, bed, and suspended load, roughly 80\% of the 22.1 mg/L of total suspended load in the Milwaukee River, or 17.68 mg/L is likely the "wash load"\textemdash particles which stay permanently suspended and travel most of or the entire length of the river. Using the Milwaukee River's nominal length of 104 miles, the wash load should spend at most 3-4 days suspended assuming a river speed of $\approx$ 1-2 m/s. 
@@ -719,7 +732,7 @@
 	\caption[Wash Load MP Collection]{Illustration of how a single collection checkpoint can significantly lower downstream benthic microplastic concentrations.}
 	\label{fig:washload}
 \end{figure}
-By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$ 52.8\% (88\% efficiency * 80\% wash load * 0.75\% margin)
+By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$52.8\% (88\% efficiency * 80\% wash load * 75\% margin)
 	\subsection{Risks}
 	Outside of the typical risks associated with existing and working within a workshop environment, this project poses very few dangers. The majority of parts for the final device are 3D printed or off-the-shelf components, not pieces which need to be separately manufactured via CNC, drilling, etc. Besides these standard risks, physically placing the device into the water during the empirical testing will likely be the most dangerous part of the project, however, this will be performed with others present and in water which only reaches $\approx$2-3 feet deep at maximum as seen in figure \ref{fig:riverCrosssec}. With proper attire (waders, gloves, jackets, etc.) this should not pose any significant risk.
 	
