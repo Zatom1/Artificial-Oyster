@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: article_3.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: unsrt.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: sample.bib
+Warning--empty journal in USGSMil
+Warning--empty note in MKETSS
+Warning--empty journal in LenakerEtAlspatialdist
+Warning--empty note in USGSCrossSec
+Warning--empty publisher in UsEPaWiDNR
+You've used 37 entries,
+            1791 wiz_defined-function locations,
+            695 strings with 12554 characters,
+and the built_in function-call counts, 8617 in all, are:
+= -- 669
+> -- 484
+< -- 0
++ -- 177
+- -- 140
+* -- 748
+:= -- 1453
+add.period$ -- 109
+call.type$ -- 37
+change.case$ -- 36
+chr.to.int$ -- 0
+cite$ -- 42
+duplicate$ -- 311
+empty$ -- 805
+format.name$ -- 140
+if$ -- 1815
+int.to.chr$ -- 0
+int.to.str$ -- 37
+missing$ -- 34
+newline$ -- 186
+num.names$ -- 37
+pop$ -- 64
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 116
+stack$ -- 0
+substring$ -- 643
+swap$ -- 33
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 5
+while$ -- 65
+width$ -- 39
+write$ -- 391
+(There were 5 warnings)
