@@ -212,14 +212,14 @@
 	In this project, the data from this study was used primarily in the rationale, for explanations of the effects of microplastics on the environment, and for standardization of measurement for the modeling of the product’s effectiveness. Due to this paper illustrating the differences in measurement systems across studies, special care was taken to ensure congruence in units of measurement throughout this study in order to ensure accuracy. In addition, this study helped with the explanation of microplastics’ effects on benthic sedimentary systems, where they can constitute up to 3\% of sediments by weight. Benthic organisms are disproportionately affected by microplastics due to their high consumption of high density plastics which fall into the benthic zone and become mixed with naturally occurring sediment to be consumed. 
 	
 	\subsubsection*{Vertical Distribution of Microplastics in the Water Column and Surficial Sediment from the Milwaukee River Basin to Lake Michigan}
-		\begin{figure}[H]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\linewidth]{Figures/DepthDistribution.png}
 		\caption[Vertical MP Distribution]{Depth distributions of microplastics in various areas of the Milwaukee River basin. Here, the bottom-most measurements of the MEP samples were used primarily, along with the lowest measurements of MWW, INH, and LAK for comparison of benthic microplastic concentrations across various areas.}
 		\label{fig:VerticalDepthDist}
 	\end{figure}
 	This study focused on the vertical distribution of microplastics throughout the water column of multiple rivers leading into Milwaukee Harbor and Lake Michigan. The levels of microplastics in each section of the water column were measured using Manta Trawls pulled at several depths below the water’s surface along with 1 sediment sample at each location, making for a total of 96 samples. The samples were separated according to the depth, location, and time that they were collected. The data collected is summarized in the table to the right. The data in the MEP graph was collected in the Milwaukee river in Milwaukee proper, MWW on the Menominee River, KKF in the Kinnickinnic River, INH at the innermost point of Milwaukee harbor, OUH at the outermost point of Milwaukee harbor, and LAK in Lake Michigan \cite{LenakerEtAlvertdist}.
-
+	
 	The data from this study gives a clear picture of the quantity of microplastics within the water column, specifically regarding the significant quantities of microplastics found in the benthic region of the water column throughout all parts of the year. This generally confirms that microplastics will be present during testing, and will provide a benchmark against which collection efficiency can be predicted and measured.
 	
 	
@@ -309,14 +309,14 @@
 	These three difficulties make selective removal of microplastics very difficult, especially if attempted continuously, and thus a solution which removes these particles by indiscriminately filtering continuously selected discrete samples of water is proposed. Here, inspiration is taken from bivalves\textemdash a class capable of selectively filtering biomass out of a large range of ingested sestons which include microplastics, sediments, and other particles. These organisms’ digestive systems are highly discretized, with specialized organs separating the ingested sestons on a particle-by-particle basis. It is not yet known exactly which criteria bivalves use for this discrete selection, thus it is near impossible at the current moment to accurately replicate their digestive systems in an accurate manner. This is an active field of research, and a key area of future study will likely be how to replicate these systems once more is revealed on their inner functionings. 
 	
 	\subsection{Methods}
-		Given the lack of research on methods by which bivalve seston selection can be artificially replicated, a novel method must be used to achieve selection. Here, the properties of microplastics must be leveraged in order to remove them most efficiently\textemdash with the most relevant property being their autofluorescence after excitation from violet light. Recent advancements in the field of FD-FLIM (Frequency-Domain Fluorescence Lifetime Imaging Microscopy) have established that microplastics will fluoresce after excitation \cite{Wohlschläger_Versen_Löder_Laforsch_2024}, with the fluorescence spectra being dependent on the type of microplastic\textemdash meaning that a camera aimed directly at a plastic which is actively being excited can detect not only how many particles exist in a sample, but also which types of plastic exist therein. In addition to plastics, organic materials and sediment particles (clay, sand, soil) also have their own relatively consistent fluorescence spectra, meaning that if a clear separation can be made between each of these categories, they can be identified and removed individually. 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\linewidth]{Figures/MPSpectrum}
-	\caption[MP and Organic Re-emission Wavelengths]{This figure illustrates the different reemission wavelengths of microplastics and a few other notable particle classes. The chart itself was compiled by the author, and the data used to create it is found in the supplementary materials of \cite{Wohlschläger_Versen_Löder_Laforsch_2024}.}
-	\label{fig:SestonSpectra}
-\end{figure}
-		This, notably, means that the proposed device could be used not only to remove microplastics, but any other particle class with distinct fluorescence spectra\textemdash though separation with the exact device created here is likely to be limited to the aforementioned classes due to relatively low camera resolution. After taking an image, the camera’s data can then be processed by a microcomputer such as a Raspberry Pi in order to identify the particles that exist within the sample, and make a decision as to whether or not the sample should be filtered. As aforementioned, it is incredibly difficult to accurately and selectively filter only one type of particle from a sample, therefore instead of attempting to remove individual particles once they are detected, the device can instead use a water velocity sensor in the form of a simple turbine to determine the rate of particle movement through the device. Using this data, it can be determined exactly when each particle reaches any arbitrary distance through the device. This allows us to then divert the fluid flow into one of two channels\textemdash with one channel simply exiting the device and returning fluid back into the flow of the river, and the other leading particles through an indiscriminate filter which removes all suspended particles from the channel. 
+	Given the lack of research on methods by which bivalve seston selection can be artificially replicated, a novel method must be used to achieve selection. Here, the properties of microplastics must be leveraged in order to remove them most efficiently\textemdash with the most relevant property being their autofluorescence after excitation from violet light. Recent advancements in the field of FD-FLIM (Frequency-Domain Fluorescence Lifetime Imaging Microscopy) have established that microplastics will fluoresce after excitation \cite{Wohlschläger_Versen_Löder_Laforsch_2024}, with the fluorescence spectra being dependent on the type of microplastic\textemdash meaning that a camera aimed directly at a plastic which is actively being excited can detect not only how many particles exist in a sample, but also which types of plastic exist therein. In addition to plastics, organic materials and sediment particles (clay, sand, soil) also have their own relatively consistent fluorescence spectra, meaning that if a clear separation can be made between each of these categories, they can be identified and removed individually. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.6\linewidth]{Figures/MPSpectrum}
+		\caption[MP and Organic Re-emission Wavelengths]{This figure illustrates the different reemission wavelengths of microplastics and a few other notable particle classes. The chart itself was compiled by the author, and the data used to create it is found in the supplementary materials of \cite{Wohlschläger_Versen_Löder_Laforsch_2024}.}
+		\label{fig:SestonSpectra}
+	\end{figure}
+	This, notably, means that the proposed device could be used not only to remove microplastics, but any other particle class with distinct fluorescence spectra\textemdash though separation with the exact device created here is likely to be limited to the aforementioned classes due to relatively low camera resolution. After taking an image, the camera’s data can then be processed by a microcomputer such as a Raspberry Pi in order to identify the particles that exist within the sample, and make a decision as to whether or not the sample should be filtered. As aforementioned, it is incredibly difficult to accurately and selectively filter only one type of particle from a sample, therefore instead of attempting to remove individual particles once they are detected, the device can instead use a water velocity sensor in the form of a simple turbine to determine the rate of particle movement through the device. Using this data, it can be determined exactly when each particle reaches any arbitrary distance through the device. This allows us to then divert the fluid flow into one of two channels\textemdash with one channel simply exiting the device and returning fluid back into the flow of the river, and the other leading particles through an indiscriminate filter which removes all suspended particles from the channel. 
 	
 	\subsection{Design Overview}
 	The design of the device used to accomplish the objectives of selectively filtering particles can be effectively split into four parts: henceforth called the inlet, processor, selector, and outlet. These parts combined with a compute module, power generation, and microplastic containment module complete the device, allowing for continuous filtration of selected particles in the benthic region. This section gives a brief overview of the functions and design of each of these sections, for a more detailed description of each part’s construction, design, and assembly refer to  section \ref{subsec:TechDesign}.
@@ -333,7 +333,7 @@
 	
 	\subsubsection{Processor}
 	The most complex of the sections is the processor, and it handles all of the work of identifying particles in tandem with the compute module. A cross-section of the processor is shown to the right, with the 30x30mm square tube at the bottom-center, the two 405 nm lasers placed in the angled cavities at the top, and the two RPI Camera Module V2 cameras on each side of the device at the bottom left and right. The lasers shine through a thin 8mm flat cavity, angled at 55° above the horizontal so that their 110°-wide beams shine directly downwards and outwards to avoid intrusion into the 6mm wide cavity through which the cameras view the tube, and illuminate a thin section\textemdash causing each particle to re-emit light at a certain intensity and wavelength. 
-		\begin{figure}[h]
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/ProcessorCrosssection}
 		\caption[Processor Cross-section]{A cross-section of the processor. The central square is the tube which water flows through, lasers shine inwards from the two slanted cavities, and cameras look inwards from the two cavities on the left and right side.}
@@ -357,7 +357,7 @@
 	\label{subsec:TechDesign}
 	\subsubsection{Design Principles}
 	
-		Throughout every part of the device’s design, manufacture, and operation, three central principles and ideas have been maintained in order to guarantee consistent and effective design. These are as follows.
+	Throughout every part of the device’s design, manufacture, and operation, three central principles and ideas have been maintained in order to guarantee consistent and effective design. These are as follows.
 	\begin{enumerate}
 		\item Do not intrude on nature.
 		\subitem The fundamental goal behind this device is to aid ecosystems at risk from microplastics and anthropogenic pollution\textemdash thus any successful device must necessarily be one which does not run counter to these ideals. Because of this, every piece of the device has been designed so as to be minimally intrusive to nature, with minimal exposure to the biotic elements of the environment. This was critical to the design decision to bury the majority of the device under several inches of sediment, ideally preventing fish, benthos, and other organisms from interacting with the device as much as possible.
@@ -370,28 +370,28 @@
 		
 	\end{enumerate}
 	\subsubsection{Materials}
-		The vast majority of the device is constructed of 3D-printed PLA, with several other components used to complete the device and perform specific tasks. Following is the list and quantities of these materials.
+	The vast majority of the device is constructed of 3D-printed PLA, with several other components used to complete the device and perform specific tasks. Following is the list and quantities of these materials.
 	
 	\begin{enumerate}
-
-	\item 1.75 mm PLA Plastic Filament (1.2 kg w/o supports)
-	\item 405 nm wavelength linear laser (x2)
-	\item IP68 Servo
-	\item EK1894 5v DC Motor
-	\item 50W Solar panel
-	\item 12V LiPo Overcharge prevention circuit
-	\item 15,000 mAh Li-Po battery
-	\item Raspberry Pi CM4
-	\item Raspberry Pi CM4 I/O Board
-	\item Raspberry Pi Pico 1 W
-	\item Raspberry Pi Camera module v2 (x2)
-	\item RPI Cam v2 M12 lens mount (x2)
-	\item 25 mm M12 camera lens (x2)
-	\item RPI Cam v2 ribbon cable (x2)
-	\item 12v$\rightarrow$5v Buck regulator
-	\item 12v Solid state relay
-	\item Assorted wires
-			 
+		
+		\item 1.75 mm PLA Plastic Filament (1.2 kg w/o supports)
+		\item 405 nm wavelength linear laser (x2)
+		\item IP68 Servo
+		\item EK1894 5v DC Motor
+		\item 50W Solar panel
+		\item 12V LiPo Overcharge prevention circuit
+		\item 15,000 mAh Li-Po battery
+		\item Raspberry Pi CM4
+		\item Raspberry Pi CM4 I/O Board
+		\item Raspberry Pi Pico 1 W
+		\item Raspberry Pi Camera module v2 (x2)
+		\item RPI Cam v2 M12 lens mount (x2)
+		\item 25 mm M12 camera lens (x2)
+		\item RPI Cam v2 ribbon cable (x2)
+		\item 12v$\rightarrow$5v Buck regulator
+		\item 12v Solid state relay
+		\item Assorted wires
+		
 	\end{enumerate}
 	
 	\begin{figure}[h]
@@ -401,74 +401,74 @@
 		\label{fig:FullCAD}
 	\end{figure}
 	\subsubsection{Design and Construction}
-		As aforementioned, the design of the device described here can be seen as a sequence of elements through which particles and water flow\textemdash and thus, this is how the design will be described in the following section. Beginning with the inlet, each piece, its function, and the reasons for its design will be described, eventually arriving at the outlet in accordance with the path that microplastics take through the device. 
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/TechInlet}
-			\caption[Inlet Tech. Drawing]{Technical drawing of the inlet.}
-			\label{fig:techinlet}
-		\end{figure}
-			The first piece of the device is the inlet, which extrudes from the sediment by roughly 3 cm to capture the primary section of the benthic flow. Most of this flow is concentrated within this region, as benthic sediment particles are exclusively non-buoyant and thus are only transported by temporary periods of higher turbulence. This occurs constantly, with tiny portions of sediment being transported downstream by miniature turbidity caused by a non-uniform riverbed. This sediment-water mixture constantly pushes through the device, traveling down through the inlet then directly into the processor. 
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/TechProcessor}
-			\caption[Processor Tech. Drawing]{Technical drawing of the processor.}
-			\label{fig:techprocessor}
-		\end{figure}
-			The processor is the most complex portion of the device, being constructed of two halves which are bound together with epoxy and physical connectors to ensure that a proper connection is always maintained. The processor contains the two lasers which, together, illuminate the particles travelling through the device. The two lasers illuminate each particle from both sides equally, enabling both cameras to have a similar view of each particle and to send their data back to the compute module for analysis. As seen in the technical drawing, the cavity through which the cameras view the particles is only 6mm wide, ensuring that every capture has a very similar profile and that the linear lasers always light up the particles in the viewport. Near the bottom, on the left and right sides, there also exist connection points for the camera’s waterproof enclosure to ensure water doesn’t enter the cameras’ compartment and risk damaging them. To aid in this, the cameras’ circuit boards are also covered in epoxy so that any minor leaks, humidity, or other water intrusion doesn’t damage them. 
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/TechTurbine}
-			\caption[Turbine Tech. Drawing]{Technical drawing of the turbine frame.}
-			\label{fig:techturbine}
-		\end{figure}
-			Attached to the inlet and processor, the turbine pokes above the sediment and uses a fan blade attached to a DC motor to measure the speed of the water. This motor is unpowered, and thus the voltage produced by its turning can be measured and converted to the speed of the water. This information about the flow rate is necessary to calculate how long it will take particles passing by the processor to arrive at the selector, and thus to determine when the selector should flip if a microplastic is detected. To aid in this, a bearing is used to ensure that the turbine blades are aligned and rotate smoothly, and a small attachment is used to interface the bearing with the frame. 
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/TechCamBox}
-			\caption[Camera Box Tech. Drawing]{Technical drawing of the camera enclosures.}
-			\label{fig:techCamBox}
-		\end{figure}
-			On each side of the processor, there are also enclosures for the Raspberry Pi Cameras, with each enclosure waterproofed using 2-part epoxy. 
-			\linebreak
-			Next, the spine piece attaches to the intake and processor (eventually to the outlet and servo container as well) in order to connect each and ensure that the device retains rigidity without flexing under the pressures of the riverine environment. Throughout the spine, there are holes for pins to pass through which connect to the other components, and the spine provides a centralized support and method of connection which doesn’t rely on glue, epoxy, or fasteners. 
-			\begin{figure}[h]
-				\centering
-				\includegraphics[width=1\linewidth]{Figures/TechOutlet}
-				\caption[Outlet Tech. Drawing]{Technical drawing of the outlet.}
-				\label{fig:techOutlet}
-			\end{figure}
-
-			The next part attached to the spine is the outlet, which completes the path of particle travel through the device, splitting into two portions and comprising the selection portion of the device. There are three primary features of the outlet which enable this selection functionality, and these are: 
-		\begin{enumerate}
-			\item Grooves which fit closely with the selector,
-			\item A slot for placement of a filter,
-			\item And a hole through which the selector interfaces with the servo.
-		\end{enumerate}
-		Note as well the rectangular hole in the top of the outlet piece, which is later plugged by the outlet cover. This hole exists as a human-necessary piece to allow the selection flipper to be placed inside of the outlet piece manually, as otherwise it would be very difficult to do so.			
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/TechCover}
-			\caption[Outlet Covering Tech. Drawing]{Technical drawing of the covering over the outlet's top hole.}
-			\label{fig:techCover}
-		\end{figure} 
-		Regarding the flipper, it, along with its supporting axle and servo connection, comprises one of the most important parts of the project. As seen in figure \ref{fig:techFlipper}, the flipper has three primary features: first, the square slot at the bottom of the part interfaces with the rotating servo, next, the circular hole at the top allows an axle which keeps the flipper aligned, and finally the flat surface of the flipper itself. 
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/TechFlipper}
-			\caption[Flipper Tech. Drawing]{Technical drawing of the flipper.}
-			\label{fig:techFlipper}
-		\end{figure} 
-		The servo itself is contained within a covering which protects it from impact and significant foreign particle entry, though this covering is not intended to be completely impermeable for water as the servo is IP68 rated (able to be continuously submerged in up to 3 meters of water). This covering also serves the purpose of aligning the servo with the flipper very precisely, as the flipper and its attachment points are all only a few millimeters in size. 
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/TechServoBox}
-			\caption[Servo Container Tech. Drawing]{Technical drawing of the servo containment box.}
-			\label{fig:techServo}
-		\end{figure} 
-		These pieces comprise the majority of the aforementioned path through the device which microplastics and other particles take, but a few other pieces are also critical to the device’s functioning. The most important of these is the compute module holder, a piece designed to be totally impermeable to water as expanded upon in section \ref{sec:programmingArch}. 
-		
-		
+	As aforementioned, the design of the device described here can be seen as a sequence of elements through which particles and water flow\textemdash and thus, this is how the design will be described in the following section. Beginning with the inlet, each piece, its function, and the reasons for its design will be described, eventually arriving at the outlet in accordance with the path that microplastics take through the device. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/TechInlet}
+		\caption[Inlet Tech. Drawing]{Technical drawing of the inlet.}
+		\label{fig:techinlet}
+	\end{figure}
+	The first piece of the device is the inlet, which extrudes from the sediment by roughly 3 cm to capture the primary section of the benthic flow. Most of this flow is concentrated within this region, as benthic sediment particles are exclusively non-buoyant and thus are only transported by temporary periods of higher turbulence. This occurs constantly, with tiny portions of sediment being transported downstream by miniature turbidity caused by a non-uniform riverbed. This sediment-water mixture constantly pushes through the device, traveling down through the inlet then directly into the processor. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/TechProcessor}
+		\caption[Processor Tech. Drawing]{Technical drawing of the processor.}
+		\label{fig:techprocessor}
+	\end{figure}
+	The processor is the most complex portion of the device, being constructed of two halves which are bound together with epoxy and physical connectors to ensure that a proper connection is always maintained. The processor contains the two lasers which, together, illuminate the particles travelling through the device. The two lasers illuminate each particle from both sides equally, enabling both cameras to have a similar view of each particle and to send their data back to the compute module for analysis. As seen in the technical drawing, the cavity through which the cameras view the particles is only 6mm wide, ensuring that every capture has a very similar profile and that the linear lasers always light up the particles in the viewport. Near the bottom, on the left and right sides, there also exist connection points for the camera’s waterproof enclosure to ensure water doesn’t enter the cameras’ compartment and risk damaging them. To aid in this, the cameras’ circuit boards are also covered in epoxy so that any minor leaks, humidity, or other water intrusion doesn’t damage them. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/TechTurbine}
+		\caption[Turbine Tech. Drawing]{Technical drawing of the turbine frame.}
+		\label{fig:techturbine}
+	\end{figure}
+	Attached to the inlet and processor, the turbine pokes above the sediment and uses a fan blade attached to a DC motor to measure the speed of the water. This motor is unpowered, and thus the voltage produced by its turning can be measured and converted to the speed of the water. This information about the flow rate is necessary to calculate how long it will take particles passing by the processor to arrive at the selector, and thus to determine when the selector should flip if a microplastic is detected. To aid in this, a bearing is used to ensure that the turbine blades are aligned and rotate smoothly, and a small attachment is used to interface the bearing with the frame. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/TechCamBox}
+		\caption[Camera Box Tech. Drawing]{Technical drawing of the camera enclosures.}
+		\label{fig:techCamBox}
+	\end{figure}
+	On each side of the processor, there are also enclosures for the Raspberry Pi Cameras, with each enclosure waterproofed using 2-part epoxy. 
+	\linebreak
+	Next, the spine piece attaches to the intake and processor (eventually to the outlet and servo container as well) in order to connect each and ensure that the device retains rigidity without flexing under the pressures of the riverine environment. Throughout the spine, there are holes for pins to pass through which connect to the other components, and the spine provides a centralized support and method of connection which doesn’t rely on glue, epoxy, or fasteners. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/TechOutlet}
+		\caption[Outlet Tech. Drawing]{Technical drawing of the outlet.}
+		\label{fig:techOutlet}
+	\end{figure}
+	
+	The next part attached to the spine is the outlet, which completes the path of particle travel through the device, splitting into two portions and comprising the selection portion of the device. There are three primary features of the outlet which enable this selection functionality, and these are: 
+	\begin{enumerate}
+		\item Grooves which fit closely with the selector,
+		\item A slot for placement of a filter,
+		\item And a hole through which the selector interfaces with the servo.
+	\end{enumerate}
+	Note as well the rectangular hole in the top of the outlet piece, which is later plugged by the outlet cover. This hole exists as a human-necessary piece to allow the selection flipper to be placed inside of the outlet piece manually, as otherwise it would be very difficult to do so.			
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/TechCover}
+		\caption[Outlet Covering Tech. Drawing]{Technical drawing of the covering over the outlet's top hole.}
+		\label{fig:techCover}
+	\end{figure} 
+	Regarding the flipper, it, along with its supporting axle and servo connection, comprises one of the most important parts of the project. As seen in figure \ref{fig:techFlipper}, the flipper has three primary features: first, the square slot at the bottom of the part interfaces with the rotating servo, next, the circular hole at the top allows an axle which keeps the flipper aligned, and finally the flat surface of the flipper itself. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/TechFlipper}
+		\caption[Flipper Tech. Drawing]{Technical drawing of the flipper.}
+		\label{fig:techFlipper}
+	\end{figure} 
+	The servo itself is contained within a covering which protects it from impact and significant foreign particle entry, though this covering is not intended to be completely impermeable for water as the servo is IP68 rated (able to be continuously submerged in up to 3 meters of water). This covering also serves the purpose of aligning the servo with the flipper very precisely, as the flipper and its attachment points are all only a few millimeters in size. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/TechServoBox}
+		\caption[Servo Container Tech. Drawing]{Technical drawing of the servo containment box.}
+		\label{fig:techServo}
+	\end{figure} 
+	These pieces comprise the majority of the aforementioned path through the device which microplastics and other particles take, but a few other pieces are also critical to the device’s functioning. The most important of these is the compute module holder, a piece designed to be totally impermeable to water as expanded upon in section \ref{sec:programmingArch}. 
+	
+	
 	\subsubsection{Programming Architecture}\label{sec:programmingArch}
 	\begin{figure}[h]
 		\centering
@@ -476,19 +476,27 @@
 		\caption[Programming Architecture Diagram]{Diagram of the device's programming architecture.}
 		\label{fig:ProgArch}
 	\end{figure} 
-		The programming of the device described here is relatively simple, with two modules (one in C, one in Python), interfacing with the camera data provided by the onboard RPICam-V2s. The python module acts as the primary “master” program which collects the data from the cameras, sends it to the C program as a 3D array containing each image’s pixels and their colors, receives the processed data, and sends a command to the servo. The servo commands are handled by storing the next command and its timestamp, then sending the command to the servo once the timestamp is reached. This timestamp is determined via an interaction with the turbine attached to the device which provides a voltage by turning a small dc motor. This voltage can be read by the Raspberry PI, then using a reference table comparing external water speed to internal water speed (obtained by interpolating values from a simple CFD simulation), the time from detection to selection can be determined. The primary difficulty with accomplishing these aforementioned processes and the reason why C must be used instead of doing all processing in Python is that all actions must be performed within 4000 $\mu$s (0.004 seconds), a time span which is simply too short for a language as slow as Python. 
+	The programming of the device described here is relatively simple, with two modules (one in C, one in Python), interfacing with the camera data provided by the onboard RPICam-V2s. The python module acts as the primary “master” program which collects the data from the cameras, sends it to the C program as a 3D array containing each image’s pixels and their colors, receives the processed data, and sends a command to the servo. The servo commands are handled by storing the next command and its timestamp, then sending the command to the servo once the timestamp is reached. This timestamp is determined via an interaction with the turbine attached to the device which provides a voltage by turning a small dc motor. This voltage can be read by the Raspberry PI, then using a reference table comparing external water speed to internal water speed (obtained by interpolating values from a simple CFD simulation), the time from detection to selection can be determined. The primary difficulty with accomplishing these aforementioned processes and the reason why C must be used instead of doing all processing in Python is that all actions must be performed within 4000 $\mu$s (0.004 seconds), a time span which is simply too short for a language as slow as Python. 
 	
 	\subsubsection{Electrical Design}
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/ElecSchematic2}
-		\caption[Electrical Schematic]{The device's electrical schematic with several elements simplified for comprehensibility, most notably with the Raspberry Pi Compute Module 4 and its I/O board condensed to just 7 inputs/outputs.}
+		\caption[Electrical Schematic]{The device's electrical schematic with several elements simplified for comprehensibility, most notably with the Raspberry Pi Compute Module 4 and its I/O board condensed to 7 inputs/outputs.}
 		\label{fig:ElecSchem}
 	\end{figure}
 	
 	Due to the very high cycle speeds required by the device and relatively simple electrical requirements, the electrical schematic is relatively simple. In this diagram, the Raspberry Pi CM4 and I/O board are greatly simplified to only include the inputs and outputs which are actually used within the device. One interesting aspect of the device is shown in the upper section of the electrical schematic, where a Raspberry Pi Pico 1 is used to regulate power to the RPI CM4. This method is used primarily due to a quirk of the CM4’s camera management systems which causes the second camera (counter-intuitively using the cam0 port on the I/O board) to be disconnected from the RPI if the device is rebooted using standard methods. This is likely because the camera management libraries used for the RPI were not intended to operate two cameras at once, however, the issue can be circumvented simply by powering off the RPI abruptly instead of rebooting properly. This requirement means that some external device must be responsible for controlling power supplied to the CM4, and as shown, a Raspberry Pi Pico fulfills this role by controlling a 3.3v solid state relay. This also simplifies time and voltage based operation to ensure that the device’s batteries never lose too much voltage, allowing operating times to change dynamically depending on the weather (sunlight) on any given day. 
-	\paragraph*{Power Generation}
-	After empirical testing, it was found that the device consumes only approximately 130 mA of power continuously, with the battery having declined from 8.16 to 8.06 volts\footnote{Reference section \ref{sec:mods} for why the battery used only had approximately 8 volts available.} over 4 hours, indicating a $\approx$ 5\% loss of battery power. 
+	\paragraph*{Power Management}
+	After empirical testing, it was found that the device consumes approximately 130 mA of power continuously, with the battery having declined from 8.16 to 8.06 volts\footnote{Reference section \ref{sec:mods} for why the battery used only had approximately 8 volts available.} over 4 hours, indicating a $\approx$ 5\% loss of battery power per the graph in figure 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/MKE_GHI}
+		\caption[Daily GHI in Milwaukee]{Graph of 2023 GHI measurements from Milwaukee, Wisconsin. Days below the }
+		\label{fig:GHI}
+	\end{figure} 
+	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/MedDay}
@@ -503,7 +511,7 @@
 		\label{fig:botPowerGen}
 	\end{figure} 
 	
-		\begin{figure}[h]
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/HiDay}
 		\caption[Power Consumption Graph]{Graph of the device's power metrics over the course of one day in the top 10\% of GHI in Milwaukee, Wisconsin.}
@@ -517,9 +525,9 @@
 			\item The specific testing location has several small and bare islands within a few meters of the location
 		\end{itemize}
 		\item Power requirements
-			\begin{itemize}
-				\item The device simply consumes too much power for a reasonably sized complementary hydroelectric installation to power it
-			\end{itemize}
+		\begin{itemize}
+			\item The device simply consumes too much power for a reasonably sized complementary hydroelectric installation to power it
+		\end{itemize}
 		\item Cost
 		\begin{itemize}
 			\item Solar panels are much cheaper than a similar output hydroelectric generator if COTS parts are used
@@ -558,7 +566,7 @@
 	\end{enumerate}
 	
 	In total, these items cost \$493, and the only pieces of equipment necessary to assemble the device are small screwdrivers, a soldering iron, and optionally a hot glue gun. This makes the entire device relatively affordable when considering that several of the items here can be used
-		
+	
 	\section{Testing}
 	\subsection{River Impact Testing}
 	Testing for the device will begin with a thorough analysis of the inadvertent impacts which the proposed device could have on riverine ecosystems due to its constant irradiation of water flowing through the processor. This irradiation is momentary, and will likely have a minimal effect on life within any river which the device operates inside of\textemdash but given that in a typical river (the Milwaukee River being used here as “typical”) the device could process massive quantities of water each day. This quantity of water processed can be approximated by multiplying the cross-sectional area of the device’s inlet by the flow rate of the river\textemdash something which can be approximated by comparing the river’s discharge with the overall river’s cross-sectional area. The calculations to find this value are as follows:
@@ -577,7 +585,7 @@
 		\end{itemize}
 		\item Divide total discharge (423 ft$^3$/s) by cross sectional area 
 		
-		 423 ft$^3$s / 106 ft$^2$ = 3.99 ft$^3$/ft$^2$/s
+		423 ft$^3$s / 106 ft$^2$ = 3.99 ft$^3$/ft$^2$/s
 		
 		\begin{itemize}
 			\item This unit measures the volume of water passing through a 1’x1’ area perpendicular to the shore in one second. 
@@ -598,7 +606,7 @@
 		\end{itemize}
 		
 	\end{enumerate}
-		\begin{figure}[h]
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/RiverCrosssection}
 		\caption[River Cross Section]{A cross section of the Milwaukee River at USGS' gage height station, very near the location of testing for this project.}
@@ -621,11 +629,11 @@
 	\end{table}
 	
 	After all rounds of irradiation, each sample will be examined under a standard classroom microscope and the impacts of the irradiation will be qualitatively examined\textemdash checking primarily for microorganisms and other signs of life or lack thereof. For the tests to be considered satisfactory (i.e., for the existing laser to be used as opposed to a lower-power variant which would have less impact on microorganisms), all samples \# 1-3 should be essentially indistinguishable from the control sample. This range is chosen because given the flow rate of the Milwaukee River ($\approx$2 m/s) compared to the motorized gantry’s speed of 200mm/s, sample \# 1 will have been irradiated for roughly 10x longer than the river water traveling through the device will be exposed (sample \# 2 roughly 20x, \# 3 30x, etc.). If successful, this will remove any doubt that the device will have significant negative impacts on the river\textemdash although it is also important to note that this testing should be conducted every time that the device is placed in a new river to ensure that the local flora and fauna are not disturbed. It should also be noted that different times of year may have different active organisms, and thus more extensive testing ought to be conducted for long-term deployment.
- 
+	
 	\subsubsection{Prediction}
 	Given the results from several previous studies\footnote{Unfortunately, very little work has been done regarding the impacts of blue laser light exposure on microorganisms, even less on riverine microorganisms, and essentially none on exposures at the $<$1 second timescale. This is certainly an area for future research, however, given the minimal impacts found at times as high as several hours in the studies at the footnote, it can be inferred that similarly minimal impacts result from the singular $<$0.01 second exposure used here. As a result of the aforementioned lack of work on this topic, the cited studies are each only marginally related to the topic of interest here. } \cite{Dai_Gupta_Murray_Vrahas_Tegos_Hamblin_2012} \cite{lightExposure} \cite{Gorai_Katayama_Obata_Murata_Taguchi_2014} \cite{lightExposure2},  it is predicted that the brief laser exposure used in this project will have no detectable impact on microorganism populations. Combined with the incredibly low chance that any single organism passes through the device more than once, the lasers' overall impact on river health will be minimal.
 	\subsubsection{Results}
-		Samples were collected on November 10th, 2024 in the portion of the Milwaukee directly behind the Nicolet High School Forest on 6701 N Jean Nicolet Road. On the day of collection, the weather was relatively clear and roughly 13° C. Roughly 3-4 mm of rain occurred prior to testing—this was determined to be insufficient to justify rescheduling sample collection. To evaluate the samples, the above procedure was carried out and each sample was examined with a microscope roughly 1 hour later on the day of collection. 
+	Samples were collected on November 10th, 2024 in the portion of the Milwaukee directly behind the Nicolet High School Forest on 6701 N Jean Nicolet Road. On the day of collection, the weather was relatively clear and roughly 13° C. Roughly 3-4 mm of rain occurred prior to testing—this was determined to be insufficient to justify rescheduling sample collection. To evaluate the samples, the above procedure was carried out and each sample was examined with a microscope roughly 1 hour later on the day of collection. 
 	Results, as hypothesized, indicated that the irradiation had very little effect on the microorganisms within the samples. After qualitative analysis, no appreciable differences could be detected between any of the samples—a reasonable result given that no sample was exposed for more than 1.35 seconds in total. To further confirm the result, the lasers were manually swept over the 9-exposure samples several more times, and even after seconds of exposure neither the number of moving microorganisms nor the appearance of any other plant matter changed noticeably. 
 	The next logical step is examining the impact of the lasers on the benthic microbiome—something which was not done in this study due to the risks associated with culturing unknown bacteria outside of a lab. It is very likely that, consistent with predictions, even more extensive irradiation would have a limited impact on river microorganisms or bacteria. 
 	
@@ -638,7 +646,7 @@
 		\begin{enumerate}
 			\item On the end of the outlet which doesn't filter water, a net with the same pore diameter as the device’s filter will be fixed in order to gather a complete sample of microplastics which pass through the device. This provides an approximation for how many microplastics ought to be filtered out by the device and will allow measurements to be made regardless of circumstances which could increase or decrease the quantity of plastics measured. For example, if testing takes place within a short period after precipitation, this control will adjust for the possible increase or decrease in benthic flow.
 		\end{enumerate}
-				
+		
 		\item Set up device:
 		\begin{enumerate}
 			\item In a section of the Milwaukee River roughly representative of the entire length, the device will be buried as shown in figure \ref{fig:InletInSitu}, then after setup of all systems and activation, the device will be left in-situ for the next 24 hours to simulate an entire day of operation. 
@@ -700,29 +708,29 @@
 	%\paragraph{Microplastic Identification}
 	
 	
-
+	
 	\iffalse{
-	Due to the near impossibility of accurately quantifying and classifying every single particle collected by the device, plastics and other sestons were agitated by mixing in a glass bowl, then placed on 1cm x 1cm grid paper for classification. After placement on grid paper, boxes were randomly selected for counting, and visually matched with other, similar boxes to extrapolate the total number of particles present in the collected output. This "visual matching" classified the boxes into dense, standard, and sparse categories based on how the sestons in each box were distributed after mixing. Figure
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/BoxClasses}
-		\caption[Box Classifications]{Annotated image showing the classifications of boxes based upon their particle counts.}
-		\label{fig:boxclasses}
-	\end{figure}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/MPsClassification}
-		\caption[Annotated Collected Particles]{Annotated image showing how microplastics were differentiated from organic particles and sediments. Here, microplastics are circled in red, organics in green, and sediment in brown.}
-		\label{fig:MPClassification}
-	\end{figure}
-	Note that not every particle thought to be a microplastic is marked in figure \ref{fig:MPClassification}, as it merely illustrates the application of selection criteria and not the actual counting of this region of particles. In the upper right hand corner, a square, line, and circle can be seen which denote the nominal smallest particle size which can be collected by the device. This is not necessarily the practical lower limit to size, as the filter used was double-layered for greater rigidity. The two layers were roughly aligned with each other, but some pores were still slightly smaller or larger than the nominal size. The filter on the other end of the output was also double-layered for consistency.
+		Due to the near impossibility of accurately quantifying and classifying every single particle collected by the device, plastics and other sestons were agitated by mixing in a glass bowl, then placed on 1cm x 1cm grid paper for classification. After placement on grid paper, boxes were randomly selected for counting, and visually matched with other, similar boxes to extrapolate the total number of particles present in the collected output. This "visual matching" classified the boxes into dense, standard, and sparse categories based on how the sestons in each box were distributed after mixing. Figure
 		\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/OrganicsBox}
-		\caption[Annotated Collected Organics]{Annotated image showing the output from the "release" end of the device. The classification criteria for this image is the same as in figure \ref{fig:MPClassification}, with the addition of bubbles. Many more bubble were present in the organic sample simply due to the mode of filtration being a simple filter as opposed to a rigid collection box.}
-		\label{fig:OrganicsOutput}
-	\end{figure}
-}
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/BoxClasses}
+			\caption[Box Classifications]{Annotated image showing the classifications of boxes based upon their particle counts.}
+			\label{fig:boxclasses}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/MPsClassification}
+			\caption[Annotated Collected Particles]{Annotated image showing how microplastics were differentiated from organic particles and sediments. Here, microplastics are circled in red, organics in green, and sediment in brown.}
+			\label{fig:MPClassification}
+		\end{figure}
+		Note that not every particle thought to be a microplastic is marked in figure \ref{fig:MPClassification}, as it merely illustrates the application of selection criteria and not the actual counting of this region of particles. In the upper right hand corner, a square, line, and circle can be seen which denote the nominal smallest particle size which can be collected by the device. This is not necessarily the practical lower limit to size, as the filter used was double-layered for greater rigidity. The two layers were roughly aligned with each other, but some pores were still slightly smaller or larger than the nominal size. The filter on the other end of the output was also double-layered for consistency.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/OrganicsBox}
+			\caption[Annotated Collected Organics]{Annotated image showing the output from the "release" end of the device. The classification criteria for this image is the same as in figure \ref{fig:MPClassification}, with the addition of bubbles. Many more bubble were present in the organic sample simply due to the mode of filtration being a simple filter as opposed to a rigid collection box.}
+			\label{fig:OrganicsOutput}
+		\end{figure}
+	}
 	\fi
 	\subsubsection{Collection Efficiency}
 	\paragraph{Quantity and Numerical Proportions}
@@ -754,16 +762,14 @@
 	If it is assumed that the Milwaukee River is relatively typical in its proportion of wash, bed, and suspended load, roughly 80\% of the 22.1 mg/L of total suspended load in the Milwaukee River, or 17.68 mg/L is likely the "wash load"\textemdash particles which stay permanently suspended and travel most of or the entire length of the river. Using the Milwaukee River's nominal length of 104 miles, the wash load should spend at most 3-4 days suspended assuming a river speed of $\approx$ 1-2 m/s. 
 	\linebreak
 	Using this information, it follows that removing microplastics in the wash load at various points in the river will remove significant portions of downstream microplastic pollution as shown in figure \ref{fig:washload}.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\linewidth]{Figures/WashLoadCollection}
-	\caption[Wash Load MP Collection]{Illustration of how a single collection checkpoint can significantly lower downstream benthic microplastic concentrations. Note that the front attachment in this image reflects the kind of attachment which would likely be attached to a production version of the device which has a wider mouth in order to capture more of the benthic flow.}
-	\label{fig:washload}
-\end{figure}
-By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$70.4\% (88\% efficiency * 80\% wash load)
-
-
-
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/WashLoadCollection}
+		\caption[Wash Load MP Collection]{Illustration of how a single collection checkpoint can significantly lower downstream benthic microplastic concentrations. Note that the front attachment in this image reflects the type of attachment which may be attached to a production version of the device with a wider mouth in order to capture more of the benthic flow.}
+		\label{fig:washload}
+	\end{figure}
+	By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$72.4\% (90.54\% efficiency * 80\% wash load). This does rest on the assumption that 100\% of benthic MPs within the wash load enter the device, which is likely not true, however, any wash load loss is likely counteracted by bed load collection. 
+	
 	\subsection{Risks}
 	Outside of the typical risks associated with existing and working within a workshop environment, this project poses very few dangers. The majority of parts for the final device are 3D printed or off-the-shelf components, not pieces which need to be separately manufactured via CNC, drilling, etc. Besides these standard risks, physically placing the device into the water during the empirical testing will likely be the most dangerous part of the project, however, this will be performed with others present and in water which only reaches $\approx$2-3 feet deep at maximum as seen in figure \ref{fig:riverCrosssec}. With proper attire (waders, gloves, jackets, etc.) this should not pose any significant risk.
 	
