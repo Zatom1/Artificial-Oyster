@@ -481,14 +481,14 @@
 	\subsubsection{Electrical Design}
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/ElecSchematic}
+		\includegraphics[width=1\linewidth]{Figures/ElecSchematic2}
 		\caption[Electrical Schematic]{The device's electrical schematic with several elements simplified for comprehensibility, most notably with the Raspberry Pi Compute Module 4 and its I/O board condensed to just 7 inputs/outputs.}
 		\label{fig:ElecSchem}
 	\end{figure}
 	
-	Due to the very high cycle speeds required by the device and relatively simple electrical requirements, the electrical schematic is relatively simple. In this diagram, the Raspberry Pi CM4 and I/O board are greatly simplified to only include the inputs and outputs which are actually used within the device. One interesting aspect of the device is shown in the upper section of the electrical schematic, where a Raspberry Pi Pico 1 is used to regulate power to the RPI CM4. This method is used primarily due to a quirk of the CM4’s camera management systems which causes the second camera (counter-intuitively using the cam0 port on the I/O board) to be disconnected from the RPI if the device is rebooted using standard methods. This is likely because the camera management libraries used for the RPI were not intended to operate two cameras at once, however, the issue can be circumvented simply by powering off the RPI abruptly instead of rebooting or powering off in a standard way. This requirement means that some external device must be responsible for controlling power supplied to the CM4, and as shown, a Raspberry Pi Pico fulfills this role by controlling a 12v solid state relay. This also simplifies time and voltage based operation to ensure that the device’s batteries never lose too much voltage, allowing operating times to change dynamically depending on the weather (sunlight) on any given day. 
+	Due to the very high cycle speeds required by the device and relatively simple electrical requirements, the electrical schematic is relatively simple. In this diagram, the Raspberry Pi CM4 and I/O board are greatly simplified to only include the inputs and outputs which are actually used within the device. One interesting aspect of the device is shown in the upper section of the electrical schematic, where a Raspberry Pi Pico 1 is used to regulate power to the RPI CM4. This method is used primarily due to a quirk of the CM4’s camera management systems which causes the second camera (counter-intuitively using the cam0 port on the I/O board) to be disconnected from the RPI if the device is rebooted using standard methods. This is likely because the camera management libraries used for the RPI were not intended to operate two cameras at once, however, the issue can be circumvented simply by powering off the RPI abruptly instead of rebooting properly. This requirement means that some external device must be responsible for controlling power supplied to the CM4, and as shown, a Raspberry Pi Pico fulfills this role by controlling a 3.3v solid state relay. This also simplifies time and voltage based operation to ensure that the device’s batteries never lose too much voltage, allowing operating times to change dynamically depending on the weather (sunlight) on any given day. 
 	\paragraph*{Power Generation}
-	
+	After empirical testing, it was found that the device consumes only approximately 130 mA of power continuously, with the battery having declined from 8.16 to 8.06 volts\footnote{Reference section \ref{sec:mods} for why the battery used only had approximately 8 volts available.} over 4 hours, indicating a $\approx$ 5\% loss of battery power. 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/MedDay}
@@ -531,7 +531,34 @@
 	
 	\subsubsection{Waterproofing}
 	For the final device to be successful, there are three parts that must be prevented from ever contacting water directly\textemdash those being the RPI compute module and the two cameras on either side of the processor. If any of these components contact the water then corrosion will soon follow, greatly reducing the device’s lifespan. Waterproofing is accomplished with a combination of multi-layered walls, small exits, and coating with 2-part epoxy to ensure that no water ever enters. One other approach of lifting the compute module above the water was considered, however, this would conflict with tenet \# 1 of Design Principles, subsection \ref{subsec:TechDesign}\textemdash if the compute module were raised above the water then it would present an obstacle to humans and compromise the environmental services provided by the river. 
+	\subsection{Cost Analysis}
 	
+	In order to estimate the feasibility of large-scale deployment of the device described here, an individual cost analysis of the individual device must be completed. Following is the list of materials from a previous section, along with the costs associated with each piece. 
+	
+	\begin{enumerate}
+		
+		\item \$30 - 1kg spool of 1.75 mm PLA Plastic Filament (x2) (1.4 kg w/o supports)
+		\item \$ 64 - 405 nm wavelength linear laser (x2)
+		\item \$25 - IP68 Servo
+		\item \$50 - 50W Solar panel
+		\item \$8 - 12V LiPo Overcharge prevention circuit
+		\item \$96 - 15,000 mAh Li-Po battery
+		\item \$40 - Raspberry Pi CM4 002008
+		\item \$35 - Raspberry Pi CM4 I/O Board
+		\item \$4 - Raspberry Pi Pico 1 W
+		\item \$30 - Raspberry Pi Camera module v2 (x2)
+		\item \$19 - PT-LH032RPM RPI Cam v2 M12 lens mount (x2)
+		\item \$25 - 25 mm M12 camera lens (x2)
+		\item \$3 - RPI Cam v2 ribbon cable (x2)
+		\item \$18 - 12v$\rightarrow$5v Buck regulator (x2)
+		\item \$10 - 3.3v Solid state relay
+		\item \$7 - Assorted wires
+		\item \$15 - XALXMAW 32pcs wire lever connectors
+		\item \$14 - 2 part epoxy 
+	\end{enumerate}
+	
+	In total, these items cost \$493, and the only pieces of equipment necessary to assemble the device are small screwdrivers, a soldering iron, and optionally a hot glue gun. This makes the entire device relatively affordable when considering that several of the items here can be used
+		
 	\section{Testing}
 	\subsection{River Impact Testing}
 	Testing for the device will begin with a thorough analysis of the inadvertent impacts which the proposed device could have on riverine ecosystems due to its constant irradiation of water flowing through the processor. This irradiation is momentary, and will likely have a minimal effect on life within any river which the device operates inside of\textemdash but given that in a typical river (the Milwaukee River being used here as “typical”) the device could process massive quantities of water each day. This quantity of water processed can be approximated by multiplying the cross-sectional area of the device’s inlet by the flow rate of the river\textemdash something which can be approximated by comparing the river’s discharge with the overall river’s cross-sectional area. The calculations to find this value are as follows:
@@ -662,9 +689,10 @@
 	\paragraph*{Details}
 	Testing was planned to occur on Sunday, January 19th, 2025 at 9:00 AM on the Milwaukee River at Estabrook Park. This spot was chosen for several reasons, primarily due to its wadeable depth, relatively high TSS due to turbulence from the nearby waterfall, and proximity to where testing occurred in \cite{LenakerEtAlvertdist}, validating assumption three of section \ref{subsubsec:predictions}. 
 	\paragraph*{Modifications from Nominal Procedure}
+	\label{sec:mods}
 	Several minor changes were made to the procedure of testing in the days preceding experimentation\textemdash these being:
 	\begin{enumerate}
-		\item Decrease in testing time from 5 hours to 4 hours. This came due to overestimation of current draw along with a cell death in the 3S 15,000 mAh LiPo Battery used in the device. This cell death meant that maximum capacity decreased from 15,000 go 10,000 mAh, thus testing duration was reduced to ensure proper operation throughout. 
+		\item Decrease in testing time from 5 hours to 4 hours. This came due to overestimation of current draw along with a cell death in the 3S 15,000 mAh LiPo Battery used in the device. This cell death meant that maximum capacity decreased from 15,000 go 10,000 mAh and nominal 100\% voltage decreased from 12.6V to 8.4V, thus testing duration was reduced to ensure proper operation throughout. After testing, it was discovered that this reduction in test time was unnecessary due to the device consuming less power than anticipated. 
 	\end{enumerate}
 	\subsubsection{Results}
 	\paragraph*{Details}
@@ -706,7 +734,7 @@
 		\label{fig:mpcounting}
 	\end{figure}
 	
-	As seen, the device collected just over 90\% of the microplastics which passed through it during the 4 hours of testing, strongly supporting goal \#2 of the Engineering Goals from section \ref{sec:goals}. Despite this success, goal \#3 of section \ref{sec:goals} was not met, with nearly 33\% of organic sestons being collected by the device. Given the importance of these organic particles to benthic ecosystems, this is unfortunate and may prevent the specific device used in this study from being used in more sensitive areas\textemdash though organic matter pass through efficiency could likely be improved by using higher quality, more expensive parts such as a 
+	As seen, the device collected just over 90\% of the microplastics which passed through it during the 4 hours of testing, strongly supporting goal \#2 of the Engineering Goals from section \ref{sec:goals}. Despite this success, goal \#3 of section \ref{sec:goals} was not met, with nearly 33\% of organic sestons being collected by the device. Given the importance of these organic particles to benthic ecosystems, this is unfortunate and may prevent the specific device used in this study from being used in more sensitive areas\textemdash though organic matter pass through efficiency could likely be improved by using higher quality cameras or customizing COTS parts used in this device.
 	
 	\begin{figure}[h]
 		\centering
@@ -729,10 +757,13 @@
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\linewidth]{Figures/WashLoadCollection}
-	\caption[Wash Load MP Collection]{Illustration of how a single collection checkpoint can significantly lower downstream benthic microplastic concentrations.}
+	\caption[Wash Load MP Collection]{Illustration of how a single collection checkpoint can significantly lower downstream benthic microplastic concentrations. Note that the front attachment in this image reflects the kind of attachment which would likely be attached to a production version of the device which has a wider mouth in order to capture more of the benthic flow.}
 	\label{fig:washload}
 \end{figure}
-By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$52.8\% (88\% efficiency * 80\% wash load * 75\% margin)
+By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$70.4\% (88\% efficiency * 80\% wash load)
+
+
+
 	\subsection{Risks}
 	Outside of the typical risks associated with existing and working within a workshop environment, this project poses very few dangers. The majority of parts for the final device are 3D printed or off-the-shelf components, not pieces which need to be separately manufactured via CNC, drilling, etc. Besides these standard risks, physically placing the device into the water during the empirical testing will likely be the most dangerous part of the project, however, this will be performed with others present and in water which only reaches $\approx$2-3 feet deep at maximum as seen in figure \ref{fig:riverCrosssec}. With proper attire (waders, gloves, jackets, etc.) this should not pose any significant risk.
 	
