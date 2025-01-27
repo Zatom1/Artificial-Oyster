@@ -96,9 +96,28 @@
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
 
+\addto{\captionsenglish}{\renewcommand{\abstractname}{Introduction}}
+
 \Abstract{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.}
 
 %----------------------------------------------------------------------------------------
+
+\usepackage{glossaries}
+
+\makeglossaries
+
+\newglossaryentry{latex}
+{
+	name=latex,
+	description={Is a markup language specially suited 
+		for scientific documents}
+}
+
+\newglossaryentry{maths}
+{
+	name=mathematics,
+	description={Mathematics is what mathematicians do}
+}
 
 \begin{document}
 	
@@ -117,7 +136,7 @@
 	
 	%\addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
 	\subsection{Rationale}
-	Since their discovery in 2004, microplastics (MPs) have invaded and now permeate nearly every region and ecosystem in the world. Of particular concern in this regard are organisms within the benthic region of waterways, as these areas’ typically close proximity to human settlement increases the rate of microplastic flux into their habitats\textemdash and the lowered rate of microplastic transport within the benthic layer promotes accumulation of MPs. This accumulation is especially pernicious, as the benthic zone contains hundreds of species of filter feeders\textemdash most notably bivalves\textemdash which are crucial in the upkeep of waterway health and in preventing the eutrophication of aquatic environments. These bivalves are highly effective at separating the sediment, nutrients, and particulates carried in benthic currents, however, the increase in suspended solids caused by microplastic pollution combined with bivalve’s evolutionary unfamiliarity with, and less effective separation of microplastics has caused significant damage to bivalve populations worldwide. This damage takes many forms, with microplastics having been found clogging bivalve gills, accumulating in their digestive tracts at rates as high as 175 particles per individual, and acting as a vector for persistent organic pollutants (POPs) like DDT to be consumed at significant rates. Thus, in addition to removing pelagic microplastics, actively removing benthic microplastics is key to successfully combating the problems of microplastic pollution which currently plague the world’s lakes, rivers, and oceans. Thus far, no solution has been found to this problem, and microplastics have continued to accrue in the sediment of global waterways\textemdash thus creating a device capable of continuously, autonomously, and non-disruptively extracting these microplastics is necessary to ensure the future health of these critical ecosystems. Here, the Laurentian Great Lakes Basin (colloquially “The Great Lakes” of Superior, Michigan, Huron, Ontario, and Erie) serves as a model, given the lakes’ importance. These lakes contain nearly ¼ of the entire world’s supply of liquid freshwater and support an estimated 60 million people, making them arguably the single most significant source of freshwater in the world. Narrowing the scope of this project, the Milwaukee River serves as the area of experimentation, and rivers are generally the only bodies of water discussed. By significantly reducing the quantity of microplastics, three primary goals ought to be achieved in the long term, those being: 
+	Since their discovery in 2004, microplastics (MPs) have invaded and now permeate nearly every region and ecosystem in the world. Of particular concern in this regard are organisms within the benthic region of waterways, as these areas’ typically close proximity to human settlement increases the rate of microplastic flux into their habitats\textemdash and the lowered rate of microplastic transport within the benthic layer promotes accumulation of MPs. This accumulation is especially pernicious, as the benthic zone contains hundreds of species of filter feeders\textemdash most notably bivalves\textemdash which are crucial in the upkeep of waterway health and in preventing the eutrophication of aquatic environments. These bivalves are highly effective at separating the sediment, nutrients, and particulates carried in benthic currents, however, the increase in suspended solids caused by microplastic pollution combined with bivalve’s evolutionary unfamiliarity with, and less effective separation of microplastics has caused significant damage to bivalve populations worldwide. This damage takes many forms, with microplastics having been found clogging bivalve gills, accumulating in their digestive tracts at rates as high as 175 particles per individual, and acting as a vector for persistent organic pollutants (POPs) like DDT to be consumed at significant rates. Thus, in addition to removing pelagic microplastics, actively removing benthic microplastics is key to successfully combating the problems of microplastic pollution which currently plague the world’s lakes, rivers, and oceans. Thus far, no solution has been found to this problem, and microplastics have continued to accrue in the sediment of global waterways\textemdash thus creating a device capable of continuously, autonomously, and non-disruptively extracting these microplastics is necessary to ensure the future health of these critical ecosystems. Here, the Laurentian Great Lakes Basin (colloquially “The Great Lakes” of Superior, Michigan, Huron, Ontario, and Erie) serves as a model, given the lakes’ importance. These lakes contain nearly ¼ of the entire world’s supply of liquid freshwater and support an estimated 60 million people, making them arguably the most significant single source of freshwater in the world. Narrowing the scope of this project, the Milwaukee River serves as the area of experimentation, and rivers are generally the only bodies of water discussed. By significantly reducing the quantity of microplastics, three primary goals ought to be achieved in the long term, those being: 
 	\begin{enumerate}
 		\item A measurable decrease in the quantity and concentration of benthic microplastics.
 		\item A measurable improvement in the health of benthic ecosystems impacted by MP pollution. 
@@ -468,6 +487,10 @@
 	\end{figure} 
 	These pieces comprise the majority of the aforementioned path through the device which microplastics and other particles take, but a few other pieces are also critical to the device’s functioning. The most important of these is the compute module holder, a piece designed to be totally impermeable to water as expanded upon in section \ref{sec:programmingArch}. 
 	
+	%\linebreak
+	
+	The final addition to the device was an intake piece which was added because of the changes from nominal testing as described in section \ref{sec:mods}
+	
 	
 	\subsubsection{Programming Architecture}\label{sec:programmingArch}
 	\begin{figure}[h]
@@ -493,35 +516,31 @@
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/MKE_GHI}
-		\caption[Daily GHI in Milwaukee]{Graph of 2023 GHI measurements from Milwaukee, Wisconsin. Days below the }
+		\caption[Daily GHI in Milwaukee]{Graph of 2023 GHI measurements from Milwaukee, Wisconsin. Days below the brown line do not have enough sunlight for the device's battery to fully recharge (assuming full charge at the start of the day), and after one full week of days below the green line, the device's battery will lose all charge.}
 		\label{fig:GHI}
 	\end{figure} 
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/MedDay}
-		\caption[Power Consumption Graph]{Graph of the device's power metrics over the course of one average day in Milwaukee, Wisconsin.}
+		\includegraphics[width=1\linewidth]{Figures/brown_line_power}
+		\caption[Power Consumption Graph]{Graph of the device's power metrics over the course of one day with GHI at the brown line from figure \ref{fig:GHI} in Milwaukee, Wisconsin.}
 		\label{fig:ElecMod}
 	\end{figure} 
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/LowDay}
-		\caption[Power Consumption Graph]{Graph of the device's power metrics over the course of one day in the bottom 10\% of GHI in Milwaukee, Wisconsin.}
+		\includegraphics[width=1\linewidth]{Figures/green_line_power}
+		\caption[Power Consumption Graph]{Graph of the device's power metrics over the course of one day with GHI at the green line from figure \ref{fig:GHI} in Milwaukee, Wisconsin.}
 		\label{fig:botPowerGen}
 	\end{figure} 
 	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/HiDay}
-		\caption[Power Consumption Graph]{Graph of the device's power metrics over the course of one day in the top 10\% of GHI in Milwaukee, Wisconsin.}
-		\label{fig:topPowerGen}
-	\end{figure} 
-	Several different power generation techniques were considered for this device, with hydropower and solar being the two primary contenders. After evaluation, solar was selected for this project due primarily to:
+	Several different power generation techniques were considered for this device, with hydropower and solar being the two primary contenders. After evaluation, solar was selected for this project due primarily to solar's greater reliability and simplicity, as well as due to lower costs associated with deploying solar power. With a solar power generation system of the size described in the BOM, 5 individual devices could be powered from a single solar panel, making it very cost efficient if used in a deployment scheme such as that described in \ref{fig:washload} with multiple devices deployed in close proximity to each other. Given the climate of regions like Wisconsin (where testing took place), hydroelectric power would also be more susceptible to rivers freezing over and other inclement weather. 
+	
+	\iffalse:
 	\begin{enumerate}
 		\item The testing location
 		\begin{itemize}
-			\item The lower Milwaukee River's water isn't deep enough, and doesn't flow fast enough, for significant hydroelectric power generation
+			\item The lower Milwaukee River's water is neither deep enough nor fast enough for significant hydroelectric power generation
 			\item The specific testing location has several small and bare islands within a few meters of the location
 		\end{itemize}
 		\item Power requirements
@@ -534,8 +553,9 @@
 		\end{itemize}
 	\end{enumerate}
 	
-	The graph shown in figure \ref{fig:ElecMod} shows how the device’s battery charge, power input, and current draw would fluctuate on an average day in Milwaukee, Wisconsin (the location of testing). As shown, the battery charge never drops below 25.4\%\textemdash ensuring that sufficient voltage is maintained throughout the day. In this model, the device operates for 13 hours, thus filtering roughly 51.5 m3 of water as derived from figure \ref{fig:riverCrosssec}.  
-	
+	%\iffalse
+	The graph shown in figure \ref{fig:ElecMod} shows how the device’s battery charge, power input, and current draw would fluctuate on an average day in Milwaukee, Wisconsin (the location of testing). As shown, the battery charge never drops below 88.9\%\textemdash under typical operating conditions, ensuring that sufficient voltage is maintained throughout the day. In this model, the device operates for 24 hours per day, thus filtering roughly 51.5 m3 of water as derived from figure \ref{fig:riverCrosssec}.  
+	\fi
 	
 	\subsubsection{Waterproofing}
 	For the final device to be successful, there are three parts that must be prevented from ever contacting water directly\textemdash those being the RPI compute module and the two cameras on either side of the processor. If any of these components contact the water then corrosion will soon follow, greatly reducing the device’s lifespan. Waterproofing is accomplished with a combination of multi-layered walls, small exits, and coating with 2-part epoxy to ensure that no water ever enters. One other approach of lifting the compute module above the water was considered, however, this would conflict with tenet \# 1 of Design Principles, subsection \ref{subsec:TechDesign}\textemdash if the compute module were raised above the water then it would present an obstacle to humans and compromise the environmental services provided by the river. 
@@ -598,12 +618,7 @@
 		\end{itemize}
 		
 		\item 0.0011m$^3$/s * 86,400 s/day $\approx$ 95 m$^3$/day of water
-		
-		\item Multiply total water flowing through the device in one day by the fraction of the day for which the device operates
-		
-		\begin{itemize}
-			\item $95m^3/s \times 13/24 = 51.5m^3$
-		\end{itemize}
+
 		
 	\end{enumerate}
 	\begin{figure}[h]
@@ -679,7 +694,7 @@
 	
 	\subsubsection{Predictions}
 	\label{subsubsec:predictions}
-	The quantity of microplastics to be collected by the device can be simply approximated by using measurements from previous studies in tandem with data on total suspended solids (TSS) from USGS. Here, we find from \cite{LenakerEtAlvertdist} that microplastic concentrations near the intended testing site (the lower Milwaukee River) are approximately 2000 MP/kg, and additionally we find that this area's TSS measures roughly 22.1mg/L. Next, multiplying previous figures of total water filtration per day (51.5 m$^3$, 51500 liters) by TSS concentration (22.1mg/L), we find that the device will filter roughly 1.14kg of suspended solids. Multiplying this value by the concentration of microplastics per kilogram of sediment(2100MP/kg), we determine that the device should collect roughly 2400 microplastics over the duration of testing. Upper and lower bounds for this value can also be calculated using the extreme values ever measured on the Milwaukee River (2.1mg/L, 1400mg/L, \cite{USGSMil}, \cite{MKETSS}), arriving at 227 and 151,410 microplastics respectively. 
+	The quantity of microplastics to be collected by the device can be simply approximated by using measurements from previous studies in tandem with data on total suspended solids (TSS) from USGS. Here, we find from \cite{LenakerEtAlvertdist} that microplastic concentrations near the intended testing site (the lower Milwaukee River) are approximately 2000 MP/kg, and additionally we find that this area's TSS measures roughly 22.1mg/L. Next, multiplying previous figures of total water filtration per day (95 m$^3$, 95000 liters) by TSS concentration (22.1mg/L), we find that the device will filter roughly 2.09kg of suspended solids. Multiplying this value by the concentration of microplastics per kilogram of sediment(2100MP/kg), we determine that the device should collect roughly 4409 microplastics over the duration of testing. Upper and lower bounds for this value can also be calculated using the extreme values ever measured on the Milwaukee River (2.1mg/L, 1400mg/L, \cite{USGSMil}, \cite{MKETSS}), arriving at 418 and 279,300 microplastics respectively. 
 	\linebreak
 	There are a few key assumptions which are necessary for this modeling to be accurate, those being:
 	\begin{enumerate}
@@ -701,6 +716,7 @@
 	Several minor changes were made to the procedure of testing in the days preceding experimentation\textemdash these being:
 	\begin{enumerate}
 		\item Decrease in testing time from 5 hours to 4 hours. This came due to overestimation of current draw along with a cell death in the 3S 15,000 mAh LiPo Battery used in the device. This cell death meant that maximum capacity decreased from 15,000 go 10,000 mAh and nominal 100\% voltage decreased from 12.6V to 8.4V, thus testing duration was reduced to ensure proper operation throughout. After testing, it was discovered that this reduction in test time was unnecessary due to the device consuming less power than anticipated. 
+		\item Though initial plans intended for the device to be dug into the sediment of the riverbed, due to significant fractions of gravel and boulders this was impossible. Instead, an attachment which lowered the intake position was used
 	\end{enumerate}
 	\subsubsection{Results}
 	\paragraph*{Details}
@@ -734,7 +750,9 @@
 	\fi
 	\subsubsection{Collection Efficiency}
 	\paragraph{Quantity and Numerical Proportions}
-	To evaluate the efficiency of collection, samples were visually evaluated under a microscope to identify and count them. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed into the sample to minimize sample loss. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. Identification was carried out according to the guidelines in \ref{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain sestons such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
+	To evaluate the efficiency of collection, samples were visually evaluated under a microscope to identify and count them. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed into the sample to minimize sample loss. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. 
+	
+	Identification was carried out according to the guidelines in \ref{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain sestons such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting}
@@ -794,3 +812,4 @@
 	%----------------------------------------------------------------------------------------
 	
 \end{document}
+
