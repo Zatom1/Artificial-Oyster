@@ -70,7 +70,22 @@
 	name={COTS},
 	description={Consumer Off The Shelf. Describes products purchased whole}
 }
-
+\newglossaryentry{fluvial}{
+	name=fluvial,
+	description={Of, relating to, or found in a river}
+}
+\newglossaryentry{suspension}{
+	name={suspension},
+	description={Suspension is one of three primary methods of fluvial sediment transport, specifically occurring when a particle's settling velocity due to gravity is roughly equal to a stream's upward transport velocity. In this case, particles will remain floating in the water column for extended periods of time, being generally divided into "suspended" and "wash" loads, with the former occasionally falling to the riverbed and the latter staying near-permanently suspended}
+}
+\newglossaryentry{saltation}{
+	name={saltation},
+	description={Saltation is the second primary method of fluvial sediment transport, whereby particles "hop" short distances due to turbulence caused by irregularities in the riverbed. These hops do not have a well-defined distance or time, however, saltating particles must regularly return to the riverbed to be considered saltating as opposed to suspended}
+}
+\newglossaryentry{rolling}{
+	name={rolling},
+	description={Rolling is the third primary method of fluvial sediment transport, whereby particles which are too dense to saltate but light enough to be moved by fluvial processes roll across the riverbed}
+}
 %----------------------------------------------------------------------------------------
 %	COLUMNS
 %----------------------------------------------------------------------------------------
@@ -288,6 +303,15 @@
 		\includegraphics[width=1\linewidth]{Figures/FluorescedMPs2}
 		\caption[Microplastics Fluorescing]{This image shows microplastics collected from the Milwaukee River in \cite{Isahaku}. Using a 405 nm linear laser beam, the microplastics glow in the shorter wavelengths of the visible spectrum while other particles glow with longer wavelengths. Here, very few of these other particles can be seen.}
 		\label{fig:FluorescedMPs}
+	\end{figure}
+	
+	In addition to intensity differences, \cite{Wohlschläger_Versen_Löder_Laforsch_2024} found that particles emit distinct wavelengths of light when struck by 405 nm laser light, as detailed in figure \ref{fig:Reemission}. These wavelength differences can be measured in addition to the intensity differences to more consistently discriminate between organic and inorganic particles.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/ReemissionWavelengths}
+		\caption[Particle Reemission Wavelengths]{This scatter plot shows the wavelengths of light reemitted by various particles of interest when irradiated with 405 nm laser light. Each dot is colored according to the wavelength of light reemitted}
+		\label{fig:Reemission}
 	\end{figure}
 	
 	\section{Procedure}
@@ -678,7 +702,7 @@
 	There are a few key assumptions which are necessary for this modeling to be accurate, those being:
 	\begin{enumerate}
 		\item The concentration of microplastics in the sediment must be relatively constant throughout the Milwaukee river (or at least must not fluctuate overly significantly to form hot spots of microplastics)
-		\item The river must not flow more quickly\footnote{This restriction is a result of the device's computing limitations. Given the roughly 6 mm wide aperture through which the cameras can image microplastics, and the rate of image capture and processing (230x per second), any speeds above 2 m/s allow for the possibility of particles being completely unseen by the device. As speeds approach 2 m/s, it is theorized that the device's effectiveness may asymptotically decline as the cameras obtain fewer and fewer images of the particles with which to detect MPs.} than $\approx$ 2 m/s
+		\item The river must not flow more quickly\footnote{This restriction is a result of the device's computing limitations. Given the roughly 6 mm wide aperture through which the cameras can image microplastics, and the rate of image capture and processing (230x per second), any speeds above 2 m/s allow for the possibility of particles being completely unseen by the device. As speeds approach 2 m/s, it is theorized that the device's effectiveness may asymptotically decline as the cameras obtain fewer and fewer images of the particles with which to detect MPs, though this has not been empirically tested.} than $\approx$ 2 m/s
 		\item The 2.5 cm top-sediment collected in \cite{LenakerEtAlvertdist} must be representative of the \gls{benthic} flow's microplastic concentration
 		\item There must be a positive correlation between TSS and suspended microplastics
 	\end{enumerate}
@@ -688,7 +712,7 @@
 	\linebreak
 	In addition to testing the device, a 500 mL water sample was taken at the time of testing. This was used to measure TSS within the river by massing a 100mL sample of the water, waiting for water to evaporate for several days while undisturbed, and finally massing again to determine TSS. These results will allow for further correlation and confirmation of the predictions previously made.
 	\paragraph{Sediment}
-	In addition to microplastic quantity predictions, the amount of sediment which will be collected by the device can also be estimated using available data from testing conducted by the DNR and USGS. Using, again, values from \cite{LenakerEtAlvertdist}, we find that there should be approximately 2100 MPs/kg of sediment at the testing site. These MPs contained within 1kg of sediment should weigh approximately 0.21 grams, making the rough assumption that MPs are 250 $\mu$m radius spheres of density 1.5 g/cm$^3$. Using data from \cite{Foth2020}\footnote{Page 5, Physical Data of Milwaukee River Operable Unit 2}, we find that 68\% of the sediment consists of fines (silt and clay), and though no exact number is given, we can infer that more than 15\% of sediment volume consists of gravel\footnote{The report states that gravel content increases downstream, and measures 15\% gravel content upstream of the focus area.}. It can be assumed that only a negligible amount of gravel was  collected due to gravel's high mass, and it can be assumed that only a negligible amount of silt or clay was collected due to those particles' very small volume. These factors combine to mean that only sand, the remaining 17\% of the sediment has a significant chance of being collected. Still, this is likely a vast overestimation, as wash load is primarily composed of silt and clay due to their smaller size. In addition to this, the bed of the Milwaukee River at Estabrook Park is largely covered in gravel and boulders, creating a semi-permeable layer which likely aids in preventing bed sediment transport. The class of sediment likely to be carried by the \gls{benthic} flow can be further contained when examining data from \cite{Washload_size}, which indicates that 90\% of diameters of wash load particles fall below 0.0625 mm\textemdash the size which happens to define the lower boundary of "sand" particle sizes. Making the assumption that fluvial sand size distributions are somewhat similar throughout various rivers, then using data from \cite{sabd_size_distribution}, we can see that roughly 1-3\% of sand falls near this size category. This means that an even smaller proportion of sediment could reasonably constitute a significant fraction of the collected material, and this small fraction likely contains quantities of bed load, as the bed load can carry heavier and denser particles than the wash load\textemdash though typically bed load motion is more akin to rolling than "hopping" or floating. When all considered, it is evident that natural processes of the fluvial environment self-select for the majority of \gls{benthic} load to contain comparatively less dense algae and similarly light particles such as microplastics. Given that many of these quantities are not exactly known, it is difficult to precisely estimate sediment quantities, but with the limited data available it can be estimated that the amount of sediment practically able to be collected by the device ranges from 0.12 to 1.2 grams per kilogram of existing sediment\textemdash in other words, anywhere from 0.12\% to 1.2\% of sediment is actually collectable, whereas almost all microplastics are collectable due to their lower densities and large areas.
+	In addition to microplastic quantity predictions, the amount of sediment which will be collected by the device can also be estimated using available data from testing conducted by the DNR and USGS. Using, again, values from \cite{LenakerEtAlvertdist}, we find that there should be approximately 2100 MPs/kg of sediment at the testing site. These MPs contained within 1kg of sediment should weigh approximately 0.21 grams, making the rough assumption that MPs are 250 $\mu$m radius spheres of density 1.5 g/cm$^3$. Using data from \cite{Foth2020}\footnote{Page 5, Physical Data of Milwaukee River Operable Unit 2}, we find that 68\% of the sediment consists of fines (silt and clay), and though no exact number is given, we can infer that more than 15\% of sediment volume consists of gravel\footnote{The report states that gravel content increases downstream, and measures 15\% gravel content upstream of the focus area.}. It can be assumed that only a negligible amount of gravel was  collected due to gravel's high mass, and it can be assumed that only a negligible amount of silt or clay was collected due to those particles' very small volume. These factors combine to mean that only sand, the remaining 17\% of the sediment has a significant chance of being collected. Still, this is likely a vast overestimation, as wash load is primarily composed of silt and clay due to their smaller size. In addition to this, the bed of the Milwaukee River at Estabrook Park is largely covered in gravel and boulders, creating a semi-permeable layer which likely aids in preventing bed sediment transport. The class of sediment likely to be carried by the \gls{benthic} flow can be further contained when examining data from \cite{Washload_size}, which indicates that 90\% of diameters of wash load particles fall below 0.0625 mm\textemdash the size which happens to define the lower boundary of "sand" particle sizes. Making the assumption that fluvial sand size distributions are somewhat similar throughout various rivers, then using data from \cite{sabd_size_distribution}, we can see that roughly 1-3\% of sand falls near this size category. This means that an even smaller proportion of sediment could reasonably constitute a significant fraction of the collected material, and this small fraction likely contains quantities of bed load, as the bed load can carry heavier and denser particles than the wash load\textemdash though typically bed load motion consists of the slower processes of \gls{saltation} and \gls{rolling}. When all considered, it is evident that natural processes of the fluvial environment self-select for the majority of \gls{benthic} load to contain comparatively less dense algae and similarly light particles such as microplastics. Given that many of these quantities are not exactly known, it is difficult to precisely estimate sediment quantities, but with the limited data available it can be estimated that the amount of sediment practically able to be collected by the device ranges from 0.12 to 1.2 grams per kilogram of existing sediment\textemdash in other words, anywhere from 0.12\% to 1.2\% of sediment is actually collectable, whereas almost all microplastics are collectable due to their lower densities and large areas.
 	\paragraph{Algae}
 	It is even more difficult to accurately estimate algae concentrations, but it is known that some alga such as diatoms are incredibly common in all ecosystems with water, and algae similarly are present in river environments. Most of these particles are smaller than the device's pore diameter, however, a number will inevitably be collected due to their sheer quantity. No attempts will be made to exactly quantify this, save for the statement that algae will be present in all samples in appreciable quantity. 
 	\paragraph*{Details}
@@ -732,9 +756,30 @@
 	\fi
 	\subsubsection{Collection Efficiency}
 	\paragraph{Quantity and Numerical Proportions}
-	To evaluate the efficiency of collection, samples were visually evaluated under a microscope to identify and count them. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected in $\approx$ 1 mL batches using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed with filtered tap water into the sample to minimize sample loss\footnote{Unfortunately deionized water was not available for this process, however, the tap water is assumed to have only negligibly contributed to MP levels due to the small quantities used and the smaller size of MPs typically found in tap water.}. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. 
+	To evaluate the efficiency of collection, samples were visually evaluated under a 3-magnification compound microscope to identify and count them. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected in $\approx$ 1 mL batches using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed with filtered tap water into the sample to minimize sample loss\footnote{Unfortunately deionized water was not available for this process, however, the tap water is assumed to have only negligibly contributed to MP levels due to the small quantities used and the smaller size of MPs typically found in tap water.}. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. 
+	Figures \ref{fig:bluetwist}, \ref{fig:fabric}, and \ref{fig:mporganic} show some particles of particular interest which were found during the counting process, though only the particle seen in figure \ref{fig:mporganic} was actually counted\footnote{The other two plastic were seen while moving during the counting process, and were not counted so as to avoid bias in counting}.
 	
-	Identification was carried out according to the guidelines in \ref{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain \glspl{seston} such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/BlueTwisty}
+		\caption[Blue Microplastic Under Microscope]{A flat, blue, microplastic fiber.}
+		\label{fig:bluetwist}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/Fabric}
+		\caption[Fabric Under Microscope]{A small piece of fabric.}
+		\label{fig:fabric}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/MPOrganic}
+		\caption[MP Near Organic Matter]{This image shows a clear fragment microplastic in the bottom left corner, with the microscope's focus on a small piece of algae. This image is generally reflective of how the majority of particles appeared during counting, with the microscope aperture usually capturing a few particles at a time.}
+		\label{fig:mporganic}
+	\end{figure}
+	Identification was carried out according to the guidelines in \cite{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain \glspl{seston} such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting}
@@ -768,7 +813,7 @@
 		\caption[Wash Load MP Collection]{Illustration of how a single collection checkpoint can significantly lower downstream \gls{benthic} microplastic concentrations. Note that the front attachment in this image reflects the type of attachment which may be attached to a production version of the device with a wider mouth in order to capture more of the \gls{benthic} flow.}
 		\label{fig:washload}
 	\end{figure}
-	By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$72.4\% (90.54\% efficiency * 80\% wash load). This does rest on the assumption that 100\% of \gls{benthic} MPs within the wash load enter the device, which is likely not true, however, any wash load loss is likely counteracted by bed load collection. 
+	By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$72.4\% (90.54\% efficiency * 80\% wash load). This prediction rests on the optimistic assumption that 100\% of suspended \gls{benthic} MPs within the suspended load enter the device, however, it does not account for bed load microplastics transported via \gls{saltation}, which counteracts the underestimation caused by this assumption to an unknown degree.
 	
 	\subsection{Risks}
 	Outside of the typical risks associated with existing and working within a workshop environment, this project poses very few dangers. The majority of parts for the final device are 3D printed or off-the-shelf components, not pieces which need to be separately manufactured via CNC, drilling, etc. Besides these standard risks, physically placing the device into the water during the empirical testing will likely be the most dangerous part of the project, however, this will be performed with others present and in water which only reaches $\approx$2-3 feet deep at maximum as seen in figure \ref{fig:riverCrosssec}. With proper attire (waders, gloves, jackets, etc.) this should not pose any significant risk.
@@ -777,7 +822,14 @@
 	
 	\phantomsection
 	\section*{Acknowledgments} % The \section*{} command stops section numbering
-	
+	Several people aided greatly in the completion of this project; they are given here in no particular order. The author extends great thanks to:
+	\begin{itemize}
+		\item Mrs. Stephanie Rasmussen, for her advice in experimental procedure, aid in proofreading, and general help surrounding competition
+		\item Mr. Joseph Keller, for providing advice and refinement of how exactly the device created here may work, as well as for providing equipment critical to testing and evaluating the effectiveness of the device. In addition, for aid in acquiring data critical to predicting the impacts of the device.
+		\item Dr. Kayla Poole, for her advice on how the project may best be evaluated and for discussion on the project's possible impacts.
+		\item Mr. Golan Altman-Shafer, for help integral to the success of device testing.
+		\item Mr. Eliot Scheuer, for aid in refining the project's presentation and themes.
+	\end{itemize}
 	\addcontentsline{toc}{section}{Acknowledgments} % Adds this section to the table of contents
 	
 	
