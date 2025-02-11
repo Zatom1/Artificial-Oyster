@@ -693,12 +693,16 @@
 	With this information collected, the device’s overall efficacy can be determined, and subsequent improvements or alterations can be made and re-tested.
 	
 	\paragraph*{Processing and Counting MPs}
+	\label{sec:processing}
 	Processing the microplastics will follow the procedure used in \cite{LenakerEtAlvertdist}(derived from \cite{Zobkov_Esiukova_2016}), the steps to this procedure being:
 	\begin{enumerate}
 		\item Remove microplastics and other collected \glspl{seston} from device and place into glass bowls 
-		\item Use Copper(II) Chloride salt to increase solution density to 1.5 g/cm$^3$  
-		\item After organics have dissolved, use 30\% Hydrogen Peroxide to dissolve organic and calcitic(shell fragments, etc) material
-		\item Evaporate water and count using FiJi image analysis software after sectioning and imaging individual section with high-quality camera microscope
+		\item Bake each sample in an oven set to 80\textdegree C in order to evaporate enough water to reach a total volume of roughly 70 mL
+		\item Mix with Copper(II) Chloride salt to increase solution density to 1.5 g/cm$^3$  
+		\item Use separatory funnel to separate denser sediments from lighter microplastics and algae
+		\item Use FiJi image analysis software to count all particles after partitioned into petri dish
+		\item Use 30\% Hydrogen Peroxide to dissolve organic material in the lighter fractions of each sample separated with the separatory funnel
+		\item Again, count using FiJi image analysis software after sectioning
 	\end{enumerate}
 	
 	\subsubsection{Predictions}
@@ -763,7 +767,7 @@
 	}
 	\fi
 	\subsubsection{Collection Efficiency}
-	\paragraph{Quantity and Numerical Proportions}
+	\paragraph{Particle Identification}
 	To evaluate the efficiency of collection, samples were visually evaluated under a compound microscope\footnote{Although many of the microplastics seen under the microscope were smaller than the 300 \textmu m size of the filter's pores, results from microscope analysis are still presumed to be valid because the device is capable of identifying particles as small as 40 \textmu m due to differences between the camera's resolution and filter pore size. Many of these particles likely passed through the filter, however, the proportional amount of various particle classes is still probably accurate because all of the filters used were of the same pore diameter.} to identify and count them. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected in $\approx$ 1 mL batches using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed with filtered tap water into the sample to minimize sample loss\footnote{Unfortunately deionized water was not available for this process, however, the tap water is assumed to have only negligibly contributed to MP levels due to the small quantities used and the smaller size of MPs typically found in tap water.}. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. 
 	Figures \ref{fig:bluetwist}, \ref{fig:fabric}, and \ref{fig:mporganic} show some particles of particular interest which were found during the counting process, though only the particle seen in figure \ref{fig:mporganic} was actually counted\footnote{The other two plastics were seen while moving during the counting process, and were not counted so as to avoid bias towards large, brightly-colored microplastics in counting.}.
 	
@@ -787,15 +791,15 @@
 		\caption[MP Near Organic Matter]{This image shows a clear fragment microplastic in the bottom left corner, with the microscope's focus on a small piece of algae. This image is generally reflective of how the majority of particles appeared during counting, with the microscope aperture usually capturing a few particles at a time.}
 		\label{fig:mporganic}
 	\end{figure}
-	Identification was carried out according to the guidelines in \cite{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain \glspl{seston} such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
-	\begin{figure}[H]
+	Identification was carried out according to the guidelines in \cite{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain \glspl{seston} such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all 307 particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting}
 		\caption[Collected Particle Classification]{Bar chart with data of all particles collected in both the MP and organic samples.}
 		\label{fig:mpcounting}
 	\end{figure}
-	
-	As seen, the device collected just over 90\% of the microplastics which passed through it during the 4 hours of testing, strongly supporting goal \#2 of the Engineering Goals from section \ref{sec:goals}. Despite this success, goal \#3 of section \ref{sec:goals} was not met, with nearly 33\% of organic \glspl{seston} being collected by the device. Given the importance of these organic particles to \gls{benthic} ecosystems, this is unfortunate and may prevent the specific device used in this study from being used in more sensitive areas\textemdash though organic matter pass through efficiency could likely be improved by using higher quality cameras or customizing COTS parts used in this device.
+	\paragraph*{Particle Quantification - Proportions}
+	As seen in figure \ref{fig:mpcounting}, the device collected just over 90\% of the microplastics which passed through it during the 4 hours of testing, strongly supporting goal \#2 of the Engineering Goals from section \ref{sec:goals}. Despite this success, goal \#3 of section \ref{sec:goals} was not met, with nearly 33\% of organic \glspl{seston} being collected by the device. Given the importance of these organic particles to \gls{benthic} ecosystems, this fact may prevent the specific device used in this study from being used in more sensitive areas\textemdash though organic matter pass through efficiency could likely be improved by using higher quality cameras, customizing COTS parts, or adding additional parts in order to provide extra verification of particle identity.
 	
 	\begin{figure}[h]
 		\centering
@@ -809,6 +813,29 @@
 		\includegraphics[angle=90,origin=c,width=1\linewidth]{Figures/RawReleased}
 		\caption[Raw Released Particles]{Raw, unprocessed particles collected by a net on the "release" end of the device. Outside of an experimental scenario, these particles would be released back into the water column. Note the algae and green-ish particles which pervade this sample, and the comparatively very low number of easily visible plastic or sedimentary particles.}
 		\label{fig:rawreleased}
+	\end{figure}
+	
+	\paragraph*{Particle Quantification - Counts}
+	In addition to finding the proportion of particles within the device's sample which were microplastics, the actual number of particles collected was counted using image analysis. This was conducted with FiJi\footnote{Acronym: FiJi$^{13}$ is Just ImageJ}, an expanded version of ImageJ, a common scientific image analysis tool. The key feature of FiJi is the \textit{Analyze Particles} tool, which allows for automatic counting of particles depending on threshold settings defined by the user. To conduct this particle analysis, the samples were prepared and analyzed according to steps 1-5 of the procedure laid out in section \ref{sec:processing}. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[angle=-90,origin=c,width=1\linewidth]{Figures/SepFunnel}
+		\caption[Separatory Funnel]{A close up image of the separatory funnel used to separate dense sediments from lighter microplastics and algae. The water inside of the funnel is colored a bright green from the Copper(II) Chloride added to increase density, and many particles can be seen floating in the solution.}
+		\label{fig:SepFunnel}
+		
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/SedimentBlue}
+		\caption[Separated Sediment]{Here, the separated sediment from the bottom of the separatory funnel is seen in a glass bowl.}
+		\label{fig:SedBlue}
+	\end{figure}
+	The results from the analysis revealed that over 30,000 particles of $\rho$ \textless 1.5 g/mL were collected by the device, and using the proportions determined from previous microscope analysis, it is estimated that 17,749 of these particles were microplastics. After comparison of FiJi analysis with manual counting of particles in a sample (n=362), it was determined that the particle counting procedure had an error of roughly 8.8\%, leading to upper and lower bounds on the total particle count at 34,204 and 29,136 particles respectively, and the bounds on MP count at 22,097 and 16,035 microplastic particles respectively. The predictions made in section \ref{subsubsec:predictions} fall within these ranges, with the figure of 16,600 near the lower bound by error. A variety of factors impact this figure, with minor fluctuations in TSS, (greater than anticipated) error in counting, or loss from transferring particles between containers likely accounting for any remaining error. The average particle size counted by FiJi was 0.291mm$^2$, which means that the majority of particles collected were irregular in shape\textemdash indicating either fragments or fibers as opposed to spheres or crumbs. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/ParticleCounting}
+		\caption[FiJi Particle Counting]{An example of how the FiJi image analysis software counts particles. Here, a 28x28 mm square is shown, with particles identified by FiJi circled in yellow. The average size of particle in this image is 870 microns. }
+		\label{fig:FiJiAnal}
 	\end{figure}
 	
 	\subsubsection{Further Predictions}	
@@ -830,12 +857,12 @@
 	
 	\phantomsection
 	\section*{Acknowledgments} % The \section*{} command stops section numbering
-	Several people aided greatly in the completion of this project; they are given here in no particular order. The author extends great thanks to:
+	Several people aided greatly in the completion of this project; they are given here in no particular order. The author extends thanks to:
 	\begin{itemize}
-		\item Mrs. Stephanie Rasmussen, for her advice in experimental procedure, aid in proofreading, and general help surrounding competition
+		\item Mrs. Stephanie Rasmussen, for her advice in experimental procedure, aid in proofreading, and general help surrounding competition.
 		\item Mr. Joseph Keller, for providing advice and refinement of how exactly the device created here may work, as well as for providing equipment critical to testing and evaluating the effectiveness of the device. In addition, for aid in acquiring data critical to predicting the impacts of the device.
 		\item Dr. Kayla Poole, for her advice on how the project may best be evaluated and for discussion on the project's possible impacts.
-		\item Mr. Golan Altman-Shafer, for help integral to the success of device testing.
+		\item Mr. Golan Altman-Shafer, for general help during device testing.
 		\item Mr. Eliot Scheuer, for aid in refining the project's presentation and themes.
 	\end{itemize}
 	\addcontentsline{toc}{section}{Acknowledgments} % Adds this section to the table of contents
