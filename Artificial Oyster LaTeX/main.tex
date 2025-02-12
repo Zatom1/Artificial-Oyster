@@ -403,7 +403,6 @@
 		\item 1.75 mm PLA Plastic Filament (1.2 kg w/o supports)
 		\item 405 nm wavelength linear laser (x2)
 		\item IP68 Servo
-		\item EK1894 5v DC Motor
 		\item 50W Solar panel
 		\item 12V LiPo Overcharge prevention circuit
 		\item 15,000 mAh Li-Po battery
@@ -515,11 +514,17 @@
 		\caption[Electrical Schematic]{The device's electrical schematic with several elements simplified for comprehensibility, most notably with the Raspberry Pi Compute Module 4 and its I/O board condensed to 7 inputs/outputs.}
 		\label{fig:ElecSchem}
 	\end{figure}
-	
+
 	Due to the very high cycle speeds required by the device and relatively simple electrical requirements, the electrical schematic is relatively simple. In this diagram, the Raspberry Pi CM4 and I/O board are greatly simplified to only include the inputs and outputs which are actually used within the device. One interesting aspect of the device is shown in the upper section of the electrical schematic, where a Raspberry Pi Pico 1 is used to regulate power to the \gls{RPI} CM4. This method is used primarily due to a quirk of the CM4’s camera management systems which causes the second camera (counter-intuitively using the cam0 port on the I/O board) to be disconnected from the \gls{RPI} if the device is rebooted using standard methods. This is likely because the camera management libraries used for the \gls{RPI} were not intended to operate two cameras at once, however, the issue can be circumvented simply by powering off the \gls{RPI} abruptly instead of rebooting properly. This requirement means that some external device must be responsible for controlling power supplied to the CM4, and as shown, a Raspberry Pi Pico fulfills this role by controlling a 3.3v solid state relay. This also simplifies time and voltage based operation to ensure that the device’s batteries never lose too much voltage, allowing operating times to change dynamically depending on the weather (sunlight) on any given day. 
 	\paragraph*{Power Management}
-	After empirical testing, it was found that the device consumes approximately 130 mA of power continuously, with the battery having declined from 8.16 to 8.06 volts\footnote{Reference section \ref{sec:mods} for why the battery used only had approximately 8 volts available.} over 4 hours, indicating a $\approx$ 5\% loss of battery power per the graph in figure 
+	After empirical testing, it was found that the device consumes approximately 130 mA of power continuously, with the battery having declined from 8.16 to 8.06 volts\footnote{Reference section \ref{sec:mods} for why the battery used only had approximately 8 volts available.} over 4 hours, indicating a $\approx$ 5\% loss of battery power per a standard Lithium Polymer (LiPo) charge capacity to voltage conversion. 
 	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/BatteryYear}
+		\caption[Battery Charge: 2023]{This graph shows a model of the device's battery charge every day of 2023 assuming 24/7/365 operation and relatively constant power draw. As seen, the device's battery never drops below 25\% when powered by a horizontal, unobstructed, 50 Watt solar panel. }
+		\label{fig:BatteryYear}
+	\end{figure}
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/MKE_GHI}
@@ -541,7 +546,7 @@
 		\label{fig:botPowerGen}
 	\end{figure} 
 	
-	Several different power generation techniques were considered for this device, with hydropower and solar being the two primary contenders. After evaluation, solar was selected for this project due primarily to solar's greater reliability and simplicity, as well as due to lower costs associated with deploying solar power. With a solar power generation system of the size described in the BOM, 5 individual devices could be powered from a single solar panel, making it very cost efficient if used in a deployment scheme such as that described in \ref{fig:washload} with multiple devices deployed in close proximity to each other. Given the climate of regions like Wisconsin (where testing took place), hydroelectric power would also be more susceptible to rivers freezing over and other inclement weather. 
+	Several different power generation techniques were considered for this device, with hydropower and solar being the two primary contenders. After evaluation, solar was selected for this project due primarily to solar's greater reliability and simplicity, as well as due to lower costs associated with deploying solar power. With a solar power generation system of the size described in the bill of materials, several devices could be powered from a single solar panel in ideal weather, making it very cost efficient if used in a deployment scheme such as that described in \ref{fig:washload} with multiple devices deployed in close proximity to each other. This type of usage would require a sunnier climate than that of Milwaukee, Wisconsin, as a 50W solar panel would only provide enough charge to power several devices on average days in Milwaukee. Given the climate of regions like Wisconsin (where testing took place), hydroelectric power would also be more susceptible to rivers freezing over and other inclement weather. 
 	
 	\iffalse:
 	\begin{enumerate}
@@ -561,7 +566,7 @@
 	\end{enumerate}
 	
 	%\iffalse
-	The graph shown in figure \ref{fig:ElecMod} shows how the device’s battery charge, power input, and current draw would fluctuate on an average day in Milwaukee, Wisconsin (the location of testing). As shown, the battery charge never drops below 88.9\%\textemdash under typical operating conditions, ensuring that sufficient voltage is maintained throughout the day. In this model, the device operates for 24 hours per day, thus filtering roughly 51.5 m3 of water as derived from figure \ref{fig:riverCrosssec}.  
+	%The graph shown in figure \ref{fig:ElecMod} shows how the device’s battery charge, power input, and current draw would fluctuate on an average day in Milwaukee, Wisconsin (the location of testing). As shown, the battery charge never drops below 88.9\%\textemdash under typical operating conditions, ensuring that sufficient voltage is maintained throughout the day. In this model, the device operates for 24 hours per day, thus filtering roughly 51.5 m3 of water as derived from figure \ref{fig:riverCrosssec}.  
 	\fi
 	
 	\subsubsection{Waterproofing}
@@ -590,10 +595,23 @@
 		\item \$7 - Assorted wires
 		\item \$15 - XALXMAW 32pcs wire lever connectors
 		\item \$14 - 2 part epoxy 
-	\end{enumerate} discount - 9+7+14+5+8
+	\end{enumerate}
 	
-	In total, these items cost \$493, and the only pieces of equipment necessary to assemble the device are small screwdrivers, a soldering iron, and optionally a hot glue gun. This makes the entire device relatively affordable when considering that several of the items here can be used multiple times to create multiple devices. When taking this into consideration, each device's cost drops to around \$450.
-	
+	In total, these items cost \$493, and the only pieces of equipment necessary to assemble the device are small screwdrivers, a soldering iron, and optionally a hot glue gun. This makes the entire device relatively affordable when considering that several of the items here can be used multiple times to create multiple devices. When taking this into consideration, each device's cost drops to around \$450. If the device were deployed according to the strategy described in figure \ref{fig:washload}, 10 "checkpoints" were used throughout the Milwaukee River, and the device was not modified to allow for greater area coverage, materials would cost roughly \$950,000. Accounting for deployment, the total cost may rise slightly, but the device is planned to be incredibly easy to deploy. Empirically, the deployment of one device for testing in the Milwaukee River as detailed later in this paper took approximately 10 minutes once on site, and if not for the additional data collection and precaution associated with science, it would taken less than 5 minutes. A deployment such as this would have lines of devices placed across the river's breadth for every 10 miles of river, and would lower MP concentrations by over 75\% behind each line of devices. Assuming a constant buildup of microplastics, the estimated microplastic concentrations as a percentage of concentration at the mouth of the river are as follows:
+	\begin{enumerate}
+		\label{checkpointPredictions}
+		\item Checkpoint 1:
+			\subitem 2.5\%
+		\item Checkpoint 2:
+			\subitem 3.13\%
+		\item Checkpoint 3:
+			\subitem 3.28\%
+		\item Checkpoint 4-9:
+			\subitem 3.32-3.33\%
+		\item Checkpoint 10:
+			\subitem 3.33\%
+	\end{enumerate}
+	This prediction is not necessarily accurate, as in reality there are irregularly located microplastic sources which comprise the majority of microplastic output, but it goes to show how significantly a deployment like this could help the MP problem. In theory, \textit{any} ideal river such as that modeled here (where microplastics are input at a constant rate) would have exactly the same concentrations, and if more than 10 checkpoints are used, the concentrations would scale linearly with the increased or decreased number (i.e, using 20 checkpoints approaches 1.66\% concentration, 40 approaches 0.83\%, etc).
 	\section{Testing}
 	\subsection{River Impact Testing}
 	Testing for the device will begin with a thorough analysis of the inadvertent impacts which the proposed device could have on riverine ecosystems due to its constant irradiation of water flowing through the processor. This irradiation is momentary, and will likely have a minimal effect on life within any river which the device operates inside of\textemdash but given that in a typical river (the Milwaukee River being used here as “typical”) the device could process massive quantities of water each day. This quantity of water processed can be approximated by multiplying the cross-sectional area of the device’s inlet by the flow rate of the river\textemdash something which can be approximated by comparing the river’s discharge with the overall river’s cross-sectional area. The calculations to find this value are as follows:
@@ -694,12 +712,16 @@
 	With this information collected, the device’s overall efficacy can be determined, and subsequent improvements or alterations can be made and re-tested.
 	
 	\paragraph*{Processing and Counting MPs}
+	\label{sec:processing}
 	Processing the microplastics will follow the procedure used in \cite{LenakerEtAlvertdist}(derived from \cite{Zobkov_Esiukova_2016}), the steps to this procedure being:
 	\begin{enumerate}
 		\item Remove microplastics and other collected \glspl{seston} from device and place into glass bowls 
-		\item Use Copper(II) Chloride salt to increase solution density to 1.5 g/cm$^3$  
-		\item After organics have dissolved, use 30\% Hydrogen Peroxide to dissolve organic and calcitic(shell fragments, etc) material
-		\item Evaporate water and count using FiJi image analysis software after sectioning and imaging individual section with high-quality camera microscope
+		\item Bake each sample in an oven set to 80\textdegree C in order to evaporate enough water to reach a total volume of roughly 70 mL
+		\item Mix with Copper(II) Chloride salt to increase solution density to 1.5 g/cm$^3$  
+		\item Use separatory funnel to separate denser sediments from lighter microplastics and algae
+		\item Use FiJi image analysis software to count all particles after partitioned into petri dish
+		\item Use 30\% Hydrogen Peroxide to dissolve organic material in the lighter fractions of each sample separated with the separatory funnel
+		\item Again, count using FiJi image analysis software after sectioning
 	\end{enumerate}
 	
 	\subsubsection{Predictions}
@@ -764,7 +786,7 @@
 	}
 	\fi
 	\subsubsection{Collection Efficiency}
-	\paragraph{Quantity and Numerical Proportions}
+	\paragraph{Particle Identification}
 	To evaluate the efficiency of collection, samples were visually evaluated under a compound microscope\footnote{Although many of the microplastics seen under the microscope were smaller than the 300 \textmu m size of the filter's pores, results from microscope analysis are still presumed to be valid because the device is capable of identifying particles as small as 40 \textmu m due to differences between the camera's resolution and filter pore size. Many of these particles likely passed through the filter, however, the proportional amount of various particle classes is still probably accurate because all of the filters used were of the same pore diameter.} to identify and count them. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected in $\approx$ 1 mL batches using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed with filtered tap water into the sample to minimize sample loss\footnote{Unfortunately deionized water was not available for this process, however, the tap water is assumed to have only negligibly contributed to MP levels due to the small quantities used and the smaller size of MPs typically found in tap water.}. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. 
 	Figures \ref{fig:bluetwist}, \ref{fig:fabric}, and \ref{fig:mporganic} show some particles of particular interest which were found during the counting process, though only the particle seen in figure \ref{fig:mporganic} was actually counted\footnote{The other two plastics were seen while moving during the counting process, and were not counted so as to avoid bias towards large, brightly-colored microplastics in counting.}.
 	
@@ -788,15 +810,15 @@
 		\caption[MP Near Organic Matter]{This image shows a clear fragment microplastic in the bottom left corner, with the microscope's focus on a small piece of algae. This image is generally reflective of how the majority of particles appeared during counting, with the microscope aperture usually capturing a few particles at a time.}
 		\label{fig:mporganic}
 	\end{figure}
-	Identification was carried out according to the guidelines in \cite{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain \glspl{seston} such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
-	\begin{figure}[H]
+	Identification was carried out according to the guidelines in \cite{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain \glspl{seston} such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all 307 particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting}
 		\caption[Collected Particle Classification]{Bar chart with data of all particles collected in both the MP and organic samples.}
 		\label{fig:mpcounting}
 	\end{figure}
-	
-	As seen, the device collected just over 90\% of the microplastics which passed through it during the 4 hours of testing, strongly supporting goal \#2 of the Engineering Goals from section \ref{sec:goals}. Despite this success, goal \#3 of section \ref{sec:goals} was not met, with nearly 33\% of organic \glspl{seston} being collected by the device. Given the importance of these organic particles to \gls{benthic} ecosystems, this is unfortunate and may prevent the specific device used in this study from being used in more sensitive areas\textemdash though organic matter pass through efficiency could likely be improved by using higher quality cameras or customizing COTS parts used in this device.
+	\paragraph*{Particle Quantification - Proportions}
+	As seen in figure \ref{fig:mpcounting}, the device collected just over 90\% of the microplastics which passed through it during the 4 hours of testing, strongly supporting goal \#2 of the Engineering Goals from section \ref{sec:goals}. Despite this success, goal \#3 of section \ref{sec:goals} was not met, with nearly 33\% of organic \glspl{seston} being collected by the device. Given the importance of these organic particles to \gls{benthic} ecosystems, this fact may prevent the specific device used in this study from being used in more sensitive areas\textemdash though organic matter pass through efficiency could likely be improved by using higher quality cameras, customizing COTS parts, or adding additional parts in order to provide extra verification of particle identity.
 	
 	\begin{figure}[h]
 		\centering
@@ -812,7 +834,38 @@
 		\label{fig:rawreleased}
 	\end{figure}
 	
+	\paragraph*{Particle Quantification - Counts}
+	In addition to finding the proportion of particles within the device's sample which were microplastics, the actual number of particles collected was counted using image analysis. This was conducted with FiJi\footnote{Acronym: FiJi$^{13}$ is Just ImageJ}, an expanded version of ImageJ, a common scientific image analysis tool. The key feature of FiJi is the \textit{Analyze Particles} tool, which allows for automatic counting of particles depending on threshold settings defined by the user. To conduct this particle analysis, the samples were prepared and analyzed according to steps 1-5 of the procedure laid out in section \ref{sec:processing}. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[angle=-90,origin=c,width=1\linewidth]{Figures/SepFunnel}
+		\caption[Separatory Funnel]{A close up image of the separatory funnel used to separate dense sediments from lighter microplastics and algae. The water inside of the funnel is colored a bright green from the Copper(II) Chloride added to increase density, and many particles can be seen floating in the solution.}
+		\label{fig:SepFunnel}
+		
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/SedimentBlue}
+		\caption[Separated Sediment]{Here, the separated sediment from the bottom of the separatory funnel is seen in a glass bowl.}
+		\label{fig:SedBlue}
+	\end{figure}
+	The results from the analysis revealed that over 30,000 particles of $\rho$ \textless 1.5 g/mL were collected by the device, and using the proportions determined from previous microscope analysis, it is estimated that 17,749 of these particles were microplastics. After comparison of FiJi analysis with manual counting of particles in a sample (n=362), it was determined that the particle counting procedure had an error of roughly 8.8\%, leading to upper and lower bounds on the total particle count at 34,204 and 29,136 particles respectively, and the bounds on MP count at 22,097 and 16,035 microplastic particles respectively. The predictions made in section \ref{subsubsec:predictions} fall within these ranges, with the figure of 16,600 near the lower bound by error. A variety of factors impact this figure, with minor fluctuations in TSS, (greater than anticipated) error in counting, or loss from transferring particles between containers likely accounting for any remaining error. The average particle size counted by FiJi was 0.291mm$^2$, which means that the majority of particles collected were irregular in shape\textemdash indicating either fragments or fibers as opposed to spheres or crumbs. 
+		\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/TotalQuantities}
+		\caption[Cumulative Non-Sediment Particle Quantities]{This chart shows the }
+		\label{fig:totalcount}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/ParticleCounting}
+		\caption[FiJi Particle Counting]{An example of how the FiJi image analysis software counts particles. Here, a 28x28 mm square is shown, with particles identified by FiJi circled in yellow. The average size of particle in this image is 870 microns. }
+		\label{fig:FiJiAnal}
+	\end{figure}
+	
 	\subsubsection{Further Predictions}	
+	\label{sec:furtherPredictions}
 	If it is assumed that the Milwaukee River is relatively typical in its proportion of wash, bed, and suspended load, roughly 80\% of the 22.1 mg/L of total suspended load in the Milwaukee River, or 17.68 mg/L is likely the "wash load"\textemdash particles which stay permanently suspended and travel most of or the entire length of the river. Using the Milwaukee River's nominal length of 104 miles, the wash load should spend at most 4-6 days suspended assuming a river speed of $\approx$ 0.4-1 m/s. 
 	\linebreak
 	Using this information, it follows that removing microplastics in the suspended load at various points in the river will remove significant portions of downstream microplastic pollution as shown in figure \ref{fig:washload}.
@@ -822,7 +875,7 @@
 		\caption[Wash Load MP Collection]{Illustration of how a single collection checkpoint can significantly lower downstream \gls{benthic} microplastic concentrations. Note that the front attachment in this image reflects the type of attachment which may be attached to a production version of the device with a wider mouth in order to capture more of the \gls{benthic} flow.}
 		\label{fig:washload}
 	\end{figure}
-	By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$72.4\% (90.54\% efficiency * 80\% suspended load). This prediction rests on the optimistic assumption that 100\% of suspended \gls{benthic} MPs within the suspended load enter the device, however, it does not account for bed load microplastics transported via \gls{saltation}, which counteracts the underestimation caused by this assumption to an unknown degree.
+	By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$72.4\% (90.54\% efficiency * 80\% suspended load). This prediction rests on the optimistic assumption that 100\% of suspended \gls{benthic} MPs within the suspended load enter the device, however, it does not account for bed load microplastics transported via \gls{saltation}, which counteracts the underestimation caused by this assumption to an unknown degree. In this deployment scheme, assuming constant microplastic input to the river, total MP concentration would reach 3.33\% of previous totals at the mouth of the river if 10 checkpoints are used. This is detailed further in section \ref{checkpointPredictions}.
 	
 	\subsection{Risks}
 	Outside of the typical risks associated with existing and working within a workshop environment, this project poses very few dangers. The majority of parts for the final device are 3D printed or off-the-shelf components, not pieces which need to be separately manufactured via CNC, drilling, etc. Besides these standard risks, physically placing the device into the water during the empirical testing will likely be the most dangerous part of the project, however, this will be performed with others present and in water which only reaches $\approx$2-3 feet deep at maximum as seen in figure \ref{fig:riverCrosssec}. With proper attire (waders, gloves, jackets, etc.) this should not pose any significant risk.
@@ -831,12 +884,12 @@
 	
 	\phantomsection
 	\section*{Acknowledgments} % The \section*{} command stops section numbering
-	Several people aided greatly in the completion of this project; they are given here in no particular order. The author extends great thanks to:
+	Several people aided greatly in the completion of this project; they are given here in no particular order. The author extends thanks to:
 	\begin{itemize}
-		\item Mrs. Stephanie Rasmussen, for her advice in experimental procedure, aid in proofreading, and general help surrounding competition
+		\item Mrs. Stephanie Rasmussen, for her advice in experimental procedure, aid in proofreading, and general help surrounding competition.
 		\item Mr. Joseph Keller, for providing advice and refinement of how exactly the device created here may work, as well as for providing equipment critical to testing and evaluating the effectiveness of the device. In addition, for aid in acquiring data critical to predicting the impacts of the device.
 		\item Dr. Kayla Poole, for her advice on how the project may best be evaluated and for discussion on the project's possible impacts.
-		\item Mr. Golan Altman-Shafer, for help integral to the success of device testing.
+		\item Mr. Golan Altman-Shafer, for general help during device testing.
 		\item Mr. Eliot Scheuer, for aid in refining the project's presentation and themes.
 	\end{itemize}
 	\addcontentsline{toc}{section}{Acknowledgments} % Adds this section to the table of contents
