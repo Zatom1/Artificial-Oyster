@@ -514,7 +514,7 @@
 		\caption[Electrical Schematic]{The device's electrical schematic with several elements simplified for comprehensibility, most notably with the Raspberry Pi Compute Module 4 and its I/O board condensed to 7 inputs/outputs.}
 		\label{fig:ElecSchem}
 	\end{figure}
-
+	
 	Due to the very high cycle speeds required by the device and relatively simple electrical requirements, the electrical schematic is relatively simple. In this diagram, the Raspberry Pi CM4 and I/O board are greatly simplified to only include the inputs and outputs which are actually used within the device. One interesting aspect of the device is shown in the upper section of the electrical schematic, where a Raspberry Pi Pico 1 is used to regulate power to the \gls{RPI} CM4. This method is used primarily due to a quirk of the CM4’s camera management systems which causes the second camera (counter-intuitively using the cam0 port on the I/O board) to be disconnected from the \gls{RPI} if the device is rebooted using standard methods. This is likely because the camera management libraries used for the \gls{RPI} were not intended to operate two cameras at once, however, the issue can be circumvented simply by powering off the \gls{RPI} abruptly instead of rebooting properly. This requirement means that some external device must be responsible for controlling power supplied to the CM4, and as shown, a Raspberry Pi Pico fulfills this role by controlling a 3.3v solid state relay. This also simplifies time and voltage based operation to ensure that the device’s batteries never lose too much voltage, allowing operating times to change dynamically depending on the weather (sunlight) on any given day. 
 	\paragraph*{Power Management}
 	After empirical testing, it was found that the device consumes approximately 130 mA of power continuously, with the battery having declined from 8.16 to 8.06 volts\footnote{Reference section \ref{sec:mods} for why the battery used only had approximately 8 volts available.} over 4 hours, indicating a $\approx$ 5\% loss of battery power per a standard Lithium Polymer (LiPo) charge capacity to voltage conversion. 
@@ -601,15 +601,15 @@
 	\begin{enumerate}
 		\label{checkpointPredictions}
 		\item Checkpoint 1:
-			\subitem 2.5\%
+		\subitem 2.5\%
 		\item Checkpoint 2:
-			\subitem 3.13\%
+		\subitem 3.13\%
 		\item Checkpoint 3:
-			\subitem 3.28\%
+		\subitem 3.28\%
 		\item Checkpoint 4-9:
-			\subitem 3.32-3.33\%
+		\subitem 3.32-3.33\%
 		\item Checkpoint 10:
-			\subitem 3.33\%
+		\subitem 3.33\%
 	\end{enumerate}
 	This prediction is not necessarily accurate, as in reality there are irregularly located microplastic sources which comprise the majority of microplastic output, but it goes to show how significantly a deployment like this could help the MP problem. In theory, \textit{any} ideal river such as that modeled here (where microplastics are input at a constant rate) would have exactly the same concentrations, and if more than 10 checkpoints are used, the concentrations would scale linearly with the increased or decreased number (i.e, using 20 checkpoints approaches 1.66\% concentration, 40 approaches 0.83\%, etc).
 	\section{Testing}
@@ -711,6 +711,9 @@
 	\end{enumerate}
 	With this information collected, the device’s overall efficacy can be determined, and subsequent improvements or alterations can be made and re-tested.
 	
+	\subsection{Risks}
+	Outside of the typical risks associated with existing and working within a workshop environment, this project poses very few dangers. The majority of parts for the final device are 3D printed or off-the-shelf components, not pieces which need to be separately manufactured via CNC, drilling, etc. Besides these standard risks, physically placing the device into the water during the empirical testing will likely be the most dangerous part of the project, however, this will be performed with others present and in water which only reaches $\approx$2-3 feet deep at maximum as seen in figure \ref{fig:riverCrosssec}. With proper attire (waders, gloves, jackets, etc.) this should not pose any significant risk.
+	
 	\paragraph*{Processing and Counting MPs}
 	\label{sec:processing}
 	Processing the microplastics will follow the procedure used in \cite{LenakerEtAlvertdist}(derived from \cite{Zobkov_Esiukova_2016}), the steps to this procedure being:
@@ -727,8 +730,16 @@
 	\subsubsection{Predictions}
 	\label{subsubsec:predictions}
 	\paragraph{Microplastics}
-	The quantity of microplastics to be collected by the device can be simply approximated by using measurements from previous studies in tandem with data on total suspended solids (TSS) from USGS. Here, we find from \cite{LenakerEtAlvertdist} that microplastic concentrations near the intended testing site (the lower Milwaukee River) are approximately 2100 MP/kg, and additionally we find that this area's TSS measures roughly 22.1 mg/L. Next, multiplying previous figures of total water filtration per day (27.26 m$^3$, 27257 liters) by TSS concentration (22.1 mg/L), we find that the device will filter roughly 0.602 kg of suspended solids per day on average. Multiplying this value by the concentration of microplastics per kilogram of sediment(2100 MP/kg), we determine that the device should collect roughly 1265 microplastics over the duration of testing on a completely average day. Upper and lower bounds for this value can also be calculated using the extreme values ever measured on the Milwaukee River (2.1 mg/L, 1400 mg/L, \cite{USGSMil}, \cite{MKETSS}), arriving at 120 and 80,138 microplastics respectively\footnote{While microplastic collection may in theory increase linearly with total suspended solids, times with very high turbidity }. 
-	\linebreak
+	The quantity of microplastics to be collected by the device can be simply approximated by using measurements from previous studies in tandem with data on total suspended solids (TSS) from USGS. Here, we find from \cite{LenakerEtAlvertdist} that microplastic concentrations near the intended testing site (the lower Milwaukee River) are approximately 2100 MP/kg, and additionally we find that this area's TSS measures roughly 22.1 mg/L. Next, multiplying previous figures of total water filtration per day (27.26 m$^3$, 27257 liters) by TSS concentration (22.1 mg/L), we find that the device will filter roughly 0.602 kg of suspended solids per day on average. Multiplying this value by the concentration of microplastics per kilogram of sediment (2100 MP/kg), we determine that the device should then collect roughly 1265 microplastics above 333 $\mu$m in size over the course of one completely average day. Upper and lower bounds for this value can also be calculated using the extreme values ever measured on the Milwaukee River (2.1 mg/L, 1400 mg/L, \cite{USGSMil}, \cite{MKETSS}), arriving at 120 and 80,138 microplastics respectively\footnote{While microplastic collection may in theory increase linearly with total suspended solids, times with very high turbidity would likely see lesser effectiveness in camera-based detection and laser penetration which may hinder device efficiency in very high turbidity waters.}. These figures are accurate for MP sizes above 333 $\mu$m, however, it must be noted that while both the device described here and \cite{LenakerEtAlvertdist} use 333 $\mu$m filter sizes, the actual size of microplastics collected by the device can vary significantly from this figure. This variance arises due to an incongruence between camera resolution and filter size which means that the device's cameras can detect particles as small as 40 $\mu$m\footnote{Dividing the channel's height (30 mm) by the camera's vertical resolution (640 pixels), we get 30 mm/640 px = 0.047 mm/px = 47 $\mu$m/px. Practically, this minimum detection size is even smaller due to light scattering, and fibers as thin as 40 $\mu$m were successfully detected during testing.}. While some of these sub-333 $\mu$m particles will be pushed through the filter, elementary calculations\footnote{Proof in cell G832 of the 1982-84 TSS Data sheet in the supplementary materials.} show that the device's flipper will only allow water into the filtering channel 8.7\% of the time, meaning that many microplastics which may otherwise push through the filter will be instead collected by falling into the collection chamber. Thus, in order to determine how many microplastics the device will collect, the proportion of \textgreater 333 $\mu$m microplastics compared to \textgreater 40 $\mu$m MPs must be accounted for. A recent study conducted in Beijing found that these \textgreater 333 $\mu$m comprise only 13.2\% of microplastics, and that an additional 81\% can be found in the 40-333 $\mu$m range as shown in \ref{fig:PercentageSizes}. When we account for this increase, the quantity of microplastics collected on a completely average day increases by more than 7 times from 1265 MPs/day to 8944 MPs/day. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/PercentDetectable}
+		\caption[Microplastic Size Distributions from 0-1 mm]{Annotated graph showing MP sizes by cumulative quantity. The leftmost vertical pink line shows the lower bound of what can be detected by the device, and the rightmost shows 333 $\mu$m. The original graph can be found in \cite{Niu_Xu_Wu_Gao_2024}.}
+		\label{fig:PercentageSizes}
+	\end{figure}
+	
+
 	There are a few key assumptions which are necessary for this modeling to be accurate, those being:
 	\begin{enumerate}
 		\item The concentration of microplastics in the sediment must be relatively constant throughout the Milwaukee river (or at least must not fluctuate overly significantly to form hot spots of microplastics)
@@ -737,9 +748,9 @@
 		\subitem This is, given its unverifiability, the assumption most likely to be incorrect, which would lead to much higher than expected quantities of microplastics on the day of testing
 		\item There must be a positive correlation between TSS and suspended microplastics
 	\end{enumerate}
-	If these limited assumptions are correct, then it is likely that the device will operate as planned. Given this, a collection of roughly 1265 microplastics is predicted if tested for an entire average day.
+	If these limited assumptions are correct, then it is likely that the device will operate as planned. %Given this, a collection of roughly 1265 microplastics is predicted if tested for an entire average day.
 	
-	This project's testing occured for a more limited period of 4 hours, as \gls{benthic} sediment concentrations do not significantly fluctuate over time, and a more limited testing period simplifies several aspects of experimentation. In addition, the survivability of a \gls{benthic} device primarily depends on water ingress protection\textemdash and with a successful 4 hour long test, the device will have passed the equivalent of 8 consecutive IP68 rating tests (the test which typically must be passed to qualify products as "waterproof"). Given this limited testing period, the predicted figure of 1265 MPs/day can be divided into 211 MPs/4 hours on an average day. This figure has upper and lower bounds at 13,356 and 20 MPs per 4 hours, respectively, assuming that TSS on the day of testing falls within previously measured maximum and minimum TSS values.
+	This project's testing occured for a more limited period of 4 hours, as \gls{benthic} sediment concentrations do not significantly fluctuate over time, and a more limited testing period simplifies several aspects of experimentation. In addition, the survivability of a \gls{benthic} device primarily depends on water ingress protection\textemdash and with a successful 4 hour long test, the device will have passed the equivalent of 8 consecutive IP68 rating tests (the test which typically must be passed to qualify products as "waterproof"). Given this limited testing period, the predicted figure of 8944 MPs/day can be divided into 1491 MPs/4 hours on an average day. This figure has upper and lower bounds at 94,426 and 141 MPs per 4 hours, respectively, assuming that TSS on the day of testing falls within previously measured maximum and minimum TSS values.
 	\linebreak
 	In addition to testing the device, a 500 mL water sample was taken at the time of testing. This was used to measure TSS within the river by massing a 100mL sample of the water, waiting for water to evaporate for several days while undisturbed, and finally massing again to determine TSS. These results will allow for further correlation and confirmation of the predictions previously made.
 	\paragraph{Sediment}
@@ -757,7 +768,7 @@
 	\end{enumerate}
 	\subsubsection{Results}
 	\paragraph*{Details}
-	Though initially planned for January 19th, testing was conducted on January 20th. Experimentation began at 12:13 PM, and after approximately 4 hours the device was removed at 4:17 PM. On the day of testing, air temperature was approximately -16$^{\circ}$ C, water speed rested at roughly 1.7 m/s, and total suspended solids at 290 mg/L. Given this, and using equations derived in section \ref{subsubsec:predictions}, it can be predicted that approximately 16,600 MPs should be collected by the device. 
+	Though initially planned for January 19th, testing was conducted on January 20th. Experimentation began at 12:13 PM, and after approximately 4 hours the device was removed at 4:17 PM. On the day of testing, air temperature was approximately -16$^{\circ}$ C, water speed rested at roughly 1.7 m/s, and total suspended solids at 290 mg/L. Given this, and using equations derived in section \ref{subsubsec:predictions}, it can be predicted that approximately 19,560 MPs should be collected by the device. 
 	%\paragraph{Microplastic Identification}
 	
 	
@@ -787,7 +798,7 @@
 	\fi
 	\subsubsection{Collection Efficiency}
 	\paragraph{Particle Identification}
-	To evaluate the efficiency of collection, samples were visually evaluated under a compound microscope\footnote{Although many of the microplastics seen under the microscope were smaller than the 300 \textmu m size of the filter's pores, results from microscope analysis are still presumed to be valid because the device is capable of identifying particles as small as 40 \textmu m due to differences between the camera's resolution and filter pore size. Many of these particles likely passed through the filter, however, the proportional amount of various particle classes is still probably accurate because all of the filters used were of the same pore diameter.} to identify and count them. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected in $\approx$ 1 mL batches using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed with filtered tap water into the sample to minimize sample loss\footnote{Unfortunately deionized water was not available for this process, however, the tap water is assumed to have only negligibly contributed to MP levels due to the small quantities used and the smaller size of MPs typically found in tap water.}. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. 
+	To evaluate the efficiency of collection, samples were visually evaluated under a compound microscope\footnote{Although many of the microplastics seen under the microscope were smaller than the 300 \textmu m size of the filter's pores, results from microscope analysis are still presumed to be valid because the device is capable of identifying particles as small as 40 \textmu m due to aforementioned differences between the camera's resolution and filter pore size. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected in $\approx$ 1 mL batches using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed with filtered tap water into the sample to minimize sample loss\footnote{Unfortunately deionized water was not available for this process, however, the tap water is assumed to have only negligibly contributed to MP levels due to the small quantities used and the smaller size of MPs typically found in tap water.}. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. 
 	Figures \ref{fig:bluetwist}, \ref{fig:fabric}, and \ref{fig:mporganic} show some particles of particular interest which were found during the counting process, though only the particle seen in figure \ref{fig:mporganic} was actually counted\footnote{The other two plastics were seen while moving during the counting process, and were not counted so as to avoid bias towards large, brightly-colored microplastics in counting.}.
 	
 	\begin{figure}[h]
@@ -849,18 +860,18 @@
 		\caption[Separated Sediment]{Here, the separated sediment from the bottom of the separatory funnel is seen in a glass bowl. Filtered tap water was added to the bowl during processing, causing the water color to lighten to blue.}
 		\label{fig:SedBlue}
 	\end{figure}
-	The results from the analysis revealed that over 30,000 particles of $\rho$ \textless 1.5 g/mL were collected by the device, and using the proportions determined from previous microscope analysis, it is estimated that 17,749 of these particles were microplastics. After comparison of FiJi analysis with manual counting of particles in a sample (n=362), it was determined that the particle counting procedure had an error of roughly 8.8\%, leading to upper and lower bounds on the total particle count at 34,204 and 29,136 particles respectively, and the bounds on MP count at 22,097 and 16,035 microplastic particles respectively. The predictions made in section \ref{subsubsec:predictions} fall within these ranges, with the figure of 16,600 near the lower bound by error. A variety of factors impact this figure, with minor fluctuations in TSS, (greater than anticipated) error in counting, or loss from transferring particles between containers likely accounting for any remaining error. The average particle size counted by FiJi was 0.291mm$^2$, which means that the majority of particles collected were irregular in shape\textemdash indicating either fragments or fibers as opposed to spheres or crumbs. 
-		\begin{figure}[h]
+	The results from the analysis revealed that over 30,000 particles of $\rho$ \textless 1.5 g/mL were collected by the device, and using the proportions determined from previous microscope analysis, it is estimated that 18,945 of these particles were microplastics. After comparison of FiJi analysis with manual counting of particles in a sample (n=362), it was determined that the particle counting procedure had an error of roughly 8.8\%, leading to upper and lower bounds on the total particle count at 34,204 and 29,136 particles respectively, and the bounds on MP count at 22,097 and 16,035 microplastic particles respectively. The predictions made in section \ref{subsubsec:predictions} fall within these ranges, with the figure of 19,560 only 3.1\% above this number. A variety of factors impact this figure, with minor fluctuations in TSS, errors in counting, or loss from transferring particles between containers likely accounting for any remaining error. The average particle size counted by FiJi was 0.264 mm$^2$, but it should be noted that this is \textbf{not} necessarily representative of the actual average particle size because the primary concern during FiJi analysis was on correctly counting the quantity of particles as opposed to their size. 
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/TotalQuantities}
-		\caption[Cumulative Non-Sediment Particle Quantities]{This chart shows the }
+		\caption[Cumulative Non-Sediment Particle Quantities]{This chart shows the cumulative quantities of non-sediment particles as determined by density separation using a separatory funnel.}
 		\label{fig:totalcount}
 	\end{figure}
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/ParticleCounting}
-		\caption[FiJi Particle Counting]{An example of how the FiJi image analysis software counts particles. Here, a 28x28 mm square is shown, with particles identified by FiJi circled in yellow. The average size of particle in this image is 870 microns. }
+		\caption[FiJi Particle Counting]{An example of how the FiJi image analysis software counts particles. Here, a 28x28 mm square is shown, with particles identified by FiJi circled in yellow.}
 		\label{fig:FiJiAnal}
 	\end{figure}
 	
@@ -877,8 +888,7 @@
 	\end{figure}
 	By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$72.4\% (90.54\% efficiency * 80\% suspended load). This prediction rests on the optimistic assumption that 100\% of suspended \gls{benthic} MPs within the suspended load enter the device, however, it does not account for bed load microplastics transported via \gls{saltation}, which counteracts the underestimation caused by this assumption to an unknown degree. In this deployment scheme, assuming constant microplastic input to the river, total MP concentration would reach 3.33\% of previous totals at the mouth of the river if 10 checkpoints are used. This is detailed further in section \ref{checkpointPredictions}.
 	
-	\subsection{Risks}
-	Outside of the typical risks associated with existing and working within a workshop environment, this project poses very few dangers. The majority of parts for the final device are 3D printed or off-the-shelf components, not pieces which need to be separately manufactured via CNC, drilling, etc. Besides these standard risks, physically placing the device into the water during the empirical testing will likely be the most dangerous part of the project, however, this will be performed with others present and in water which only reaches $\approx$2-3 feet deep at maximum as seen in figure \ref{fig:riverCrosssec}. With proper attire (waders, gloves, jackets, etc.) this should not pose any significant risk.
+
 	
 	%------------------------------------------------
 	
