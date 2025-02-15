@@ -160,7 +160,7 @@
 
 \addto{\captionsenglish}{\renewcommand{\abstractname}{Introduction}}
 
-\Abstract{Since the invention of modern plastics during the 20th century, microplastics (MPs) have become one of the most pervasive anthropogenic pollutants on Earth\textemdash being found everywhere from the Marianas Trench, to Mount Everest, to the human brain. Very few methods have been proposed to remove these plastics from the environment in general, and no methods have thus far been proposed to remove them from benthic sediment\textemdash a place where they can have immense negative impacts by acting as vectors for persistent organic pollutants, deoxygenating sediment, and by adversely affecting various biological processes. This paper thus presents the first device capable of separating these plastics within the scope of riverine ecosystems, and furthermore presents a first step towards creating a generalized system capable of removing any class of particle from all benthic ecosystems; a task which was previously only possible by ecologically damaging dredging. The device operates by illuminating suspended particles with laser light, measuring the reflected light with a camera, then either collecting them or releasing them back into the river depending on reflected light's wavelength and intensity. Empirical results from testing in the Milwaukee River have shown this method to work with 90.54\% effectiveness when removing microplastics, and with further refinement it is theorized that this performance can be even further improved to become even more accurate in selection. Taken in whole, this device presents the first step towards a low-cost, generalizable, and self-sufficient method of particle removal in rivers which could be broadly applied to significant ecological benefit.}
+\Abstract{Since the invention of modern plastics during the 20th century, microplastics (MPs) have become one of the most pervasive anthropogenic pollutants on Earth\textemdash being found everywhere from the Marianas Trench, to Mount Everest, to the human brain. Very few methods have been proposed to remove these plastics from the environment in general, and no methods have thus far been proposed to remove them from benthic sediment at the bottom of the water column\textemdash a place where they can have immense negative impacts by acting as vectors for persistent organic pollutants, deoxygenating sediment, and by adversely affecting various biological processes. This paper thus presents the first device capable of separating these plastics within the scope of riverine ecosystems, and furthermore presents a first step towards creating a generalized system capable of removing any class of particle from any benthic ecosystem; a task which was previously only possible by ecologically damaging dredging. The device operates by illuminating suspended particles with laser light, measuring the reflected light with a camera, then either collecting them or releasing them back into the river depending on reflected light's wavelength and intensity. Empirical results from testing in the Milwaukee River have shown this method to work with 90.54\% effectiveness when removing microplastics, and with further refinement it is theorized that this performance can be further improved to become even more accurate in selection. Taken in whole, this device presents the first step towards a low-cost, generalizable, and self-sufficient method of particle removal in rivers which could be broadly applied to significant ecological benefit.}
 
 %----------------------------------------------------------------------------------------
 
@@ -189,7 +189,7 @@
 		\item The elimination of \gls{benthic} microplastics as a significant pollutant in rivers within the Great Lakes Basin.
 		
 	\end{enumerate}
-	Specifically, global meta-analyses have found that microplastics have significant negative impacts on bivalves' (and most other benthic organisms') growth, reproduction, metabolism, with the largest impacts on freshwater benthic ecosystems\cite{Berlino__2021}. Other analyses have found similar results, with microplastics having been found to have significant negative impacts on survival rates, development, growth, reproduction, feeding, and behavior of benthic invertebrates\cite{MASON2022157362}. These negative impacts are believed to be widespread enough that they have appreciably decreased net primary productivity in benthic ecosystems which are thought to be by far the greatest contributors to primary productivity in rivers\cite{DAVIES200823}. If benthic ecosystems are too greatly harmed, the impacts on global wildlife and human life could be disastrous, and thus far there have been no indications that the problem of benthic microplastic pollution will go away over time. Given this, it is imperative that solutions be developed to prevent the further loss of biodiversity in these ecosystems. 
+	Specifically, global meta-analyses have found that microplastics have significant negative impacts on bivalves' (and most other benthic organisms') growth, reproduction, metabolism, with the largest impacts on freshwater benthic ecosystems\cite{BERLINO2021117174}. Other analyses have found similar results, with microplastics having been found to have significant negative impacts on survival rates, development, growth, reproduction, feeding, and behavior of benthic invertebrates\cite{MASON2022157362}. These negative impacts are believed to be widespread enough that they have appreciably decreased net primary productivity in benthic ecosystems which are thought to be by far the greatest contributors to primary productivity in rivers\cite{DAVIES200823}. If benthic ecosystems are too greatly harmed, the impacts on global wildlife and human life could be disastrous, and thus far there have been no indications that the problem of benthic microplastic pollution will go away over time. Given this, it is imperative that solutions be developed to prevent the further loss of biodiversity in these ecosystems. 
 	
 	\printglossaries
 	
@@ -321,7 +321,7 @@
 		\label{fig:Reemission}
 	\end{figure}
 	
-	\section{Procedure}
+	\section{Construction Procedure}
 	
 	\subsection{Overview}
 	The primary functionality of the proposed device involves selectively filtering \gls{benthic} river currents in order to primarily collect microplastics while avoiding collection of other \glspl{seston} within the \gls{benthic} region of rivers. Filtering these \gls{benthic} microplastics is far more difficult than filtering most other microplastics, with the three primary difficulties being that: 
@@ -572,7 +572,7 @@
 	\subsubsection{Waterproofing}
 	For the final device to be successful, there are three parts that must be prevented from ever contacting water directly\textemdash those being the \gls{RPI} compute module and the two cameras on either side of the processor. If any of these components contact the water then corrosion will soon follow, greatly reducing the device’s lifespan. Waterproofing is accomplished with a combination of multi-layered walls, small exits, and coating with 2-part epoxy to ensure that no water ever enters. One other approach of lifting the compute module above the water was considered, however, this would conflict with tenet \# 1 of Design Principles, subsection \ref{subsec:TechDesign}\textemdash if the compute module were raised above the water then it would present an obstacle to humans and compromise the environmental services provided by the river. 
 	\subsection{Cost Analysis}
-	
+	\label{CostAnalysis}
 	In order to estimate the feasibility of large-scale deployment of the device described here, an individual cost analysis of the individual device must be completed. Following is the list of materials from a previous section, along with the costs associated with each piece multiplied by quantity.
 	
 	\begin{enumerate}
@@ -612,7 +612,7 @@
 		\subitem 3.33\%
 	\end{enumerate}
 	This prediction is not necessarily accurate, as in reality there are irregularly located microplastic sources which comprise the majority of microplastic output, but it goes to show how significantly a deployment like this could help the MP problem. In theory, \textit{any} ideal river such as that modeled here (where microplastics are input at a constant rate) would have exactly the same concentrations, and if more than 10 checkpoints are used, the concentrations would scale linearly with the increased or decreased number (i.e, using 20 checkpoints approaches 1.66\% concentration, 40 approaches 0.83\%, etc).
-	\section{Testing}
+	\section{Testing Procedure}
 	\subsection{River Impact Testing}
 	Testing for the device will begin with a thorough analysis of the inadvertent impacts which the proposed device could have on riverine ecosystems due to its constant irradiation of water flowing through the processor. This irradiation is momentary, and will likely have a minimal effect on life within any river which the device operates inside of\textemdash but given that in a typical river (the Milwaukee River being used here as “typical”) the device could process massive quantities of water each day. This quantity of water processed can be approximated by multiplying the cross-sectional area of the device’s inlet by the flow rate of the river\textemdash something which can be approximated by comparing the river’s discharge with the overall river’s cross-sectional area. The calculations to find this value are as follows:
 	\begin{enumerate}
@@ -674,15 +674,27 @@
 	After all rounds of irradiation, each sample will be examined under a standard classroom microscope and the impacts of the irradiation will be qualitatively examined\textemdash checking primarily for microorganisms and other signs of life or lack thereof. For the tests to be considered satisfactory (i.e., for the existing laser to be used as opposed to a lower-power variant which would have less impact on microorganisms), all samples \# 1-3 should be essentially indistinguishable from the control sample. This range is chosen because given the flow rate of the Milwaukee River ($\approx$2 m/s) compared to the motorized gantry’s speed of 200mm/s, sample \# 1 will have been irradiated for roughly 10x longer than the river water traveling through the device will be exposed (sample \# 2 roughly 20x, \# 3 30x, etc.). If successful, this will remove any doubt that the device will have significant negative impacts on the river\textemdash although it is also important to note that this testing should be conducted every time that the device is placed in a new river to ensure that the local flora and fauna are not disturbed. It should also be noted that different times of year may have different active organisms, and thus more extensive testing ought to be conducted for long-term deployment.
 	
 	\subsubsection{Prediction}
-	Given the results from several previous studies\footnote{Unfortunately, very little work has been done regarding the impacts of blue laser light exposure on microorganisms, even less on riverine microorganisms, and essentially none on exposures at the $<$1 second timescale. This is certainly an area for future research, however, given the minimal impacts found at times as high as several hours in the studies at the footnote on other bacteria and microorganisms, it can be somewhat reasonably inferred that similarly minimal impacts result from the singular $<$0.01 second exposure used here. As a result of the aforementioned lack of work on this topic, the cited studies are each only marginally related to the topic of interest here. } \cite{Dai_Gupta_Murray_Vrahas_Tegos_Hamblin_2012} \cite{lightExposure} \cite{Gorai_Katayama_Obata_Murata_Taguchi_2014} \cite{lightExposure2},  it is predicted that the brief laser exposure used in this project will have no detectable impact on microorganism populations. Combined with the incredibly low chance that any single organism passes through the device more than once, the lasers' overall impact on river health will be minimal.
+	Given the results from several previous studies\footnote{Unfortunately, very little work has been done regarding the impacts of blue laser light exposure on microorganisms, even less on riverine microorganisms, and essentially none on exposures at the $<$0.1 second timescale. This may be an area for future research, however, given the minimal impacts found at times as high as several hours in the studies at the footnote on other bacteria and microorganisms, it can be somewhat reasonably inferred that similarly minimal impacts result from the singular $<$0.1 second exposure used here. UV systems used for disinfection or water cleaning typically use wavelengths between 200-300 nm, significantly shorter than that used in this project, and for longer periods of time.} \cite{Dai_Gupta_Murray_Vrahas_Tegos_Hamblin_2012} \cite{lightExposure} \cite{Gorai_Katayama_Obata_Murata_Taguchi_2014} \cite{lightExposure2},  it is predicted that the brief laser exposure used in this project will have no detectable impact on microorganism populations. Combined with the incredibly low chance that any single organism passes through the device more than once, the lasers' overall impact on river health will be minimal.
 	\subsubsection{Results}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[angle=270,width=0.65\linewidth]{Figures/FrozenRiver}
+		\caption[Frozen River]{The Milwaukee River on the day of testing. Some portions of the river were frozen, but this was largely restricted to the river's edges at the location of testing.}
+		\label{fig:FrozenRiver}
+	\end{figure}
 	Samples were collected on November 10th, 2024 in the portion of the Milwaukee directly behind the Nicolet High School Forest on 6701 N Jean Nicolet Road. On the day of collection, the weather was relatively clear and roughly 13° C. Roughly 3-4 mm of rain occurred prior to testing—this was determined to be insufficient to justify rescheduling sample collection. To evaluate the samples, the above procedure was carried out and each sample was examined with a microscope roughly 1 hour later on the day of collection. 
 	Results, as hypothesized, indicated that the irradiation had very little effect on the microorganisms within the samples. After qualitative analysis, no appreciable differences could be detected between any of the samples—a reasonable result given that no sample was exposed for more than 1.35 seconds in total. To further confirm the result, the lasers were manually swept over the 9-exposure samples several more times, and even after seconds of exposure neither the number of moving microorganisms nor the appearance of any other plant matter changed noticeably. 
 	The next logical step is examining the impact of the lasers on the \gls{benthic} microbiome—something which was not done in this study due to the risks associated with culturing unknown bacteria outside of a lab. It is very likely that, consistent with predictions, even more extensive irradiation would have a limited impact on river microorganisms or bacteria. 
 	
 	\subsection{Empirical Testing}
-	\subsubsection{Procedure}
-	The final portion of testing involves using the device in its real-life operating conditions in order to evaluate its real performance over an extended period of time—in this case for 24 hours. To do this, several steps will be taken: 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/DevicePrep}
+		\caption[Preparing Device for Deployment]{This image shows the device just before it was deployed into the Milwaukee River. A portion of the device was covered in a black plastic sheet to prevent physical disturbance of the wires transferring data and power between the battery, RPI CM4, and cameras.}
+		\label{fig:DevicePrep}
+	\end{figure}
+	
+	The final portion of testing involves using the device in its real-life operating conditions in order to evaluate its real performance over an extended period of time—in this case for 4 hours. To do this, several steps will be taken: 
 	\begin{enumerate}
 		
 		\item Set up control measurement:	
@@ -692,9 +704,14 @@
 		
 		\item Set up device:
 		\begin{enumerate}
-			\item In a section of the Milwaukee River roughly representative of the entire length, the device will be buried as shown in figure \ref{fig:InletInSitu}, then after setup of all systems and activation, the device will be left in-situ for the next 24 hours to simulate an entire day of operation. 
+			\item In a section of the Milwaukee River roughly representative of the entire length, the device will be set up, then after setup of all systems and activation, the device will be left in-situ for the next 4 hours to simulate extended operation. 
 		\end{enumerate}
-		
+			\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{Figures/Marionette}
+			\caption[Device Deployment]{This image shows the author deploying the device. The ropes attached to the device's ends allow it to be manipulated in the manner of a marionette puppet, giving control of position and pitch.}
+			\label{fig:Marionette}
+		\end{figure}
 		\item Data analysis:
 		\begin{enumerate}
 			\item To analyze the data collected, the quantities of microplastics filtered by the nets on both sides of the device will be compared, and after counting the microplastics in each conclusions will be reached regarding: 
@@ -711,8 +728,17 @@
 	\end{enumerate}
 	With this information collected, the device’s overall efficacy can be determined, and subsequent improvements or alterations can be made and re-tested.
 	
-	\subsection{Risks}
-	Outside of the typical risks associated with existing and working within a workshop environment, this project poses very few dangers. The majority of parts for the final device are 3D printed or off-the-shelf components, not pieces which need to be separately manufactured via CNC, drilling, etc. Besides these standard risks, physically placing the device into the water during the empirical testing will likely be the most dangerous part of the project, however, this will be performed with others present and in water which only reaches $\approx$2-3 feet deep at maximum as seen in figure \ref{fig:riverCrosssec}. With proper attire (waders, gloves, jackets, etc.) this should not pose any significant risk.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{Figures/DeviceDeployed}
+		\caption[Device Deployed into River]{Once placed into the river, the device was left in place with the "marionette" ropes tied to a tree on the river's bank.}
+		\label{fig:DeployedDevice}
+	\end{figure}
+	
+
+
+	
+
 	
 	\paragraph*{Processing and Counting MPs}
 	\label{sec:processing}
@@ -726,20 +752,21 @@
 		\item Use 30\% Hydrogen Peroxide to dissolve organic material in the lighter fractions of each sample separated with the separatory funnel
 		\item Again, count using FiJi image analysis software after sectioning
 	\end{enumerate}
-	
-	\subsubsection{Predictions}
+	\subsection{Testing Risks}
+	Outside of the typical risks associated with existing and working within a workshop environment, this project poses very few dangers. The majority of parts for the final device are 3D printed or off-the-shelf components, not pieces which need to be separately manufactured via CNC, drilling, etc. Besides these standard risks, physically placing the device into the water during the empirical testing will likely be the most dangerous part of the project, however, this will be performed with others present and in water which only reaches $\approx$2-3 feet deep at maximum as seen in figure \ref{fig:riverCrosssec}. With proper attire (waders, gloves, jackets, etc.) this should not pose any significant risk.
+	\subsection{Predictions}
 	\label{subsubsec:predictions}
-	\paragraph{Microplastics}
+	\subsubsection{Microplastics}
 	The quantity of microplastics to be collected by the device can be simply approximated by using measurements from previous studies in tandem with data on total suspended solids (TSS) from USGS. Here, we find from \cite{LenakerEtAlvertdist} that microplastic concentrations near the intended testing site (the lower Milwaukee River) are approximately 2100 MP/kg, and additionally we find that this area's TSS measures roughly 22.1 mg/L. Next, multiplying previous figures of total water filtration per day (27.26 m$^3$, 27257 liters) by TSS concentration (22.1 mg/L), we find that the device will filter roughly 0.602 kg of suspended solids per day on average. Multiplying this value by the concentration of microplastics per kilogram of sediment (2100 MP/kg), we determine that the device should then collect roughly 1265 microplastics above 333 $\mu$m in size over the course of one completely average day. Upper and lower bounds for this value can also be calculated using the extreme values ever measured on the Milwaukee River (2.1 mg/L, 1400 mg/L, \cite{USGSMil}, \cite{MKETSS}), arriving at 120 and 80,138 microplastics respectively\footnote{While microplastic collection may in theory increase linearly with total suspended solids, times with very high turbidity would likely see lesser effectiveness in camera-based detection and laser penetration which may hinder device efficiency in very high turbidity waters.}. These figures are accurate for MP sizes above 333 $\mu$m, however, it must be noted that while both the device described here and \cite{LenakerEtAlvertdist} use 333 $\mu$m filter sizes, the actual size of microplastics collected by the device can vary significantly from this figure. This variance arises due to an incongruence between camera resolution and filter size which means that the device's cameras can detect particles as small as 40 $\mu$m\footnote{Dividing the channel's height (30 mm) by the camera's vertical resolution (640 pixels), we get 30 mm/640 px = 0.047 mm/px = 47 $\mu$m/px. Practically, this minimum detection size is even smaller due to light scattering, and fibers as thin as 40 $\mu$m were successfully detected during testing.}. While some of these sub-333 $\mu$m particles will be pushed through the filter, elementary calculations\footnote{Proof in cell G832 of the 1982-84 TSS Data sheet in the supplementary materials.} show that the device's flipper will only allow water into the filtering channel 8.7\% of the time, meaning that many microplastics which may otherwise push through the filter will be instead collected by falling into the collection chamber. Thus, in order to determine how many microplastics the device will collect, the proportion of \textgreater 333 $\mu$m microplastics compared to \textgreater 40 $\mu$m MPs must be accounted for. A recent study conducted in Beijing found that these \textgreater 333 $\mu$m comprise only 13.2\% of microplastics, and that an additional 81\% can be found in the 40-333 $\mu$m range as shown in \ref{fig:PercentageSizes}. When we account for this increase, the quantity of microplastics collected on a completely average day increases by more than 7 times from 1265 MPs/day to 8944 MPs/day. 
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/PercentDetectable}
+		\includegraphics[width=1\linewidth]{Figures/PercentDetectable1}
 		\caption[Microplastic Size Distributions from 0-1 mm]{Annotated graph showing MP sizes by cumulative quantity. The leftmost vertical pink line shows the lower bound of what can be detected by the device, and the rightmost shows 333 $\mu$m. The original graph can be found in \cite{Niu_Xu_Wu_Gao_2024}.}
 		\label{fig:PercentageSizes}
 	\end{figure}
 	
-
+	
 	There are a few key assumptions which are necessary for this modeling to be accurate, those being:
 	\begin{enumerate}
 		\item The concentration of microplastics in the sediment must be relatively constant throughout the Milwaukee river (or at least must not fluctuate overly significantly to form hot spots of microplastics)
@@ -753,9 +780,9 @@
 	This project's testing occured for a more limited period of 4 hours, as \gls{benthic} sediment concentrations do not significantly fluctuate over time, and a more limited testing period simplifies several aspects of experimentation. In addition, the survivability of a \gls{benthic} device primarily depends on water ingress protection\textemdash and with a successful 4 hour long test, the device will have passed the equivalent of 8 consecutive IP68 rating tests (the test which typically must be passed to qualify products as "waterproof"). Given this limited testing period, the predicted figure of 8944 MPs/day can be divided into 1491 MPs/4 hours on an average day. This figure has upper and lower bounds at 94,426 and 141 MPs per 4 hours, respectively, assuming that TSS on the day of testing falls within previously measured maximum and minimum TSS values.
 	\linebreak
 	In addition to testing the device, a 500 mL water sample was taken at the time of testing. This was used to measure TSS within the river by massing a 100mL sample of the water, waiting for water to evaporate for several days while undisturbed, and finally massing again to determine TSS. These results will allow for further correlation and confirmation of the predictions previously made.
-	\paragraph{Sediment}
+	\subsubsection{Sediment}
 	In addition to microplastic quantity predictions, the amount of sediment which will be collected by the device can also be estimated using available data from testing conducted by the DNR and USGS. Using, again, values from \cite{LenakerEtAlvertdist}, we find that there should be approximately 2100 MPs/kg of sediment at the testing site. These MPs contained within 1kg of sediment should weigh approximately 0.21 grams, making the rough assumption that MPs are 250 $\mu$m radius spheres of density 1.5 g/cm$^3$. Using data from \cite{Foth2020}\footnote{Page 5, Physical Data of Milwaukee River Operable Unit 2}, we find that 68\% of the sediment consists of fines (silt and clay), and though no exact number is given, we can infer that more than 15\% of sediment volume consists of gravel\footnote{The report states that gravel content increases downstream, and measures 15\% gravel content upstream of the focus area.}. It can be assumed that only a negligible amount of gravel was  collected due to gravel's high mass, and it can be assumed that only a negligible amount of silt or clay was collected due to those particles' very small volume. These factors combine to mean that only sand, the remaining 17\% of the sediment has a significant chance of being collected. Still, this is likely a vast overestimation, as suspended load is primarily composed of silt and clay due to their smaller size. In addition to this, the bed of the Milwaukee River at Estabrook Park is largely covered in gravel and boulders, creating a semi-permeable layer which likely aids in preventing bed sediment transport. The class of sediment likely to be carried by the \gls{benthic} flow can be further contained when examining data from \cite{Washload_size}, which indicates that 90\% of diameters of wash load particles fall below 0.0625 mm\textemdash the size which also defines the lower boundary of "sand" particle sizes. For the sake of making a prediction in the absence of all data, the assumption is made that fluvial sand size distributions are somewhat similar throughout various rivers, thus using data from \cite{sabd_size_distribution}, we can see that roughly 1-3\% of sand falls near this size category. This means that an even smaller proportion of sediment could reasonably constitute a significant fraction of the collected material, and this small fraction likely contains quantities of bed load, as the bed load can carry heavier and denser particles than the suspended load\textemdash though typically bed load motion consists of the slower processes of \gls{saltation} and \gls{rolling}. When all considered, it is evident that natural processes of the fluvial environment self-select for the majority of \gls{benthic} load to contain comparatively less dense algae and similarly light particles such as microplastics. Given that many of these quantities are not exactly known, it is difficult to precisely estimate sediment quantities, but with the limited data available it can be estimated that the amount of sediment practically able to be collected by the device ranges from 0.12 to 1.2 grams per kilogram of existing sediment\textemdash in other words, anywhere from 0.12\% to 1.2\% of sediment is actually collectable, whereas almost all microplastics are collectable due to their lower densities and large areas.
-	\paragraph{Algae}
+	\subsubsection{Algae}
 	It is even more difficult to accurately estimate algae concentrations, but it is known that some alga such as diatoms are incredibly common in all ecosystems with water, and algae similarly are present in river environments. Most of these particles are smaller than the device's pore diameter, however, a number will inevitably be collected due to their sheer quantity. No attempts will be made to exactly quantify this, save for the statement that algae will be present in all samples in appreciable quantity. 
 	\paragraph*{Details}
 	Testing was planned to occur on Sunday, January 19th, 2025 at 9:00 AM on the Milwaukee River at Estabrook Park. This spot was chosen for several reasons, primarily due to its wadeable depth, relatively high TSS due to turbulence from the nearby waterfall, and proximity to where testing occurred in \cite{LenakerEtAlvertdist}, validating assumption three of section \ref{subsubsec:predictions}. 
@@ -766,155 +793,139 @@
 		\item Decrease in testing time from 5 hours to 4 hours. This came due to overestimation of current draw along with a cell death in the 3S 15,000 mAh LiPo Battery used in the device. This cell death meant that maximum capacity decreased from 15,000 go 10,000 mAh and nominal 100\% voltage decreased from 12.6V to 8.4V, thus testing duration was reduced to ensure proper operation throughout. After testing, it was discovered that this reduction in test time was unnecessary due to the device consuming less power than anticipated. 
 		\item Though initial plans intended for the device to be dug into the sediment of the riverbed, due to significant fractions of gravel and boulders this was impossible. Instead, an attachment which lowered the intake position was used to allow the device to be placed directly on the riverbed. 
 	\end{enumerate}
-	\subsubsection{Results}
+	\section{Results}
 	\paragraph*{Details}
 	Though initially planned for January 19th, testing was conducted on January 20th. Experimentation began at 12:13 PM, and after approximately 4 hours the device was removed at 4:17 PM. On the day of testing, air temperature was approximately -16$^{\circ}$ C, water speed rested at roughly 1.7 m/s, and total suspended solids at 290 mg/L. Given this, and using equations derived in section \ref{subsubsec:predictions}, it can be predicted that approximately 19,560 MPs should be collected by the device. 
 	%\paragraph{Microplastic Identification}
 	
 	
 	
-	\iffalse{
-		Due to the near impossibility of accurately quantifying and classifying every single particle collected by the device, plastics and other \glspl{seston} were agitated by mixing in a glass bowl, then placed on 1cm x 1cm grid paper for classification. After placement on grid paper, boxes were randomly selected for counting, and visually matched with other, similar boxes to extrapolate the total number of particles present in the collected output. This "visual matching" classified the boxes into dense, standard, and sparse categories based on how the \glspl{seston} in each box were distributed after mixing. Figure
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/BoxClasses}
-			\caption[Box Classifications]{Annotated image showing the classifications of boxes based upon their particle counts.}
-			\label{fig:boxclasses}
-		\end{figure}
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/MPsClassification}
-			\caption[Annotated Collected Particles]{Annotated image showing how microplastics were differentiated from organic particles and sediments. Here, microplastics are circled in red, organics in green, and sediment in brown.}
-			\label{fig:MPClassification}
-		\end{figure}
-		Note that not every particle thought to be a microplastic is marked in figure \ref{fig:MPClassification}, as it merely illustrates the application of selection criteria and not the actual counting of this region of particles. In the upper right hand corner, a square, line, and circle can be seen which denote the nominal smallest particle size which can be collected by the device. This is not necessarily the practical lower limit to size, as the filter used was double-layered for greater rigidity. The two layers were roughly aligned with each other, but some pores were still slightly smaller or larger than the nominal size. The filter on the other end of the output was also double-layered for consistency.
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=1\linewidth]{Figures/OrganicsBox}
-			\caption[Annotated Collected Organics]{Annotated image showing the output from the "release" end of the device. The classification criteria for this image is the same as in figure \ref{fig:MPClassification}, with the addition of bubbles. Many more bubble were present in the organic sample simply due to the mode of filtration being a simple filter as opposed to a rigid collection box.}
-			\label{fig:OrganicsOutput}
-		\end{figure}
-	}
-	\fi
-	\subsubsection{Collection Efficiency}
-	\paragraph{Particle Identification}
-	To evaluate the efficiency of collection, samples were visually evaluated under a compound microscope\footnote{Although many of the microplastics seen under the microscope were smaller than the 300 \textmu m size of the filter's pores, results from microscope analysis are still presumed to be valid because the device is capable of identifying particles as small as 40 \textmu m due to aforementioned differences between the camera's resolution and filter pore size. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected in $\approx$ 1 mL batches using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed with filtered tap water into the sample to minimize sample loss\footnote{Unfortunately deionized water was not available for this process, however, the tap water is assumed to have only negligibly contributed to MP levels due to the small quantities used and the smaller size of MPs typically found in tap water.}. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. 
-	Figures \ref{fig:bluetwist}, \ref{fig:fabric}, and \ref{fig:mporganic} show some particles of particular interest which were found during the counting process, though only the particle seen in figure \ref{fig:mporganic} was actually counted\footnote{The other two plastics were seen while moving during the counting process, and were not counted so as to avoid bias towards large, brightly-colored microplastics in counting.}.
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/BlueTwisty}
-		\caption[Blue Microplastic Under Microscope]{A flat, blue, microplastic fiber.}
-		\label{fig:bluetwist}
-	\end{figure}
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/Fabric}
-		\caption[Fabric Under Microscope]{A small piece of fabric.}
-		\label{fig:fabric}
-	\end{figure}
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/MPOrganic}
-		\caption[MP Near Organic Matter]{This image shows a clear fragment microplastic in the bottom left corner, with the microscope's focus on a small piece of algae. This image is generally reflective of how the majority of particles appeared during counting, with the microscope aperture usually capturing a few particles at a time.}
-		\label{fig:mporganic}
-	\end{figure}
-	Identification was carried out according to the guidelines in \cite{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain \glspl{seston} such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all 307 particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting}
-		\caption[Collected Particle Classification]{Bar chart with data of all particles collected in both the MP and organic samples.}
-		\label{fig:mpcounting}
-	\end{figure}
-	\paragraph*{Particle Quantification - Proportions}
-	As seen in figure \ref{fig:mpcounting}, the device collected just over 90\% of the microplastics which passed through it during the 4 hours of testing, strongly supporting goal \#2 of the Engineering Goals from section \ref{sec:goals}. Despite this success, goal \#3 of section \ref{sec:goals} was not met, with nearly 33\% of organic \glspl{seston} being collected by the device. Given the importance of these organic particles to \gls{benthic} ecosystems, this fact may prevent the specific device used in this study from being used in more sensitive areas\textemdash though organic matter pass through efficiency could likely be improved by using higher quality cameras, customizing COTS parts, or adding additional parts in order to provide extra verification of particle identity.
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/RawSeparated}
-		\caption[Raw Separated Plastics]{Raw, unprocessed particles extracted from the device's collection chamber directly after experimentation. Note that nearly all particles here are either beige colored sediment or white/clear plastic.}
-		\label{fig:rawseparated}
-	\end{figure}
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[angle=90,origin=c,width=1\linewidth]{Figures/RawReleased}
-		\caption[Raw Released Particles]{Raw, unprocessed particles collected by a net on the "release" end of the device. Outside of an experimental scenario, these particles would be released back into the water column. Note the algae and green-ish particles which pervade this sample, and the comparatively very low number of easily visible plastic or sedimentary particles.}
-		\label{fig:rawreleased}
-	\end{figure}
-	
-	\paragraph*{Particle Quantification - Counts}
-	In addition to finding the proportion of particles within the device's sample which were microplastics, the actual number of particles collected was counted using image analysis. This was conducted with FiJi\footnote{Acronym: FiJi$^{13}$ is Just ImageJ}, an expanded version of ImageJ, a common scientific image analysis tool. The key feature of FiJi is the \textit{Analyze Particles} tool, which allows for automatic counting of particles depending on threshold settings defined by the user. To conduct this particle analysis, the samples were prepared and analyzed according to steps 1-5 of the procedure laid out in section \ref{sec:processing}. 
-	\begin{figure}[h]
-		\centering
-		\includegraphics[angle=-90,origin=c,width=1\linewidth]{Figures/SepFunnel}
-		\caption[Separatory Funnel]{A close up image of the separatory funnel used to separate dense sediments from lighter microplastics and algae. The water inside of the funnel is colored a bright green from the Copper(II) Chloride added to increase density, and many particles can be seen floating in the solution.}
-		\label{fig:SepFunnel}
-		
-	\end{figure}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/SedimentBlue}
-		\caption[Separated Sediment]{Here, the separated sediment from the bottom of the separatory funnel is seen in a glass bowl. Filtered tap water was added to the bowl during processing, causing the water color to lighten to blue.}
-		\label{fig:SedBlue}
-	\end{figure}
-	The results from the analysis revealed that over 30,000 particles of $\rho$ \textless 1.5 g/mL were collected by the device, and using the proportions determined from previous microscope analysis, it is estimated that 18,945 of these particles were microplastics. After comparison of FiJi analysis with manual counting of particles in a sample (n=362), it was determined that the particle counting procedure had an error of roughly 8.8\%, leading to upper and lower bounds on the total particle count at 34,204 and 29,136 particles respectively, and the bounds on MP count at 22,097 and 16,035 microplastic particles respectively. The predictions made in section \ref{subsubsec:predictions} fall within these ranges, with the figure of 19,560 only 3.1\% above this number. A variety of factors impact this figure, with minor fluctuations in TSS, errors in counting, or loss from transferring particles between containers likely accounting for any remaining error. The average particle size counted by FiJi was 0.264 mm$^2$, but it should be noted that this is \textbf{not} necessarily representative of the actual average particle size because the primary concern during FiJi analysis was on correctly counting the quantity of particles as opposed to their size. 
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/TotalQuantities}
-		\caption[Cumulative Non-Sediment Particle Quantities]{This chart shows the cumulative quantities of non-sediment particles as determined by density separation using a separatory funnel.}
-		\label{fig:totalcount}
-	\end{figure}
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/ParticleCounting}
-		\caption[FiJi Particle Counting]{An example of how the FiJi image analysis software counts particles. Here, a 28x28 mm square is shown, with particles identified by FiJi circled in yellow.}
-		\label{fig:FiJiAnal}
-	\end{figure}
-	
-	\subsubsection{Further Predictions}	
-	\label{sec:furtherPredictions}
-	If it is assumed that the Milwaukee River is relatively typical in its proportion of wash, bed, and suspended load, roughly 80\% of the 22.1 mg/L of total suspended load in the Milwaukee River, or 17.68 mg/L is likely the "wash load"\textemdash particles which stay permanently suspended and travel most of or the entire length of the river. Using the Milwaukee River's nominal length of 104 miles, the wash load should spend at most 4-6 days suspended assuming a river speed of $\approx$ 0.4-1 m/s. 
-	\linebreak
-	Using this information, it follows that removing microplastics in the suspended load at various points in the river will remove significant portions of downstream microplastic pollution as shown in figure \ref{fig:washload}.
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/WashLoadCollection}
-		\caption[Wash Load MP Collection]{Illustration of how a single collection checkpoint can significantly lower downstream \gls{benthic} microplastic concentrations. Note that the front attachment in this image reflects the type of attachment which may be attached to a production version of the device with a wider mouth in order to capture more of the \gls{benthic} flow.}
-		\label{fig:washload}
-	\end{figure}
-	By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$72.4\% (90.54\% efficiency * 80\% suspended load). This prediction rests on the optimistic assumption that 100\% of suspended \gls{benthic} MPs within the suspended load enter the device, however, it does not account for bed load microplastics transported via \gls{saltation}, which counteracts the underestimation caused by this assumption to an unknown degree. In this deployment scheme, assuming constant microplastic input to the river, total MP concentration would reach 3.33\% of previous totals at the mouth of the river if 10 checkpoints are used. This is detailed further in section \ref{checkpointPredictions}.
-	
 
-	
-	%------------------------------------------------
-	
-	\phantomsection
-	\section*{Acknowledgments} % The \section*{} command stops section numbering
-	Several people aided greatly in the completion of this project; they are given here in no particular order. The author extends thanks to:
-	\begin{itemize}
-		\item Mrs. Stephanie Rasmussen, for her advice in experimental procedure, aid in proofreading, and general help surrounding competition.
-		\item Mr. Joseph Keller, for providing advice and refinement of how exactly the device created here may work, as well as for providing equipment critical to testing and evaluating the effectiveness of the device. In addition, for aid in acquiring data critical to predicting the impacts of the device.
-		\item Dr. Kayla Poole, for her advice on how the project may best be evaluated and for discussion on the project's possible impacts.
-		\item Mr. Golan Altman-Shafer, for general help during device testing.
-		\item Mr. Eliot Scheuer, for aid in refining the project's presentation and themes.
-	\end{itemize}
-	\addcontentsline{toc}{section}{Acknowledgments} % Adds this section to the table of contents
-	
-	
-	%----------------------------------------------------------------------------------------
-	%	REFERENCE LIST
-	%----------------------------------------------------------------------------------------
-	
-	\phantomsection
-	%\bibliographystyle{apa}
-	\bibliographystyle{unsrt}
-	\nocite{*}
-	\bibliography{sample.bib}
-	
-	%----------------------------------------------------------------------------------------
-	
-\end{document}
+	\subsection{Collection Efficiency}
+	\subsubsection{Particle Identification}
+	To evaluate the efficiency of collection, samples were visually evaluated under a compound microscope\footnote{Although many of the microplastics seen under the microscope were smaller than the 300 \textmu m size of the filter's pores, results from microscope analysis are still presumed to be valid because the device is capable of identifying particles as small as 40 \textmu m due to aforementioned differences between the camera's resolution and filter pore size.}. To ensure relatively random sampling, the sample which was intended to be collected (henceforth the MP sample) and the sample which would have otherwise been released into the river (henceforth the organic sample) were stirred with a metal rod, allowed to settle for approximately 5 minutes, then collected in $\approx$ 1 mL batches using a pipette and pipetted onto a slide. All tools which directly contacted the sample (such as the metal rod) were rinsed with filtered tap water into the sample to minimize sample loss\footnote{Unfortunately deionized water was not available for this process, however, the tap water is assumed to have only negligibly contributed to MP levels due to the small quantities used and the smaller size of MPs typically found in tap water.}. This process was repeated 3 times to create 3 pseudo-random selections from each of the MP and organic sample, 6 in total. After slide preparation, random selections of the material on the slides were chosen by randomly turning the microscope's lateral movement dial and identifying each of the particles found within the aperture. 
+		Figures \ref{fig:bluetwist}, \ref{fig:fabric}, and \ref{fig:mporganic} show some particles of particular interest which were found during the counting process, though only the particle seen in figure \ref{fig:mporganic} was actually counted\footnote{The other two plastics were seen while moving during the counting process, and were not counted so as to avoid bias towards large, brightly-colored microplastics in counting.}.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/BlueTwisty}
+			\caption[Blue Microplastic Under Microscope]{A flat, blue, microplastic fiber.}
+			\label{fig:bluetwist}
+		\end{figure}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/Fabric}
+			\caption[Fabric Under Microscope]{A small piece of fabric.}
+			\label{fig:fabric}
+		\end{figure}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/MPOrganic}
+			\caption[MP Near Organic Matter]{This image shows a clear fragment microplastic in the bottom left corner, with the microscope's focus on a small piece of algae. This image is generally reflective of how the majority of particles appeared during counting, with the microscope aperture usually capturing a few particles at a time.}
+			\label{fig:mporganic}
+		\end{figure}
+		Identification was carried out according to the guidelines in \cite{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain \glspl{seston} such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all 307 particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting}
+			\caption[Collected Particle Classification]{Bar chart with data of all particles collected in both the MP and organic samples.}
+			\label{fig:mpcounting}
+		\end{figure}
+		\subsubsection{Particle Quantification - Proportions}
+		As seen in figure \ref{fig:mpcounting}, the device collected just over 90\% of the microplastics which passed through it during the 4 hours of testing, strongly supporting goal \#2 of the Engineering Goals from section \ref{sec:goals}. Despite this success, goal \#3 of section \ref{sec:goals} was not met, with nearly 33\% of organic \glspl{seston} being collected by the device. Given the importance of these organic particles to \gls{benthic} ecosystems, this fact may prevent the specific device used in this study from being used in more sensitive areas\textemdash though organic matter pass through efficiency could likely be improved by using higher quality cameras, customizing COTS parts, or adding additional parts in order to provide extra verification of particle identity.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[angle=270,width=1\linewidth]{Figures/RawSeparated}
+			\caption[Raw Separated Plastics]{Raw, unprocessed particles extracted from the device's collection chamber directly after experimentation. Note that nearly all particles here are either beige colored sediment or white/clear plastic.}
+			\label{fig:rawseparated}
+		\end{figure}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[angle=270,origin=c,width=1\linewidth]{Figures/RawReleased}
+			\caption[Raw Released Particles]{Raw, unprocessed particles collected by a net on the "release" end of the device. Outside of an experimental scenario, these particles would be released back into the water column. Note the algae and green-ish particles which pervade this sample, and the comparatively very low number of easily visible plastic or sedimentary particles.}
+			\label{fig:rawreleased}
+		\end{figure}
+		
+		\subsubsection{Particle Quantification - Counts}
+		In addition to finding the proportion of particles within the device's sample which were microplastics, the actual number of particles collected was counted using image analysis. This was conducted with FiJi\footnote{Acronym: FiJi$^{13}$ is Just ImageJ}, an expanded version of ImageJ, a common scientific image analysis tool. The key feature of FiJi is the \textit{Analyze Particles} tool, which allows for automatic counting of particles depending on threshold settings defined by the user. To conduct this particle analysis, the samples were prepared and analyzed according to steps 1-5 of the procedure laid out in section \ref{sec:processing}. 
+		\begin{figure}[h]
+			\centering
+			\includegraphics[angle=-90,origin=c,width=1\linewidth]{Figures/SepFunnel}
+			\caption[Separatory Funnel]{A close up image of the separatory funnel used to separate dense sediments from lighter microplastics and algae. The water inside of the funnel is colored a bright green from the Copper(II) Chloride added to increase density, and many particles can be seen floating in the solution.}
+			\label{fig:SepFunnel}
+			
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/SedimentBlue}
+			\caption[Separated Sediment]{Here, the separated sediment from the bottom of the separatory funnel is seen in a glass bowl. Filtered tap water was added to the bowl during processing, causing the water color to lighten to blue.}
+			\label{fig:SedBlue}
+		\end{figure}
+		The results from the analysis revealed that over 30,000 particles of $\rho$ \textless 1.5 g/mL were collected by the device, and using the proportions determined from previous microscope analysis, it is estimated that 18,945 of these particles were microplastics. After comparison of FiJi analysis with manual counting of particles in a sample (n=362), it was determined that the particle counting procedure had an error of roughly 8.8\%, leading to upper and lower bounds on the total particle count at 34,204 and 29,136 particles respectively, and the bounds on MP count at 22,097 and 16,035 microplastic particles respectively. The predictions made in section \ref{subsubsec:predictions} fall within these ranges, with the figure of 19,560 only 3.1\% above this number. A variety of factors impact this figure, with minor fluctuations in TSS, errors in counting, or loss from transferring particles between containers likely accounting for any remaining error. The average particle size counted by FiJi was 0.264 mm$^2$, but it should be noted that this is \textbf{not} necessarily representative of the actual average particle size because the primary concern during FiJi analysis was on correctly counting the quantity of particles as opposed to their size. 
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/TotalQuantities}
+			\caption[Cumulative Non-Sediment Particle Quantities]{This chart shows the cumulative quantities of non-sediment particles as determined by density separation using a separatory funnel.}
+			\label{fig:totalcount}
+		\end{figure}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/ParticleCounting}
+			\caption[FiJi Particle Counting]{An example of how the FiJi image analysis software counts particles. Here, a 28x28 mm square is shown, with particles identified by FiJi circled in yellow.}
+			\label{fig:FiJiAnal}
+		\end{figure}
+		
+		\subsection{Further Predictions}	
+		\label{sec:furtherPredictions}
+		If it is assumed that the Milwaukee River is relatively typical in its proportion of wash, bed, and suspended load, roughly 80\% of the 22.1 mg/L of total suspended load in the Milwaukee River, or 17.68 mg/L is likely the "wash load"\textemdash particles which stay permanently suspended and travel most of or the entire length of the river. Using the Milwaukee River's nominal length of 104 miles, the wash load should spend at most 4-6 days suspended assuming a river speed of $\approx$ 0.4-1 m/s. 
+		\linebreak
+		Using this information, it follows that removing microplastics in the suspended load at various points in the river will remove significant portions of downstream microplastic pollution as shown in figure \ref{fig:washload}.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=1\linewidth]{Figures/WashLoadCollection}
+			\caption[Wash Load MP Collection]{Illustration of how a single collection checkpoint can significantly lower downstream \gls{benthic} microplastic concentrations. Note that the front attachment in this image reflects the type of attachment which may be attached to a +-production version of the device with a wider mouth in order to capture more of the \gls{benthic} flow.}
+			\label{fig:washload}
+		\end{figure}
+		By using several of these "microplastic checkpoints" at various points throughout the river, MP concentrations at any given point in the river can be decreased very significantly with relatively little investment. Using the Milwaukee river as a model, placing 10 of these checkpoints at various points in the river could decrease microplastic concentrations at any given time by $\approx$72.4\% (90.54\% efficiency * 80\% suspended load). This prediction rests on the optimistic assumption that 100\% of suspended \gls{benthic} MPs within the suspended load enter the device, however, it does not account for bed load microplastics transported via \gls{saltation}, which counteracts the underestimation caused by this assumption to an unknown degree. In this deployment scheme, assuming constant microplastic input to the river, total MP concentration would reach 3.33\% of previous totals at the mouth of the river if 10 checkpoints are used. This is detailed further in section \ref{checkpointPredictions}.
+		
+		\section{Conclusions}
+		Though still untested at scale, the device presented here shows the potential of spectroscopy-based particle removal for cheap, fast, and efficient separation of various particulate pollutants from waterways. Here, this is applied to the benthic region of rivers, however, the methods used here could also be used in a pelagic microplastics-collecting device such as that described in \cite{Isahaku}. In the case of riverine microplastics, modeling has shown that a wide scale deployment  of these devices in a river like the Milwaukee would be relatively cheap (\ref{CostAnalysis}), could lower MP concentrations in certain regions by up to 96\% (\ref{CostAnalysis}), and could be 
+		
+		Microplastics are currently the pollutant for which the device's particle identification methods are most relevant, however, research has shown that some other POPs (Persistent Organic Pollutants like DDT, PCBs, PAHs, etc.) can have their own distinct fluorescence spectra when bound to other particles\textemdash meaning that a modified version of this project's device may have the ability to remove POPs directly. Even if this is less effective than when removing microplastics, the cost difference between a deployment of this device and, for example, the Milwaukee Metropolitan Sewage District's PCB cleanup effort is incredibly stark\textemdash the MMSD cleanup costing an estimated 30,000\% more \cite{Fowlkes_2025}, \ref{CostAnalysis}. 
+		
+		Through empirical testing, modeling, and experimentation the device's effectiveness has been generally proven 
+		combat eutrophication
+		\section{Next Steps}
+		%------------------------------------------------
+		
+		\phantomsection
+		\section*{Acknowledgments} % The \section*{} command stops section numbering
+		Several people aided greatly in the completion of this project; they are given here in no particular order. The author extends thanks to:
+		\begin{itemize}
+			\item Mrs. Stephanie Rasmussen, for her advice in experimental procedure, aid in proofreading, and general help surrounding competition.
+			\item Mr. Joseph Keller, for providing advice and refinement of how exactly the device created here may work, as well as for providing equipment critical to testing and evaluating the effectiveness of the device. In addition, for aid in acquiring data critical to predicting the impacts of the device.
+			\item Dr. Kayla Poole, for her advice on how the project may best be evaluated and for discussion on the project's possible impacts.
+			\item Mr. Golan Altman-Shafer, for general help during device testing.
+			\item Mr. Eliot Scheuer, for aid in refining the project's presentation and themes.
+		\end{itemize}
+		\addcontentsline{toc}{section}{Acknowledgments} % Adds this section to the table of contents
+		
+		
+		%----------------------------------------------------------------------------------------
+		%	REFERENCE LIST
+		%----------------------------------------------------------------------------------------
+		
+		\phantomsection
+		%\bibliographystyle{apa}
+		\bibliographystyle{unsrt}
+		\nocite{*}
+		\bibliography{sample.bib}
+		
+		%----------------------------------------------------------------------------------------
+		
+	\end{document}
