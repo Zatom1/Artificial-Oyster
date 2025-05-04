@@ -85,6 +85,9 @@ def move_servo(angle):
     duty = (angle/18) + 2
     pwm.ChangeDutyCycle(duty)
 
+        
+        
+
 def run_recognition():
     global first_frame, image_array0, timer, MP_count, MP_now_detected, time_to_let_water_through, thing_detected, thing_detection_time, time_to_move, servo_is_open, SERVO_POWER_PIN, change_timestamp, opening, alreadyOpen, stop_moving, old_servo_open_command, servo_is_open
     #print(first_frame)
@@ -109,13 +112,33 @@ def run_recognition():
                 print(image_array0[i][j])
             pix_count+=1
     
-    r = image_array0[32][40][0] + 0.1
+    r = image_array0[32][40][2] + 0.1
     g = image_array0[32][40][1] + 0.1
-    b = image_array0[32][40][2] + 0.1
+    b = image_array0[32][40][0] + 0.1
     sum_red+=((r / g)+(r / b))/2
     
-    #print("`````" + str(sum_red/pix_count) + "`````")
     
+    
+    
+    print("`````" + str(sum_red) + "`````")
+    
+    if sum_red > 3:
+        change_timestamp = time.time_ns()
+        servo0.angle = 90
+        GPIO.output(mosfetPin, True)
+    elif sum_red <= 3 and time.time_ns() > change_timestamp + 1000000000 and time.time_ns() < change_timestamp + 1500000000:
+        servo0.angle = 20
+        GPIO.output(mosfetPin, True)
+    elif sum_red <= 3 and time.time_ns() > change_timestamp + 1500000000:
+        servo0.angle = 20
+        GPIO.output(mosfetPin, False)
+        
+        
+    if time.time_ns() < change_timestamp + 1000000000:
+        servo0.angle = 90
+        GPIO.output(mosfetPin, True)
+        
+    """
     if sum_red > 2 and alreadyOpen == False:
         change_timestamp = time.time_ns()
         alreadyOpen = True
@@ -141,8 +164,8 @@ def run_recognition():
     elif time.time_ns() > thing_detection_time + 4000000000:
         GPIO.output(mosfetPin, False)
         
-    print(str(thing_detection_time) + " ------ " + str(time.time_ns()) + " ------ " + str( change_timestamp + 500000000 and opening == True ))
-    
+    #print(str(thing_detection_time) + " ------ " + str(time.time_ns()) + " ------ " + str( change_timestamp + 500000000 and opening == True ))
+    """
 
     """
     if old_servo_open_command != servo_is_open:
@@ -186,7 +209,7 @@ testNumber = 150
 
 if __name__ == "__main__":
     
-    while time.time_ns() < start_time + 5999000000000:
+    while time.time_ns() < start_time + 599900000000000:
         run_recognition()
         #time.sleep(1)
         #GPIO.output(mosfetPin, False)
