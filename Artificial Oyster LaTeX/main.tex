@@ -631,7 +631,7 @@
 		\end{enumerate}
 		\item Using data collected at the time of testing\footnote{Discharge was estimated using the measured water speed at the time of testing to be roughly 146 ft$^3$/s by multiplying measured surface water speed (0.35 m/s, 1.15 ft/s) by the cross-sectional area of the river (127 ft$^2$). This works }, we find the total river discharge $\approx$ 146 ft$^3$/s
 		
-		\item Divide total discharge (122 ft$^3$/s) by cross sectional area 
+		\item Divide total discharge (146 ft$^3$/s) by cross sectional area 
 		
 		146 ft$^3$s / 127 ft$^2$ = 1.15 ft$^3$/ft$^2$/s
 		
@@ -709,7 +709,7 @@
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=0.5\linewidth]{Figures/Marionette}
-			\caption[Device Deployment]{This image shows the author deploying the device using ropes.z}
+			\caption[Device Deployment]{This image shows the author deploying the device using ropes.}
 			\label{fig:Marionette}
 		\end{figure}
 		\item Data analysis:
@@ -832,7 +832,7 @@
 	Identification was carried out according to the guidelines in \cite{Huang_Hu_Wang_2022} At this stage, the only focus is \emph{quantity} of each particle type, thus certain \glspl{seston} such as algae which tended to clump and form larger matrices typically including many algae cells, organic matter, and diatoms were counted as single particles. This reflects the fact that, for the purposes of filter feeding, mesobenthos and macrobenthos are unable to distinguish or separately process individual particles contained within these interlocked matrices. The process of counting, identifying, and moving was repeated for each slide until approximately 50 particles had been analyzed from each slide (n=166 for the MP sample, n=141 for the organic sample), with 307 particles analyzed in total. Once all 307 particles were classified and counted, the data was compiled into figure \ref{fig:mpcounting}.
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting}
+		\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting.png}
 		\caption[Collected Particle Classification]{Bar chart with data of all particles collected in both the MP and organic samples.}
 		\label{fig:mpcounting}
 	\end{figure}
@@ -896,6 +896,23 @@
 		\includegraphics[width=1\linewidth]{Figures/ParticleCounting}
 		\caption[FiJi Particle Counting]{An example of how the FiJi image analysis software counts particles. Here, a 28x28 mm square is shown, with particles identified by FiJi circled in yellow. Some particles are truly uncounted, but most of the objects which appear to be uncounted are actually shadows from particles which were counted.}
 		\label{fig:FiJiAnal}
+	\end{figure}
+	
+	\section{2nd Round Testing}
+	In addition to the first round of testing (encompassing all prior discussion), a second round of testing was conducted in order to further confirm the efficacy of the device. 
+	
+	\subsection{Changes}
+	Relatively few major changes were made during the second round of testing\textemdash the only major change being that one extra laser module (or "processor") was added which used green 520 nm lasers instead of the previously used purple 410 nm lasers. These new lasers were used in conjunction with the existing ones by "subtracting" their value from that measured by the purple lasers in order to better understand the composition of particles in each small volume of water passing through the device. This was possible because green lasers were observed to illuminate organic material in a similar manner to how purple lasers illuminated MPs; unfortunately no exact data exists regarding the real effect of this, so it is impossible to definitively say much about the quantitative relative strengths of interaction between the '410 nm - MP' interaction and the '520 nm - organics' interaction.
+	It was theorized that this change would marginally increase performance by reducing the quantity of organic material collected, and this theory was reflected in the results of microscope analysis. These results follow.
+	\subsection{Results}
+	Testing was conducted in the same location on the Milwaukee River on April 27th, 2025; temperature was roughly 48 degrees Fahrenheit; total river discharge was roughly twice that recorded during the first round of testing (720 ft^{3}/s during 2nd round). 
+	Due to the previous calculations regarding TSS, MPs collected, etc, this testing solely measured the proportions of various particle classes after microscope analysis. Figure \ref{fig:mpcounting2} shows the proportions of particles in each sample\textemdash showing that the device was slightly more effective during the second round of testing than in the first, collecting a larger proportion of MPs and a smaller proportion of organics. Quantitatively, 92.24\% of MPs which passed through the device were properly identified and collected, a 17.97\% decrease in missed MPs and a 1.7\% increase in collected MPs; 26.17\% of organics were collected, a 14.6\% decrease in proportion collected and a 6.47\% increase in the proportion let through to the river.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/MPOrganicCounting.png}
+		\caption[Collected Particle Classification]{Bar chart with data of all particles collected in both the MP and organic samples during the 2nd round of testing.}
+		\label{fig:mpcounting2}
 	\end{figure}
 	
 	\subsection{Further Predictions}	
