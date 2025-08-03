@@ -1,0 +1,46 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Rationale}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Engineering Goal}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Review of the Literature}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Impacts of Microplastics}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Microplastic and Sediment Transport}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Biotic Microplastic Selection}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Artificial Microplastic Selection}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Construction Procedure}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Overview}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Methods}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Design Overview}{8}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Inlet}{8}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Processor}{8}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Selector}{9}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Outlet}{9}{subsubsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.4}Technical Design and Construction}{9}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Design Principles}{9}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Materials}{10}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Design and Construction}{11}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Programming Architecture}{13}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Electrical Design}{13}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.6}Waterproofing}{15}{subsubsection.3.4.6}%
+\contentsline {subsection}{\numberline {3.5}Cost Analysis}{15}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Testing Procedure}{16}{section.4}%
+\contentsline {subsection}{\numberline {4.1}River Impact Testing}{16}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Procedure}{17}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Prediction}{17}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Results}{17}{subsubsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.2}Empirical Testing}{18}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Testing Risks}{19}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Predictions}{19}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Microplastics}{19}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Sediment}{21}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Algae}{21}{subsubsection.4.4.3}%
+\contentsline {section}{\numberline {5}Results}{22}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Collection Efficiency}{22}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Particle Identification}{22}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Particle Quantification - Proportions}{23}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Particle Quantification - Counts}{23}{subsubsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.2}Further Predictions}{25}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Conclusions}{26}{section.6}%
+\contentsline {section}{Acknowledgments}{27}{section*.44}%
+\contentsline {section}{References}{27}{section*.45}%
+\contentsfinish 
